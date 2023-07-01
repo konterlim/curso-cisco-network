@@ -1,0 +1,39 @@
+Comunicação UDP
+Reagrupamento do Datagrama UDP
+Como ocorre com segmentos TCP, quando múltiplos datagramas UDP são enviados a um destino, eles geralmente tomam caminhos diferentes e chegam na ordem errada. O UDP não rastreia os números de sequência da forma que o TCP faz. O UDP não tem como reordernar os datagramas na sua ordem de transmissão, como mostrado na figura.
+
+Portanto, o UDP simplesmente remonta os dados na ordem que eles foram recebidos e os encaminha para a aplicação. Se a sequência de dados for importante para a aplicação, a aplicação deverá identificar a sequência apropriada e determinar como os dados devem ser processados.
+
+UDP: Sem Conexão e Não Confiável
+
+Processos e Solicitações do Servidor UDP
+Do mesmo modo que aplicações baseadas em TCP, as aplicações de servidor baseadas em UDP recebem números de portas bem conhecidas ou registradas, como mostrado na figura. Quando as aplicações ou processos estão sendo executados, eles aceitarão os dados correspondentes ao número de porta atribuído. Quando o UDP recebe um datagrama destinado a uma destas portas, ele encaminha os dados à aplicação apropriada com base em seu número de porta.
+
+Servidor UDP Escutando Requisições
+
+Processos UDP em Servidores
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Assim como o TCP, a comunicação cliente servidor é iniciada por uma aplicação cliente que requisita dados de um processo em um servidor. O processo no cliente UDP seleciona dinamicamente um número de porta a partir de uma faixa de números de portas e a usa como a porta de origem para a conversa. A porta de destino será geralmente o número de porta muito conhecida ou registrada atribuído ao processo no servidor.
+
+Depois que um cliente seleciona as portas de origem e de destino, o mesmo par de portas é usado no cabeçalho de todos os datagramas na transação. Para dados que retornam para o cliente vindos do servidor, os números da porta de origem e de destino no cabeçalho do datagrama são invertidos.
+
+Selecione cada guia para obter uma ilustração de dois hosts solicitando serviços do servidor de autenticação DNS e RADIUS.
+
+Clientes Enviando Requisições UDP
+O cliente 1 está enviando uma solicitação de DNS enquanto o cliente 2 está solicitando serviços de autenticação RADIUS do mesmo servidor.
+
+Portas de destino de solicitação UDP
+O cliente 1 está enviando uma solicitação de DNS usando a conhecida porta de destino 53, enquanto o cliente 2 está solicitando serviços de autenticação RADIUS usando a porta de destino registrada 1812.
+
+Portas de origem da solicitação UDP
+As solicitações dos clientes geram dinamicamente números de porta de origem. Nesse caso, o cliente 1 está usando a porta de origem 49152 e o cliente 2 está usando a porta de origem 51152.
+
+Destino da Resposta UDP
+Quando o servidor responde às solicitações do cliente, ele reverte as portas de destino e de origem da solicitação inicial. Na resposta do servidor à solicitação DNS agora é a porta de destino 49152 e a resposta de autenticação RADIUS é agora a porta de destino 51152.
+
+Portas de origem de resposta UDP
+As portas de origem na resposta do servidor são as portas de destino originais nas solicitações iniciais.
+
+a porta de origem é 53 identificando o serviço DNS do servidor
+
+

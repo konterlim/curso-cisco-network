@@ -1,0 +1,85 @@
+Serviço de Nome de Domínio
+Serviço de Nomes de Domínio (DNS)
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Existem outros protocolos específicos da camada de aplicativo que foram projetados para facilitar a comunicação de endereços para dispositivos de rede. Esses serviços são essenciais porque seria muito demorado lembrar endereços IP em vez de URLs ou configurar manualmente todos os dispositivos em uma rede média a grande. Este tópico entra em mais detalhes sobre os serviços de endereçamento IP, DNS e DHCP.
+
+Em redes de dados, os dispositivos são rotulados com endereços IP numéricos para enviar e receber dados pelas redes. Os nomes de domínio foram criados para converter o endereço numérico em um nome simples e reconhecível.
+
+Na internet, nomes de domínio totalmente protegidos (FQDNs), como ( http://www.cisco.com ), são muito mais fáceis de lembrar do que 198.133.219.25, que é o endereço numérico real para este servidor. Se a Cisco alterar o endereço numérico de www.cisco.com , é transparente para o usuário porque o nome de domínio permanece o mesmo. O novo endereço é simplesmente vinculado ao nome de domínio atual e a conectividade é mantida.
+
+O protocolo DNS define um serviço automatizado que compara nomes de recursos com o endereço de rede numérica solicitado. Ele inclui o formato para consultas, respostas e dados. As comunicações do protocolo DNS utilizam um formato único, chamado de mensagem. Este formato de mensagem é usado para todos os tipos de consultas de cliente e respostas de servidor, mensagens de erro e transferência de informações de registro de recursos entre servidores.
+
+ Formato de Mensagem DNS
+O servidor DNS armazena diferentes tipos de registros de recursos usados ​​para resolver nomes. Esses registros contêm o nome, endereço e tipo de registro. Alguns tipos desses de registro são os seguintes:
+
+A - Um endereço IPv4 do dispositivo final
+NS - Um servidor de nomes autorizados
+AAAA - Um endereço IPv6 de dispositivo final (pronúncia-se quad-A)
+MX - Um registro de troca de e-mail
+Quando um cliente faz uma consulta, o processo DNS do servidor primeiro examina seus próprios registros para resolver o nome. Se não conseguir resolver o nome usando seus registros armazenados, ele entrará em contato com outros servidores para resolver o nome. Quando uma correspondência é encontrada e retornada ao servidor requisitante original, o servidor armazena temporariamente o número do endereço em questão, no caso do mesmo nome ser requisitado outra vez.
+
+O serviço eficiente de DNS nos PCs com Windows também armazena nomes resolvidos anteriormente na memória. O comando ipconfig /displaydns exibe todas as entradas DNS em cache.
+
+Conforme mostrado na tabela, o DNS usa o mesmo formato de mensagem entre servidores, consistindo em uma pergunta, resposta, autoridade e informações adicionais para todos os tipos de consultas de cliente e respostas de servidor, mensagens de erro e transferência de informações de registro de recursos.
+
+Hierarquia DNS
+O protocolo DNS usa um sistema hierárquico para criar um banco de dados para fornecer resolução de nomes, conforme mostrado na figura. O DNS usa os nomes de domínio para formar a superioridade.
+
+A estrutura de nomenclatura é dividida em zonas pequenas, gerenciáveis. Cada servidor DNS mantém um arquivo de banco de dados específico e só é responsável por gerenciar os mapeamentos de nome para IP para essa pequena parte da estrutura DNS. Quando um servidor DNS recebe uma requisição para a conversão de um nome que não faz parte de sua zona DNS, o servidor DNS é encaminhado para outro servidor DNS na zona apropriada para a tradução. O DNS é escalável porque a resolução do nome do host está espalhada por vários servidores.
+
+Os diferentes domínios de nível superior representam o tipo de organização ou país de origem. Exemplos de domínios de nível superior são os seguintes:
+
+.com - uma empresa ou indústria
+.org - uma organização sem fins lucrativos
+.au - Austrália
+.co - Colômbia
+
+Comando nslookup
+Ao configurar um dispositivo de rede, são fornecidos um ou mais endereços de servidor DNS que o cliente DNS pode usar para resolução de nomes. Normalmente, o ISP fornece os endereços a serem usados ​​nos servidores DNS. Quando um aplicativo de usuário solicita uma conexão a um dispositivo remoto por nome, o cliente DNS solicita consultar o servidor de nomes para resolver o nome para um endereço numérico.
+
+Os sistemas operacionais dos computadores também têm um utilitário chamado nslookup que permite que o usuário consulte manualmente os servidores de nome para resolver um nome de host específico. Este utilitário também pode ser usado para corrigir problemas de resolução de nomes e verificar o status atual dos servidores de nomes.
+
+Nesta figura, quando o comando nslookup é emitido, o servidor DNS padrão configurado para seu host é exibido. O nome de um host ou domínio pode ser inserido no prompt do nslookup . O nslookup tem muitas opções disponíveis para amplos testes e verificações do processo DNS.
+
+C:\Users> nslookup
+Default Server:  dns-sj.cisco.com
+Address:  171.70.168.183
+> www.cisco.com
+Server:  dns-sj.cisco.com
+Address:  171.70.168.183
+Name:    origin-www.cisco.com
+Addresses:  2001:420:1101:1::a
+          173.37.145.84
+Aliases:  www.cisco.com
+> cisco.netacad.net
+Server:  dns-sj.cisco.com
+Address:  171.70.168.183
+Name:  cisco.netacad.net
+Address:  72.163.6.223
+
+Protocolo de Configuração Dinâmica de Host (DHCP)
+O serviço DHCP para IPv4 torna-se automaticamente receptor de endereços IPv4, máscaras de sub-rede, gateways e outros parâmetros de rede IPv4. Isso é conhecido como o endereçamento dinâmico. Uma alternativa para o endereçamento dinâmico é o endereçamento estático. Ao usar o endereçamento estático, o administrador de redes insira manualmente informações de endereço IP em hosts.
+
+Quando um host está conectado à Internet, o servidor DHCP é contatado e um endereço é solicitado. O servidor DHCP escolhe um endereço de uma lista configurada de endereços pool de chamadas e atribui (aloca) ao host.
+
+Em redes maiores, ou onde a população de usuários muda com frequência, o DHCP é preferido para atribuição de destinatários. Novos usuários podem chegar e precisar de uma conexão; outros podem ter novos computadores que devem estar conectados. Em vez de usar endereçamento estático para cada conexão, é mais eficiente ter endereços IPv4 atribuídos automaticamente usando o DHCP.
+
+O DHCP pode alocar endereços IP por um período de tempo configurável, chamado período de concessão. O período de concessão é uma configuração DHCP importante, quando o período de concessão expira ou o servidor DHCP recebe uma mensagem DHCPRELEASE, o endereço é retornado ao pool DHCP para reutilização. Os usuários podem se mover livremente de um local para outro e restabelecer com facilidade conexões de rede com o DHCP.
+
+Como a figura mostra, diversos tipos de dispositivos podem ser servidores DHCP. O servidor DHCP na maioria das redes médias a grandes normalmente é um computador PC com um servidor dedicado. Em redes residenciais, o servidor DHCP é normalmente localizado no roteador local que se conecta à rede residencial ao ISP.
+
+Muitas redes usam DHCP e endereçamento estático. O DHCP é usado para hosts de uso geral, como dispositivos de usuário final. O endereçamento estático é usado para dispositivos de rede, como roteadores de gateway, comutadores, servidores e impressoras.
+
+O DHCP para IPv6 (DHCPv6) fornece serviços semelhantes para clientes IPv6. Uma diferença importante é que o DHCPv6 não fornece o endereço do gateway padrão. Isso só pode ser obtido dinamicamente a partir da mensagem Anúncio do roteador do roteador.
+
+Mensagens DHCP
+Como mostra a figura, quando um dispositivo IPv4 configurado com DHCP inicia ou se conecta à rede, o cliente transmite uma mensagem de descoberta DHCP (DHCPDISCOVER) para identificar qualquer servidor DHCP disponível na rede. Um servidor DHCP responde com uma mensagem de oferta DHCP (DHCPOFFER), que oferece uma locação ao cliente. A mensagem de oferta contém o endereço IPv4 e a máscara de sub-rede a serem atribuídas, o endereço IPv4 do servidor DNS e o endereço IPv4 do gateway padrão. A oferta de locação também inclui a duração da locação.
+
+O cliente pode receber várias mensagens DHCPOFFER, caso exista mais de um servidor DHCP na rede local. Portanto, deve escolher entre eles e transmitir uma mensagem de requisição de DHCP (DHCPREQUEST) que identifique o servidor explícito e a oferta de locação que o cliente está aceitando. Um cliente também pode decidir requisitar um endereço que já havia sido alocado pelo servidor.
+
+Presumindo que o endereço IPv4 requisitado pelo cliente, ou oferecido pelo servidor, ainda seja válido, o servidor retornará uma mensagem de confirmação DHCP (DHCPACK) que confirma para o cliente que o aluguel foi finalizado. Se a oferta não é mais válida, o servidor selecionado responde com uma mensagem de confirmação negativa DHCP (DHCPNAK). Se uma mensagem DHCPNAK for retornada, o processo de seleção deverá recomeçar com a transmissão de uma nova mensagem DHCPDISCOVER. Quando o cliente tiver um aluguel, ela deverá ser renovada por outra mensagem DHCPREQUEST antes do vencimento.
+
+O servidor DHCP garante que todos os endereços IP sejam exclusivos (um mesmo endereço IP não pode ser atribuído a dois dispositivos de rede simultaneamente). A maioria dos ISPs usa o DHCP para alocar endereços para seus clientes.
+
+O DHCPv6 possui um conjunto de mensagens semelhantes às do DHCPv4. As mensagens DHCPv6 são SOLICIT, ANUNCIAR, PEDIDO DE INFORMAÇÃO, e RESPONDER.
+

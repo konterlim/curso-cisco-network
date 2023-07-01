@@ -1,0 +1,38 @@
+Pacote IPv6
+
+Limitações do IPv4
+O IPv4 ainda está em uso hoje. Este tópico é sobre IPv6, que eventualmente substituirá o IPv4. Para entender melhor por que você precisa conhecer o protocolo IPv6, ele ajuda a conhecer as limitações do IPv4 e as vantagens do IPv6.
+
+Ao longo dos anos, protocolos e processos adicionais foram apresentados para enfrentar novos desafios. No entanto, mesmo com alterações, ele ainda enfrenta três grandes problemas:
+
+Esgotamento do endereço IPv4 - O IPv4 tem um número limitado de endereços públicos exclusivos disponíveis. Embora haja aproximadamente 4 bilhões de endereços IPv4, o número crescente de novos dispositivos habilitados para IP, conexões sempre ativas e potencial de crescimento de regiões menos monitoradas têm aumentado a necessidade de mais endereços.
+Falta de conectividade ponto a ponto - Network Address Translation (NAT) é uma tecnologia comumente integrada em redes IPv4. A NAT é uma forma de vários dispositivos compartilharem um único endereço IPv4 público. No entanto, como o endereço IPv4 público é compartilhado, o endereço IPv4 de um host de rede interna fica oculto. Isso pode ser problemático para tecnologias que possibilitaram conectividade de ponta a ponta.
+Maior complexidade da rede - Embora o NAT tenha ampliado a vida útil do IPv4, ele só se destina a ser um mecanismo de transição para o IPv6. O NAT em suas várias implementações cria complexidade adicional na rede, criando latência e dificultando a solução de problemas.
+
+Campos do cabeçalho do pacote IPv4 no cabeçalho do pacote IPv6
+Uma das principais melhorias de design do IPv6 em relação ao IPv4 é o cabeçalho IPv6 simplificado.
+
+Por exemplo, o cabeçalho IPv4 consiste em um cabeçalho de comprimento variável de 20 octetos (até 60 bytes se o campo Opções for usado) e 12 campos de cabeçalho básico, sem incluir o campo Opções e o campo Preenchimento.
+
+Para o IPv6, alguns campos permaneceram os mesmos, alguns campos mudaram de nome e posição e alguns campos do IPv4 não são mais necessários, conforme destacado na figura.
+
+A figura mostra os campos de cabeçalho do pacote IPv4 que foram inspirados, movidos, alterados, bem como aqueles que não foram seguidos no cabeçalho do pacote IPv6.
+
+Por outro lado, o cabeçalho simplificado do IPv6 mostrado na figura a seguir consiste em um cabeçalho de comprimento fixo de 40 octetos (em grande parte devido ao comprimento dos endereços IPv6 de origem e de destino).
+
+O cabeçalho simplificado IPv6 permite um processamento mais eficiente de cabeçalhos IPv6.
+
+Os campos no cabeçalho do pacote IPv6 incluem o seguinte:
+
+Versão - Este campo contém um valor binário de 4 bits definido como 0110 que identifica isso como um pacote IP versão 6.
+Classe de tráfego - Este campo de 8 bits é equivalente ao campo DS (Serviços diferenciados de IPv4).
+Etiqueta de fluxo - Este campo de 20 bits sugere que todos os pacotes com a mesma etiqueta de fluxo recebam o mesmo tipo de manipulação pelos roteadores.
+Comprimento da carga útil - Este campo de 16 bits indica o comprimento da parte dos dados ou da carga útil do pacote IPv6. Isso não inclui o comprimento do cabeçalho IPv6, que é um cabeçalho fixo de 40 bytes.
+Próximo cabeçalho - Este campo de 8 bits é equivalente ao campo Protocolo IPv4. Ele exibe o tipo de carga de dados que o pacote está carregando, permitindo que a camada de rede transfira os dados para o protocolo apropriado das superiores.
+Limite de salto - Este campo de 8 bits substitui o campo TTL IPv4. Esse valor é subtraído de um por cada roteador que encaminhou o pacote. Quando o contador atinge 0, o pacote é descartado e uma mensagem de ICMPv6 com tempo excedido é encaminhada para o host de envio. Isso indica que o pacote não alimentado seu destino porque o limite de salto foi excedido. Ao contrário do IPv4, o IPv6 não inclui uma soma de verificação do cabeçalho IPv6, porque esta função é executada nas camadas inferiores e superiores. Isso significa que a soma de verificação não precisa ser recalculada por cada roteador quando diminui o campo Limite de Hop, o que também melhora o desempenho da rede.
+Endereço IPv6 de origem - Este campo de 128 bits identifica o endereço IPv6 do host de envio.
+Endereço IPv6 de destino - Este campo de 128 bits identifica o endereço IPv6 do host de destinatário.
+Um pacote IPv6 pode conter também cabeçalhos de extensão (EH), que fornecem informações de camada de rede. Opcionais, os cabeçalhos de extensão ficam posicionados entre o cabeçalho IPv6 e a carga. Eles são usados ​​para fragmentação, segurança, suporte à mobilidade e muito mais.
+
+Ao contrário do IPv4, os roteadores não fragmentam os pacotes IPv6 roteados.
+

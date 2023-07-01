@@ -1,0 +1,84 @@
+Noções Básicas sobre Switches
+Agora que você sabe tudo sobre endereços MAC Ethernet, é hora de falar sobre como um switch usa esses endereços para encaminhar (ou descartar) quadros para outros dispositivos em uma rede. Se um switch apenas encaminhasse cada quadro recebido de todas as portas, sua rede ficaria tão congestionada que provavelmente chegaria a uma parada completa.
+
+Um switch Ethernet da camada 2 usa endereços MAC da camada 2 para tomar decisões de encaminhamento. Desconhece completamente os dados (protocolo) que estão sendo transportados na parte de dados do quadro, como um pacote IPv4, uma mensagem ARP ou um pacote ND IPv6. O switch toma decisões de encaminhamento com base apenas nos endereços MAC Ethernet da camada 2.
+
+Um switch Ethernet examina sua tabela de endereços MAC para tomar uma decisão de encaminhamento para cada quadro, ao contrário dos hubs Ethernet herdados que repetem bits em todas as portas, exceto a porta de entrada. Na figura, o switch de quatro portas acaba de ser ligado. O switch toma decisões de encaminhamento com base apenas nos endereços MAC Ethernet da camada 2.
+
+A tabela de endereços MAC do switch está vazia.
+
+Nota: A tabela de endereços MAC às vezes é chamada de tabela de memória endereçável de conteúdo (CAM). Embora o termo "tabela CAM" seja muito comum, neste curso nós a chamaremos de tabela de endereços MAC.
+
+Switch Aprendizado e Encaminhamento
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+O switch cria a tabela de endereços MAC dinamicamente examinando o endereço MAC de origem dos quadros recebidos em uma porta. O switch encaminha quadros procurando uma correspondência entre o endereço MAC de destino no quadro e uma entrada na tabela de endereços MAC.
+
+Examine o endereço MAC de origem
+Todo quadro que entra em um switch é verificado quanto ao aprendizado de novas informações. Isso é feito examinando o endereço MAC de origem do quadro e o número da porta em que o quadro entrou no comutador. Se o endereço MAC de origem não existe, é adicionado à tabela juntamente com o número da porta de entrada. Se o endereço MAC de origem existir, o switch atualizará o cronômetro de atualização para essa entrada na tabela. Por padrão, a maioria dos switches Ethernet mantém uma entrada na tabela por 5 minutos.
+
+Na figura, por exemplo, o PC-A está enviando um quadro Ethernet para o PC-D. A tabela mostra que o switch adiciona o endereço MAC do PC-A à tabela de endereços MAC.
+
+Nota: Se o endereço MAC de origem não existir na tabela, mas em uma porta diferente, o switch tratará isso como uma nova entrada. A entrada é substituída usando o mesmo endereço MAC, mas com o número de porta mais atual.
+
+Encontre o endereço MAC de destino
+Se o endereço MAC de destino for um endereço unicast, o switch procurará uma correspondência entre o endereço MAC de destino do quadro e uma entrada em sua tabela de endereços MAC. Se o endereço MAC de destino estiver na tabela, ele encaminhará o quadro pela porta especificada. Se o endereço MAC de destino não estiver na tabela, o switch encaminhará o quadro por todas as portas, exceto a de entrada. Isso é chamado de unicast desconhecido.
+
+Conforme mostrado na figura, o switch não possui o endereço MAC de destino em sua tabela para PC-D; portanto, envia o quadro para todas as portas, exceto a porta 1.
+
+Nota: Se o endereço MAC de destino for um broadcast ou multicast, o quadro também inundará todas as portas, exceto a porta de entrada.
+
+Filtrando Quadros
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+A medida que um switch recebe quadros de dispositivos diferentes, ele é capaz de preencher sua tabela de endereços MAC examinando o endereço MAC de origem de cada quadro. Quando a tabela de endereços MAC do switch contém o endereço MAC de destino, ele pode filtrar o quadro e encaminhar uma única porta.
+
+ PC-D está respondendo ao PC-A. O switch vê o endereço MAC do PC-D no quadro de entrada na porta 4. Em seguida, o switch coloca o endereço MAC do PC-D na Tabela de Endereços MAC associada à porta 4.
+
+O switch adiciona o número da porta e o endereço MAC para PC-D à tabela de endereços MAC.
+
+
+Em seguida, como o switch possui o endereço MAC de destino para PC-A na tabela de endereços MAC, ele enviará o quadro apenas para a porta 1, conforme mostrado na figura.
+
+O switch tem uma entrada de endereço MAC para o destino.
+O switch filtra o quadro, enviando-o somente para a porta 1.
+
+Em seguida, PC-A envia outro quadro para PC-D como mostrado na figura. A tabela de endereços MAC já contém o endereço MAC para PC-A; portanto, o cronômetro de atualização de cinco minutos para essa entrada é redefinido. Em seguida, como a tabela de switches contém o endereço MAC de destino para PC-D, ela envia o quadro apenas para a porta 4.
+
+O switch recebe outro quadro do PC-A e atualiza o temporizador para a entrada de endereço MAC para a porta 1.
+O switch tem uma entrada recente para o endereço MAC de destino e filtra o quadro, encaminhando-o apenas para fora da porta 4.
+
+Um switch pode ter vários endereços MAC associados a uma única porta. Isso é comum quando o switch está conectado a outro switch. O switch terá uma entrada separada na tabela de endereços MAC para cada quadro recebido com um endereço MAC de origem diferente.
+
+
+Não há um protocolo oficial de padrão de rede local, mas, com o tempo, uma tecnologia se tornou mais comum do que as outras: a Ethernet. Os protocolos Ethernet definem como os dados são formatados e transmitidos pela rede com fio. Os padrões Ethernet especificam protocolos que operam nas Camadas 1 e 2 do modelo OSI. Ethernet tornou-se um padrão de fato, o que significa que é a tecnologia usada por quase todas as redes locais com fio.
+O IEEE mantém os padrões de rede, incluindo os padrões Ethernet e sem fio. Cada padrão de tecnologia recebe um número referente ao comitê responsável por aprovar e manter o padrão. O padrão Ethernet 802.3 melhorou ao longo do tempo.
+
+Os switches Ethernet podem enviar um quadro para todas as portas (exceto a porta da qual ele foi recebido). Cada host que recebe esse quadro examina o endereço MAC de destino e o compara com o seu endereço MAC. É a placa NIC Ethernet que examina e compara o endereço MAC. Se ele não corresponder ao endereço MAC do host, o restante do quadro será ignorado. Quando é uma correspondência, esse host recebe o restante do quadro e a mensagem que ele contém.
+
+A Ethernet é definida pelos protocolos 802.2 e 802.3 da camada de enlace de dados. Ethernet suporta larguras de banda de dados de 10 Mbps a 100 Gbps Os protocolos EEE 802 LAN/MAN, incluindo Ethernet, usam duas subcamadas separadas da camada de enlace de dados para operar: LLC e MAC.
+
+Subcamada LLC - Esta subcamada IEEE 802.2 se comunica entre o software de rede nas camadas superiores e o hardware do dispositivo nas camadas inferiores. Ela coloca a informação no quadro que identifica qual protocolo de camada de rede está sendo usado para o quadro. Essas informações permitem que vários protocolos da camada 3, como IPv4 e IPv6, usem a mesma interface de rede e mídia.
+Subcamada MAC - Esta subcamada (IEEE 802.3, 802.11 ou 802.15 por exemplo) é implementada em hardware e é responsável pelo encapsulamento de dados e controle de acesso ao meio. Ele fornece endereçamento de camada de link de dados e é integrado com várias tecnologias de camada física. O encapsulamento de dados inclui o seguinte: Quadro Ethernet, endereçamento Ethernet e detecção de erros Ethernet.
+As LANs Ethernet de hoje usam switches que operam em full-duplex. As comunicações full-duplex com switches Ethernet não exigem controle de acesso através do CSMA/CD. O tamanho mínimo do quadro Ethernet é de 64 bytes e o máximo esperado é de 1518 bytes. Os campos são Preâmbulo e delimitador de quadro inicial, endereço MAC de destino, endereço MAC de origem, tipo/comprimento, dados e FCS. Isso inclui todos os bytes do campo de endereço MAC de destino até o campo FCS.
+
+Um endereço MAC Ethernet consiste em um valor binário de 48 bits. Hexadecimal é usado para identificar um endereço Ethernet porque um único dígito hexadecimal representa quatro bits binários. Portanto, um endereço MAC Ethernet de 48 bits pode ser expresso usando apenas 12 valores hexadecimais.
+
+Um endereço MAC de unicast é o endereço exclusivo usado quando um quadro é enviado de um único dispositivo de transmissão para um único dispositivo de destino. O processo que um host de origem usa para determinar o endereço MAC de destino associado a um endereço IPv4 é conhecido como ARP (Address Resolution Protocol). O processo que um host de origem usa para determinar o endereço MAC de destino associado a um endereço IPv6 é o ND.
+
+Os recursos de uma transmissão Ethernet são os seguintes:
+
+Possui um endereço MAC de destino de FF-FF-FF-FF-FF-FF em hexadecimal (48 endereços em binário).
+É inundada todas as portas de switch Ethernet, exceto a porta de entrada.
+Ele não é encaminhado por um roteador.
+Os recursos de um multicast Ethernet são os seguintes:
+
+Há um endereço MAC de destino 01-00-5E quando os dados encapsulados são um pacote multicast IPv4 e um endereço MAC de destino de 33-33 quando os dados encapsulados são um pacote multicast IPv6.
+Há outros endereços MAC de destino multicast reservados para quando os dados encapsulados não são IP, como STP e LLDP.
+É inundada todas as portas de switch Ethernet, exceto a porta de entrada, a menos que o switch esteja configurado para espionagem multicast.
+Ele não é encaminhado por um roteador, a menos que o roteador esteja configurado para rotear pacotes multicast.
+
+Um switch Ethernet da camada 2 usa endereços MAC da camada 2 para tomar decisões de encaminhamento. Ele desconhece completamente os dados (protocolo) que estão sendo transportados na parte de dados do quadro. Um switch Ethernet examina sua tabela de endereços MAC para tomar uma decisão de encaminhamento para cada quadro. A tabela de endereços MAC às vezes é chamada de tabela CAM.
+
+O switch cria a tabela de endereços MAC dinamicamente examinando o endereço MAC de origem dos quadros recebidos em uma porta. O switch encaminha quadros procurando uma correspondência entre o endereço MAC de destino no quadro e uma entrada na tabela de endereços MAC. Se o endereço MAC de destino for um endereço unicast, o switch procurará uma correspondência entre o endereço MAC de destino do quadro e uma entrada em sua tabela de endereços MAC. Se o endereço MAC de destino estiver na tabela, ele encaminhará o quadro pela porta especificada. Se o endereço MAC de destino não estiver na tabela, o switch encaminhará o quadro por todas as portas, exceto a de entrada. Isso é chamado de unicast desconhecido.
+
+A medida que um switch recebe quadros de dispositivos diferentes, ele é capaz de preencher sua tabela de endereços MAC examinando o endereço MAC de origem de cada quadro. Quando a tabela de endereços MAC do switch contém o endereço MAC de destino, ele pode filtrar o quadro e encaminhar uma única porta. Um switch pode ter vários endereços MAC associados a uma única porta. Isso é comum quando o switch está conectado a outro switch. O switch terá uma entrada separada na tabela de endereços MAC para cada quadro recebido com um endereço MAC de origem diferente. Quando um dispositivo tem um endereço IP em uma rede remota, o quadro Ethernet não pode ser enviado diretamente para o dispositivo de destino. Em vez disso, o quadro Ethernet é enviado ao endereço MAC do gateway padrão, o roteador.
+

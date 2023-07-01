@@ -1,0 +1,77 @@
+Estrutura do endereço IPv4
+
+Porções de Rede e Host
+Um endereço IPv4 é um endereço hierárquico de 32 bits, composto por uma parte da rede e uma parte do host. Ao determinar a parte da rede versus a parte do host, você deve observar o fluxo de 32 bits, conforme mostrado na figura.A Máscara de Sub-Rede
+Conforme mostrado na figura, atribua um endereço IPv4 a um host requer o seguinte:
+
+Endereço IPv4 - este é o endereço IPv4 exclusivo do host.
+Máscara de sub-rede – É usada para determinar a parte de rede de um endereço IPv4.
+Configuração IPv4 em um computador Windows
+
+Observação : Um endereço IPv4 de gateway padrão é necessário para acessar redes remotas e os endereços IPv4 do servidor DNS são necessários para converter nomes de domínio em endereços IPv4.
+
+A máscara de sub-rede IPv4 é usada para diferenciar a parte da rede da parte do host de um endereço IPv4. Quando um endereço IPv4 é atribuído a um dispositivo, uma máscara de sub-rede é usada para determinar o endereço de rede do dispositivo. O endereço de rede representa todos os dispositivos na mesma rede.
+
+A próxima figura mostra uma máscara de sub-rede de 32 bits em formatos decimais e binários com pontos.
+
+Máscara de sub-rede
+
+Observe como a máscara de sub-rede é uma sequência consecutiva de 1 bits, seguida por uma sequência consecutiva de 0 bits.
+
+Para identificar as partes da rede e do host de um endereço IPv4, a máscara de sub-rede é antecipada com o endereço IPv4 bit a bit, da esquerda para a direita, conforme mostrado na figura.
+
+Associando um endereço IPv4 à sua máscara de sub-rede
+
+Observe que, na verdade, a máscara de sub-rede não contém a parte da rede ou host de um endereço IPv4, apenas informa ao computador onde procurar a parte do endereço IPv4 que é a parte da rede e qual parte é a parte do host .
+
+O processo real usado para identificar a parte da rede e cada parte do host é chamado de AND.
+
+O Comprimento do Prefixo
+Expressar os endereços de rede e os endereços de host com o endereço da máscara de sub-rede em decimal com pontos pode ser complicado. Felizmente, existe um método alternativo para identificar uma máscara de sub-rede, um chamado comprimento do prefixo.
+
+O comprimento do prefixo é o número de bits definido como 1 na máscara de sub-rede. Está escrito em "notação de barra", que é anotada por uma barra (/) seguida pelo número de bits definido como 1. Portanto, conte o número de bits da máscara de sub-rede e preceda-o com uma barra.
+
+Consulte a tabela para exemplos. A primeira coluna lista várias máscaras de sub-rede que podem ser usadas com um endereço de host. A segunda coluna mostra o endereço binário de 32 bits convertido. A última coluna mostra o comprimento do prefixo resultante.
+
+Observação: Um endereço de rede também é conhecido como prefixo ou prefixo de rede. Portanto, o comprimento do prefixo é o número de 1 bits na máscara de sub-rede.
+
+Ao representar um endereço IPv4 usando um comprimento de prefixo, o endereço IPv4 é gravado do comprimento do prefixo sem espaços. Por exemplo, 192.168.10.10 255.255.255.0 seria gravado como 192.168.10.10/24. O uso de vários tipos de comprimentos do prefixo será discutido mais tarde. Por enquanto, o foco estará no prefixo /24 (ou seja, 255.255.255.0)
+
+ Determinando a rede: "AND" lógico
+Um AND lógico é uma das três operações booleanas usadas na lógica booleana ou digital. As outras duas são OR e NOT. A operação AND é usada para determinar o endereço de rede.
+
+AND Lógico é a comparação de dois bits que produz os resultados mostrados abaixo. Observe como somente 1 AND 1 produz um 1. Qualquer outra combinação resulta em um 0.
+
+1 E 1 = 1
+0 E 1 = 0
+1 E 0 = 0
+0 E 0 = 0
+Observação : Na lógica digital, 1 representa Verdadeiro e 0 representa Falso. Ao usar uma operação AND, ambos os valores de entrada devem ser Verdadeiro (1) para que o resultado seja Verdadeiro (1).
+
+Para identificar o endereço de rede de um host IPv4, é feito um AND lógico, bit a bit, entre o endereço IPv4 e a máscara de sub-rede. Quando se usa AND entre o endereço e a máscara de sub-rede, o resultado é o endereço de rede.
+
+Para ilustrar como AND é usado para descobrir um endereço de rede, considere um host com endereço IPv4 192.168.10.10 e máscara de sub-rede 255.255.255.0, conforme mostrado na figura:
+
+Endereço de host IPv4 (192.168.10.10) - O endereço IPv4 do host em formato decimal com pontos e binário.
+Máscara de sub-rede (255.255.255.0) - A máscara de sub-rede do host nos formatos decimal com pontos e binário.
+Endereço de rede (192.168.10.0) - Operação lógica AND entre o endereço IPv4 e a máscara de sub-rede resulta em um endereço de rede IPv4 exibido nos formatos decimal com pontos e binário.
+
+Usando a primeira sequência de bits como exemplo, observe que a operação AND é executada no 1 bit do endereço do host com o 1 bit da máscara de sub-rede. Isso resulta em um bit 1 para o endereço de rede. 1 E 1 = 1.
+
+A operação AND entre um endereço de host IPv4 e uma máscara de sub-rede resulta no endereço de rede IPv4 para este host. Neste exemplo, uma operação AND entre o endereço de host 192.168.10.10 e a máscara de sub-rede 255.255.255.0 (/24) resulta no endereço de rede IPv4 192.168.10.0/24. Esta é uma operação IPv4 importante, pois informa ao host a qual rede pertence.
+
+O que eu aprendi neste módulo?
+Estrutura de endereço IPv4
+Um endereço IPv4 é um endereço hierárquico de 32 bits composto por uma parte de rede e uma parte de host. Ao determinar a parte da rede versus a parte do host, você deve observar o fluxo de 32 bits. Os bits na parte de rede do endereço devem ser iguais em todos os dispositivos que residem na mesma rede. Os bits na parte de host do endereço devem ser exclusivos para identificar um host específico dentro de uma rede. Se dois hosts tiverem o mesmo padrão de bits na parte de rede especificada do fluxo de 32 bits, esses dois hosts residirão na mesma rede.
+
+A máscara de sub-rede IPv4 é usada para diferenciar a parte da rede da parte do host de um endereço IPv4. Quando um endereço IPv4 é atribuído a um dispositivo, uma máscara de sub-rede é usada para determinar o endereço de rede do dispositivo. O endereço de rede representa todos os dispositivos na mesma rede.
+
+Um método alternativo para identificar uma máscara de sub-rede, um método chamado comprimento do prefixo. O comprimento do prefixo é o número de bits definido como 1 na máscara de sub-rede. Está escrito em "notação de barra", que é anotada por uma barra (/) seguida pelo número de bits definido como 1. Por exemplo, 192.168.10.10 255.255.255.0 seria gravado como 192.168.10.10/24.
+
+A operação AND é usada para determinar o endereço de rede. O AND lógico é a comparação de dois bits. Observe como somente 1 AND 1 produz um 1. Qualquer outra combinação resulta em um 0.
+
+1 E 1 = 1
+0 E 1 = 0
+1 E 0 = 0
+0 E 0 = 0
+Para identificar o endereço de rede de um host IPv4, é feito um AND lógico, bit a bit, entre o endereço IPv4 e a máscara de sub-rede. Quando se usa AND entre o endereço e a máscara de sub-rede, o resultado é o endereço de rede.

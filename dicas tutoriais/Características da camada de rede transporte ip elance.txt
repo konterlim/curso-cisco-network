@@ -1,0 +1,70 @@
+ Características da camada de rede
+
+Camada de Rede
+A camada de rede, ou Camada OSI 3, fornece serviços para permitir que dispositivos troquem dados entre redes. Como mostrado na figura, IP versão 4 (IPv4) e IP versão 6 (IPv6) são os principais protocolos de comunicação de camada de rede. Outros protocolos de camada de rede incluem protocolos de roteamento, como OSPF (Open Shortest Path First) e protocolos de mensagens, como ICMP (Internet Control Message Protocol).
+
+Protocolos da Camada de Rede
+
+Aplicação
+Apresentação
+sessão
+transporte
+rede   Protocolo de Internet versão 4 (IPv4) Protocolo de Internet versão 6 (IPv6)
+Enlace 
+Dadosfísica
+
+Para realizar comunicações de ponta a ponta através dos limites da rede, os protocolos de camada de rede executam quatro operações básicas:
+
+Endereçamento de dispositivos finais – Os dispositivos finais devem ser configurados com um endereço IP exclusivo para identificação na rede.
+Encapsulamento – A camada de rede encapsula uma unidade de dados de protocolo (PDU) da camada de transporte em um pacote. O processo de encapsulamento adiciona informações de cabeçalho IP, como os endereços IP dos hosts origem (emissor) e destino (receptor). O processo de encapsulamento é executado pela origem do pacote IP.
+Roteamento – A camada de rede fornece serviços para direcionar os pacotes para um host de destino em outra rede. Para trafegar para outras redes, o pacote deve ser processado por um roteador. A função do roteador é escolher o melhor caminho e direcionar os pacotes para o host de destino em um processo conhecido como roteamento. Um pacote pode atravessar muitos roteadores antes de chegar ao host de destino. Cada roteador que um pacote atravessa para chegar ao host de destino é chamado de salto.
+Desencapsulamento - Quando o pacote chega à camada de rede do host de destino, o host verifica o cabeçalho IP do pacote. Se o endereço IP de destino no cabeçalho corresponder ao seu próprio endereço IP, o cabeçalho IP será removido do pacote. Depois que o pacote é desencapsulado pela camada de rede, a PDU resultante da Camada 4 é flexível para o serviço apropriado na camada de transporte. O processo de desencapsulamento é executado pelo host de destino do pacote IP.
+Diferentemente da camada de transporte (OSI Layer 4), que gerencia o transporte de dados entre os processos em execução em cada host, os protocolos de comunicação da camada de rede (ou seja, IPv4 e IPv6) especificam a estrutura de pacotes e o processamento usado para transportar os dados de um host para outro hospedeiro. A operação sem levar em consideração os conteúdos de dados em cada pacote permite que a camada de rede transporte pacotes para diversos tipos de comunicações entre vários hosts.
+
+Encapsulamento IP
+O IP encapsula o segmento da camada de transporte (a camada logo acima da camada de rede) ou outros dados adicionando um cabeçalho IP. O cabeçalho IP é usado para entregar o pacote ao host de destino.
+
+A figura ilustra como a PDU da camada de transporte é encapsulada pela PDU da camada de rede para criar um pacote IP.
+
+O processo de encapsulamento camada por camada possibilita o desenvolvimento e a expansão dos serviços em diferentes campeonatos sem campeonatos de outros campeonatos. Isso significa que os segmentos da camada de transporte podem ser imediatamente empacotados por IPv4 , IPv6 ou qualquer protocolo que venha a ser desenvolvido no futuro.
+
+O cabeçalho IP é examinado por dispositivos de Camada 3 (ou seja, roteadores e switches de Camada 3) à medida que viaja através de uma rede até seu destino. É importante notar que as informações de endereçamento IP permanecem as mesmas desde o momento em que o pacote sai do host de origem até chegar ao host de destino, exceto quando traduzido pelo dispositivo que executa a Tradução de Endereços de Rede (NAT) para IPv4.
+
+Observação : O NAT é discutido em módulos posteriores.
+
+Os roteadores implementam protocolos de roteamento para rotear pacotes entre redes. O roteamento realizado por esses dispositivos intermediários examina o endereçamento da camada de rede no cabeçalho do pacote. Em todos os casos, a parte de dados do pacote, ou seja, a PDU da camada de transporte encapsulada ou outros dados, permanecem inalterados durante os processos da camada de rede.
+
+ Características do IP
+O IP foi desenvolvido como um protocolo com baixa sobrecarga. Ele fornece apenas as funções necessárias para enviar um pacote de uma origem a um destino por um sistema interconectado de redes. O protocolo não foi projetado para rastrear e gerenciar o fluxo de pacotes. Essas funções, se exigidas, são realizadas por outros protocolos em outras entidades, principalmente TCP na Camada 4.
+
+Estas são as características básicas do IP:
+
+Sem conexão - Não há conexão com o destino estabelecido antes do envio de pacotes de dados.
+Melhor esforço - o IP é inerentemente não confiável, porque a entrega de pacotes não é garantida.
+Independente da mídia - A operação é independente do meio (ou seja, cobre, fibra ótica ou sem fio) que carrega os dados.
+
+Sem Conexão
+O IP não tem conexão, o que significa que nenhuma conexão ponta a ponta dedicada é criada pelo IP antes que os dados sejam enviados. A comunicação sem conexão é conceitualmente semelhante a enviar uma carta a alguém sem notificar o destinatário com antecipação. Uma figura resume esse ponto-chave.
+
+ Melhor Esforço
+O IP também não requer campos adicionais no cabeçalho para manter uma conexão estabelecida. Esse processo reduz bastante a sobrecarga do IP. No entanto, sem conexão de ponta a ponta pré-estabelecida, os remetentes não sabem se os dispositivos de destino estão presentes e são funcionais ao enviar pacotes, nem sabem se o destino recebe o pacote ou se o dispositivo de destino pode acessar e ler o pacote .
+
+O protocolo IP não garante que o pacote enviado seja, de fato, recebido. A figura ilustra a característica de entrega não confiável ou de melhor esforço do protocolo IP.
+
+Por ser um protocolo de camada de rede não confiável, o IP não garante que todos os pacotes enviados serão recebidos. Outros protocolos gerenciam o processo de rastreamento de pacotes e garantem sua entrega.
+
+Independente de Mídia
+Não confiável significa que o IP não tem a capacidade de gerenciar e recuperar pacotes não entregues ou corrompidos. Isso ocorre porque, embora os pacotes IP sejam enviados com informações sobre o local da entrega, eles não contêm informações que podem ser processadas para informar ao remetente se a entrega foi bem-sucedida. Os pacotes podem chegar ao destino incompatíveis, fora de sequência ou simplesmente não chegar. O IP não tem capacidade de retransmitir os pacotes em caso de erros.
+
+Se os pacotes foram entregues fora de ordem ou faltando algum pacote, as aplicações que usam os dados, ou serviços de camada superior, devem resolver esses problemas. Isso permite que o IP funcione de forma bem eficiente. No conjunto de protocolos TCP/IP, a confiabilidade é o papel do protocolo TCP na camada de transporte.
+
+O IP opera independentemente da mídia que transporta os dados nas camadas inferiores da pilha de protocolos. Conforme mostra a figura, os pacotes IP podem ser comunicados como sinais elétricos por cabo de cobre, sinais ópticos nas fibras ou sinais de rádio em redes sem fio.
+
+Os pacotes IP podem trafegar por diferentes meios físicos.
+
+A camada de enlace de dados OSI é responsável por pegar um pacote IP e prepará-lo para transmissão pelo meio de comunicação. Isso significa que a entrega de pacotes IP não se limita a nenhum meio específico.
+
+Há, no entanto, uma característica muito importante dos meios físicos que a camada de rede considera: o tamanho máximo da PDU que cada meio consegue transportar. Esse recurso é chamada de unidade máxima de transmissão (unidade máxima de transmissão - MTU). Parte das comunicações de controle entre a camada de enlace de dados e a camada de rede é a definição de um tamanho máximo para o pacote. A camada de enlace de dados passa o valor da MTU para a camada de rede. A camada de rede então determina o tamanho que os pacotes podem ter.
+
+Em alguns casos, um dispositivo intermediário, geralmente um roteador, deve dividir um pacote IPv4 ao encaminhá-lo de um meio para outro com uma MTU menor. Esse processo é chamado de fragmentação do pacote ou fragmentação. A fragmentação causa latência. Os pacotes IPv6 não podem ser fragmentados pelo roteador.
+
