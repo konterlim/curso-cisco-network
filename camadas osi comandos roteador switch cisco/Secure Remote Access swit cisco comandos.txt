@@ -1,0 +1,143 @@
+Secure Remote Access
+Há várias maneiras de acessar um dispositivo para executar tarefas de configuração. Uma dessas formas é usar um PC conectado à porta de console no dispositivo. Esse tipo de conexão é mais usado na configuração inicial do dispositivo.
+
+A definição de uma senha para o acesso de conexão de console é feita no modo de configurações globais. Esses comandos impedem que usuários não autorizados acessem o modo de usuário na porta do console.
+
+Switch(config)# line console 0
+Switch(config-line)# password password
+Switch(config-line)# login
+Quando o dispositivo é conectado à rede, pode ser acessado através da conexão de rede com o SSH ou o Telnet. SSH é o método preferido porque é mais seguro. Quando o dispositivo é acessado através da rede, este acesso é considerado uma conexão vty. A senha deve ser configurada na porta vty. A configuração a seguir é usada para habilitar o acesso SSH ao switch.
+
+Switch(config)# line vty 0 15
+Switch(config-line)# password password
+Switch(config-line)# transport input ssh
+Switch(config-line)# login
+Um exemplo de configuração é mostrado na janela de comando.
+
+S1(config)# line console 0
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# exit
+S1(config)#
+S1(config)# line vty 0 15
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)#
+Muitos switches Cisco são compatíveis com até 16 linhas VTY numeradas de 0 a 15. O número de linhas VTY aceitas varia de acordo com o tipo de dispositivo e a versão do IOS. No entanto, cinco é o número mais comum de linhas vty configuradas em um roteador. Essas linhas são numeradas de 0 a 4 por padrão, embora linhas adicionais possam ser configuradas. Uma senha precisa ser definida para todas as linhas vty disponíveis. A mesma senha pode ser estabelecida para todas as conexões.
+
+Para verificar se as senhas estão definidas corretamente, use o comando show running-config . Essas senhas são armazenadas em running-configuration em texto simples. É possível definir a criptografia em todas as senhas armazenadas no roteador de modo que não sejam lidas facilmente por indivíduos não autorizados. O comando de configuração global service password-encryption garante que todas as senhas sejam criptografadas.
+
+Com o acesso remoto protegido no switch, você pode configurar o SSH.
+
+Concluída 11.3.3 Ativar SSH11.3.3 Ativar SSH
+Antes de configurar o SSH, o switch deve ser minimamente configurado com as definições corretas de um nome de host exclusivo e de conectividade de rede.
+
+Etapa 1. Verifique o suporte a SSH.
+
+Use o comando show ip ssh para verificar se o switch suporta SSH. Se o switch não estiver executando um IOS que ofereça suporte a recursos criptográficos, esse comando não será reconhecido.
+
+Etapa 2. Configure o domínio IP.
+
+Configure o nome de domínio IP da rede usando o comando ip domain-name domain-name global configuration mode. Na configuração de exemplo abaixo, o valor do nome de domínio é cisco.com.
+
+Etapa 3. Gere pares de chaves RSA.
+
+Nem todas as versões do IOS padrão para SSH versão 2 e SSH versão 1 tem falhas de segurança conhecidas. Para configurar o SSH versão 2, emita o comando ip ssh version 2 no modo de configuração global. Gerar um par de chaves RSA habilita automaticamente o SSH. Use o comando crypto key generate rsa no modo de configuração global para ativar o servidor SSH no switch e gerar um par de chaves RSA. Ao gerar chaves RSA, o administrador é solicitado a inserir um comprimento de módulo. A configuração de exemplo na figura usa um tamanho de módulo de 1.024 bits. Um comprimento de módulo mais longo é mais seguro, mas leva mais tempo para gerar e usar.
+
+Observação: Para excluir o par de chaves RSA, use o comando crypto key zeroize rsa no modo de configuração global. Depois que o par de chaves RSA é excluído, o servidor SSH é desabilitado automaticamente.
+
+Etapa 4. Configure a autenticação do usuário.
+
+O servidor SSH pode autenticar usuários localmente ou usando um servidor de autenticação. Para usar o método de autenticação local, crie um par de nome de usuário e senha usando o comando username nome do usuário secret senha no modo de configuração global No exemplo, o usuário admin e designado a senha ccna.
+
+Etapa 5. Configure as linhas vty.
+
+Ative o protocolo SSH nas linhas vty usando o comando transport input ssh no modo de configuração de linha. O Catalyst 2960 tem linhas vty variando de 0 a 15. Essa configuração impede conexões não-SSH (como Telnet) e limita o switch para aceitar somente conexões SSH. Use o comando line vty no modo de configuração global e, em seguida, o comando login local no modo de configuração de linha para exigir autenticação local para conexões SSH do banco de dados de nome de usuário local.
+
+Etapa 6. Ative a versão 2 do SSH.
+
+Por padrão, o SSH suporta ambas as versões 1 e 2. Ao suportar ambas as versões, isso é mostrado na saída show ip ssh como suportando a versão 1.99. A versão 1 tem vulnerabilidades conhecidas. Por esse motivo, é recomendável habilitar apenas a versão 2. Ative a versão SSH usando o comando de configuração global ip ssh version 2.
+
+S1# show ip ssh
+SSH Disabled - version 1.99
+%Please create RSA keys (of at least 768 bits size) to enable SSH v2.
+Authentication timeout: 120 secs; Authentication retries: 3
+S1# configure terminal
+S1(config)# ip domain-name cisco.com
+S1(config)# crypto key generate rsa
+The name for the keys will be: S1.cisco.com
+...
+How many bits in the modulus [512]: 1024
+...
+S1(config)# username admin secret ccna
+S1(config-line)# line vty 0 15
+S1(config-line)# transport input ssh
+S1(config-line)# login local
+S1(config-line)# exit
+S1(config)# ip ssh version 2
+S1(config)# exit
+S1#
+
+Verificador de sintaxe - Configuração SSH
+
+Set the domain name to cisco.com and generate the 1024 bit rsa key.
+
+S1(config)#ip domain-name cisco.com
+S1(config)#crypto key generate rsa
+The name for the keys will be: S1.cisco.com  
+Choose the size of the key modulus in the range of 360 to 4096 for your General Purpose Keys. Choosing a key modulus greater than 512 may take a few minutes.
+How many bits in the modulus [512]:1024
+% Generating 1024 bit RSA keys, keys will be non-exportable...  
+[OK] (elapsed time was 4 seconds)  
+  
+S1(config)#  
+*Mar 1 02:20:18.529: %SSH-5-ENABLED: SSH 1.99 has been enabled
+Create a local user admin with the password ccna. Configure todas as linhas vty para usar o ssh e o login local para conexões remotas. Sair para o modo de configuração global.
+
+S1(config)#username admin secret ccna
+S1(config)#line vty 0 15
+S1(config-line)#transport input ssh
+S1(config-line)#login local
+S1(config-line)#exit
+S1(config)#  
+%SYS-5-CONFIG_I: Configured from console by console
+Configure S1 para usar SSH 2.0.
+
+S1(config)#ip ssh version 2
+S1(config)#
+Você configurou com êxito SSH em todas as linhas VTY.
+
+Verificar SSH
+Em um PC, um cliente SSH, como PuTTY, é usado para se conectar a um servidor SSH. Para os exemplos, o seguinte foi configurado:
+
+SSH está habilitado no switch S1
+Interface VLAN 99 (SVI) com endereço IPv4 172.17.99.11 no switch S1
+PC1 com endereço IPv4 172.17.99.21
+Na figura 1, o técnico inicia uma conexão de SSH com o endereço IPv4 da VLAN na SVI do S1. O software do terminal PuTTY é exibido.
+
+Após clicar em Abrir no PuTTY, o usuário é solicitado a fornecer um nome de usuário e uma senha. Usando a configuração do exemplo anterior, o nome de usuário admin e senha ccna são inseridos. Depois de inserir a combinação correta, o usuário é conectado via SSH à CLI no switch Catalyst 2960.
+
+Para exibir os dados de versão e configuração de SSH no dispositivo configurado como um servidor SSH, use o comandoshow ip ssh. No exemplo, SSH versão 2 está habilitado. Para verificar as conexões SSH com o dispositivo, use o comando show ssh.
+
+Login as: admin
+Using keyboard-interactive authentication.
+Password: <ccna>
+ 
+S1> enable
+Password: <class>
+S1# show ip ssh
+SSH Enabled - version 2.0
+Authentication timeout: 90 secs; Authentication retries: 2
+Minimum expected Diffie Hellman key size : 1024 bits
+IOS Keys in SECSH format(ssh-rsa, base64 encoded):
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCdLksVz2QlREsoZt2f2scJHbW3aMDM8 /8jg/srGFNL
+i+f+qJWwxt26BWmy694+6ZIQ/j7wUfIVNlQhI8GUOVIuKNqVMOMtLg8Ud4qAiLbGJfAaP3fyrKmViPpO
+eOZof6tnKgKKvJz18Mz22XAf2u/7Jq2JnEFXycGMO88OUJQL3Q==
+ 
+S1# show ssh
+Connection Version Mode Encryption  Hmac        State        Username
+0           2.0     IN   aes256-cbc  hmac-sha1 Session started admin
+0           2.0     OUT  aes256-cbc  hmac-sha1 Session started admin
+%No SSHv1 server connections running.
+S1#
+

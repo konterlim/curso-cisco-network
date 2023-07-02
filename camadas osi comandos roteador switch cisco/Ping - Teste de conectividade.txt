@@ -1,0 +1,46 @@
+ Ping - Teste de conectividade
+No tópico anterior, você foi apresentado às ferramentas ping e traceroute (tracert). Neste tópico, você aprenderá sobre as situações em que cada ferramenta é usada e como usá-las. O Ping é um utilitário de teste IPv4 e IPv6 que usa a solicitação de eco ICMP e as mensagens de resposta de eco para testar a conectividade entre hosts.
+
+Para testar a conectividade com outro host em uma rede, uma solicitação de eco é enviada ao endereço do host usando o comando ping. Se o host no endereço especificado receber a requisição de eco, ele enviará uma resposta de eco. À medida que cada resposta de eco é recebida, o ping fornece feedback sobre o tempo entre o envio da solicitação e o recebimento da resposta. Esta pode ser uma medida do desempenho da rede.
+
+O ping tem um valor de tempo limite para a resposta. Se a resposta não é recebida dentro do tempo de espera, o ping mostra uma mensagem informando que a resposta não foi recebida. Isso pode indicar que há um problema, mas também pode indicar que os recursos de segurança que bloqueiam as mensagens de ping foram ativados na rede. É comum o primeiro ping para o tempo limite se a resolução de endereço (ARP ou ND) precisar ser executada antes de enviar a Solicitação de eco ICMP.
+
+Depois que todas as solicitações são enviadas, o utilitário ping fornece um resumo que inclui a taxa de sucesso e o tempo médio de ida e volta até o destino.
+
+Os tipos de testes de conectividade realizados com ping incluem o seguinte:
+
+Fazendo ping no loopback local
+Fazendo ping no gateway padrão
+Fazendo ping no host remoto
+
+Executar ping na loopback
+O ping pode ser usado para testar a configuração interna do IPv4 ou IPv6 no host local. Para realizar este teste, execute ping no endereço de loopback local de 127.0.0.1 para IPv4 (::1 for IPv6).
+
+Uma resposta vinda de 127.0.0.1 para IPv4 (ou ::1 para IPv6) indica que o IP está instalado corretamente no host. Essa resposta vem da camada de rede. No entanto, ela não significa que os endereços, as máscaras ou os gateways estão configurados adequadamente, Nem indica o status da camada inferior da pilha de rede. Ela simplesmente testa o IP até a camada de rede do IP. Uma mensagem de erro indica que o TCP/IP não está operacional no host.
+
+O ping no host local confirma que o TCP/IP está instalado e funcionando no host local.
+O ping 127.0.0.1 faz com que o dispositivo envie um ping para si mesmo.
+
+Pingando o Gateway Padrão
+Você também pode usar o ping para testar a capacidade do host de se comunicar com a rede local. Isso geralmente é feito através do ping do endereço IP do gateway padrão do host. Um ping bem-sucedido no gateway padrão indica que o host e a interface do roteador que atua como gateway padrão estão operacionais na rede local.
+
+Para este teste, o endereço de gateway padrão é usado com mais frequência porque o roteador normalmente está sempre operacional. Se o endereço do gateway padrão não responder, o ping pode ser enviado para o endereço IP de outro host na rede local que se sabe estar operacional.
+
+Se o gateway padrão ou outro host responder, o host local poderá se comunicar com êxito pela rede local. Se o gateway padrão não responder, mas outro host, isso pode indicar um problema com a interface do roteador servindo como gateway padrão.
+
+Uma possibilidade é que o endereço de gateway padrão errado tenha sido configurado no host. Outra possibilidade é que a interface do roteador esteja plenamente operacional, mas tenha segurança aplicada a ela que a impeça de processar ou responder a solicitações ping.
+
+O host envia um ping ao gateway padrão, enviando uma solicitação de eco ICMP. O gateway padrão envia uma resposta de eco confirmando a conectividade.
+
+
+Pingando um host remoto
+O ping também pode ser usado para testar a capacidade de um host local de se comunicar por uma rede interconectada. O host local pode fazer ping em um host IPv4 operacional de uma rede remota, como mostrado na figura. O roteador usa sua tabela de roteamento IP para encaminhar os pacotes.
+
+Se esse ping tiver êxito, a operação de uma grande parte da rede interconectada poderá ser verificada. Um ping bem-sucedido na rede confirma a comunicação na rede local, a operação do roteador que serve como gateway padrão e a operação de todos os outros roteadores que possam estar no caminho entre a rede local e a rede do host remoto.
+
+Além disso, a funcionalidade do host remoto pode ser verificada. Se o host remoto não conseguir se comunicar para fora de sua rede local, ele não responderá.
+
+Observação: muitos administradores de rede limitam ou proíbem a entrada de mensagens ICMP na rede corporativa, por isso a falta de uma resposta do ping pode ser consequência de restrições de segurança.
+
+
+

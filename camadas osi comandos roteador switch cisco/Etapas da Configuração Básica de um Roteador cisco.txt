@@ -1,0 +1,124 @@
+Etapas da Configuração Básica de um Roteador
+As tarefas a seguir devem ser concluídas ao configurar as configurações iniciais em um roteador.
+
+Etapa 1. Configurar o nome do dispositivo.
+
+Router(config)# hostname hostname
+Etapa 2. Proteger o modo EXEC privilegiado.
+
+Router(config)# enable secret password
+Etapa 3. Proteger o modo EXEC usuário.
+
+Router(config)# line console 0
+Router(config-line)# password password
+Router(config-line)# login
+Etapa 4. Proteger o acesso remoto Telnet/SSH.
+
+Router(config-line)# line vty 0 4
+Router(config-line)# password password
+Router(config-line)# login
+Router(config-line)# transport input {ssh | telnet | none | all}
+Etapa 5. Proteger todas as senhas do arquivo de configuração.
+
+Router(config-line)# exit
+Router(config)# service password-encryption
+Etapa 6. Apresentar a notificação legal.
+
+Router(config)# banner motd delimiter message delimiter
+Etapa 7. Salvar a configuração.
+
+Router(config)# copy running-config startup-config
+
+ Exemplo de Configuração Básica do Roteador
+Neste exemplo, o roteador R1 será configurado com as configurações iniciais. Para configurar o nome do dispositivo para R1, use os seguintes comandos.
+
+Router> enable
+Router# configure terminal
+Enter configuration commands, one per line.
+End with CNTL/Z.
+Router(config)# hostname R1
+R1(config)#
+
+Observação: Observe como o prompt do roteador agora exibe o nome de host do roteador.
+
+Todo o acesso ao roteador deve ser protegido. O modo EXEC privilegiado fornece ao usuário acesso completo ao dispositivo e sua configuração.
+
+Os comandos a seguir protegem o modo EXEC privilegiado e o modo EXEC do usuário, habilitam o acesso remoto Telnet e SSH e criptografam todas as senhas de texto simples (ou seja, EXEC do usuário e linha VTY). É muito importante usar uma senha forte ao proteger o modo EXEC privilegiado, pois esse modo permite o acesso à configuração do dispositivo.
+
+R1(config)# enable secret class
+R1(config)#
+R1(config)# line console 0
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# exit
+R1(config)#
+R1(config)# line vty 0 4
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# transport input ssh telnet
+R1(config-line)# exit
+R1(config)#
+R1(config)# service password-encryption
+R1(config)#
+
+
+A notificação legal avisa os usuários de que o dispositivo só deve ser acessado por usuários permitidos. A notificação legal é configurada da seguinte forma:
+
+R1(config)# banner motd #
+Enter TEXT message. End with the character '#'.
+***********************************************
+WARNING: Unauthorized access is prohibited!
+***********************************************
+R1(config)#
+
+Se os comandos anteriores foram configurados e o roteador perdeu energia acidentalmente, todos os comandos configurados serão perdidos. Por esse motivo, é importante salvar a configuração quando as alterações são implementadas. O comando a seguir salva a configuração na NVRAM.
+
+R1# copy running-config startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+R1#
+
+Verificador de sintaxe - Definição das configurações iniciais do roteador
+Use este verificador de sintaxe para praticar a configuração das configurações iniciais em um roteador.
+
+Configurar o nome do dispositivo.
+Proteger o modo EXEC privilegiado.
+Proteja e habilite o acesso SSH e Telnet remoto.
+Proteja todas as senhas de texto sem formatação.
+Apresentar a notificação legal.
+
+Entre no modo de configuração global para configurar o nome do roteador como "R1".
+
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#hostname R1
+Configure 'class' como a senha secreta.
+
+R1(config)#enable secret class
+Configure 'cisco' como a senha da linha do console, exija que os usuários efetuem login e retorne ao modo de configuração global.
+
+R1(config)#line console 0
+R1(config-line)#password cisco
+R1(config-line)#login
+R1(config-line)#exit
+Para a linha vty 0 a 4, configure 'cisco' como a senha, exija que os usuários façam login, habilite o acesso SSH e Telnet e retorne ao modo de configuração global.
+
+R1(config)#line vty 0 4
+R1(config-line)#password cisco
+R1(config-line)#login
+R1(config-line)#transport input ssh telnet
+R1(config-line)#exit
+Criptografe todas as senhas em texto simples.
+
+R1(config)#service password-encryption
+Digite o banner "Somente acesso autorizado!" e use # como o caractere delimitante.
+
+R1(config)#banner motd #Authorized Access Only!#
+Saia do modo configuração global.
+
+R1(config)#exit
+R1#
+Você configurou com êxito as configurações iniciais no roteador R1.
+

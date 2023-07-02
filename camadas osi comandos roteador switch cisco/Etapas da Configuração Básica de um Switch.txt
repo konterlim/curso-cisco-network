@@ -1,0 +1,254 @@
+Etapas da Configuração Básica de um Switch
+O switch Cisco só precisa receber informações básicas de segurança antes de ser conectado à rede. Elementos que normalmente são configurados em um switch de LAN incluem: nome de host, informações de endereço IP de gerenciamento, senhas e informações descritivas.
+
+O nome de host do switch é o nome configurado para o dispositivo. Como cada computador ou impressora tem um nome atribuído, o equipamento de rede deve ser configurado com um nome descritivo. Isso será útil se o nome do dispositivo incluir o local onde o switch será instalado, como mostrado na figura. Um exemplo seria: SW_Bldg_R-Room_216.
+
+Um endereço IP de gerenciamento será necessário apenas se você configurar e gerenciar o switch através de uma conexão em banda na rede. Um endereço de gerenciamento permite acessar o dispositivo por clientes Telnet, SSH ou HTTP. As informações de endereço IP que devem ser configuradas em um switch são essencialmente as mesmas que você configura em um PC: endereço IP, máscara de sub-rede e gateway padrão.
+
+Para proteger um switch Cisco LAN, é necessário configurar senhas em cada um dos métodos de acesso à linha de comando. Os requisitos mínimos incluem a atribuição de senha a métodos de acesso remoto, como Telnet, SSH e a conexão do console. Você também deve atribuir uma senha ao modo privilegiado no qual as alterações de configuração podem ser feitas.
+
+Observação: Telnet envia o nome de usuário e a senha em texto simples e não é considerado seguro. O SSH é um método mais seguro, pois criptografa o nome de usuário e a senha.
+
+Selecione cada guia para obter mais informações.
+
+Antes de configurar um switch, examine as tarefas iniciais de configuração de switch listadas na Figura:
+
+Configurar o nome do dispositivo.
+
+hostname nome
+Proteger o modo EXEC usuário.
+
+line console 0
+senha senha
+login
+Proteger o acesso remoto Telnet/SSH
+
+line vty 0 15
+senha senha
+login
+Proteger o modo EXEC privilegiado.
+
+enable secret password
+Proteger todas as senhas do arquivo de configuração.
+
+service password-encryption
+Apresentar a notificação legal.
+
+banner motd delimiter mensagem delimiter
+Configurar SVI de gerenciamento.
+
+interface vlan 1
+ip address ip-address subnet-mask
+no shutdown
+Salvar a configuração.
+
+copy running-config startup-config
+
+comandos de configuração switch
+
+Switch> enable
+Switch# configure terminal
+Switch(config)# hostname S1
+S1(config)# enable secret class
+S1(config)# line console 0
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# line vty 0 15
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# exit
+S1(config)# service password-encryption
+S1(config)# banner motd #Nenhum acesso não autorizado permitido!#
+S1(config)# interface vlan 1
+S1(config-if)# ip address 192.168.1.20 255.255.255.0
+S1(config-if)# no shutdown
+S1(config-if)# end
+S1# copy running-config startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+S1#
+
+Configuração da Interface Virtual de Switch
+Para acessar o switch remotamente, um endereço IP e uma máscara de sub-rede devem ser configurados na SVI. Para configurar uma SVI em um switch, use o comando de configuração global interface vlan 1 . Vlan 1 não é uma interface física real, mas virtual. Em seguida, atribua um endereço IPv4 usando o comando de configuração de interface ip-address subnet-mask. Por fim, ative a interface virtual com o comando de configuração de interface no shutdown .
+
+Depois que o switch é configurado com esses comandos, o switch tem todos os elementos IPv4 prontos para comunicação pela rede local.
+
+Nota: Semelhante aos hosts do Windows, os switches configurados com um endereço IPv4 normalmente também precisam ter um gateway padrão atribuído. Isso pode ser feito usando o comando de configuração global ip default-gateway ip-address . O parâmetro ip-address deve ser o endereço IPv4 do roteador local na rede, como mostrado no exemplo. No entanto, neste tópico, você configurará apenas uma rede com switches e hosts. Os roteadores serão configurados posteriormente.
+
+Sw-Floor-1# configure terminal
+Sw-Floor-1(config)# interface vlan 1
+Sw-Floor-1(config-if)# ip address 192.168.1.20 255.255.255.0
+Sw-Floor-1(config-if)# no shutdown
+Sw-Floor-1(config-if)# exit
+Sw-Floor-1(config)# ip default-gateway 192.168.1.1
+
+Verificador de sintaxe - Configurar uma interface virtual do switch
+
+Entre no modo de configuração de interface da VLAN 1.
+
+Switch(config)#interface vlan 1
+Configure o endereço IPv4 como 192.168.1.20 e a máscara de sub-rede como 255.255.255.0.
+
+Switch(config-if)#ip address 192.168.1.20 255.255.255.0
+Habilite a interface.
+
+Switch(config-if)#no shutdown
+%LINK-5-CHANGED: Interface Vlan1, changed state to up
+Você configurou com êxito a interface virtual do switch para a VLAN 1.
+
+Parte 1: Realizar a configuração básica de S1 e S2
+
+Parte 2: Configurar os PCs
+
+Parte 3: Configurar a interface de gerenciamento do switch
+
+Histórico/Cenário
+Nesta atividade, você vai realizar primeiro configurações básicas do switch. Depois, implementar a conectividade básica ao configurar endereços IP nos switches e PCs. Quando a configuração do endereço IP for concluída, você usará vários comandos show para verificar as configurações e o comando ping para verificar a conectividade básica entre os dispositivos.
+
+Instruções
+Parte 1: Realizar a Configuração da SVI em S1 e S2
+Etapa 1: Configurar S1 com um hostname.
+Abrir a janela de configuração
+
+a.     Clique em S1, e clique na guia CLI.
+
+b.     Entre no modo EXEC privilegiado. Em seguida, entre no modo de configuração global.
+
+Switch> enable
+
+Switch# configure terminal
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+c.     Configure o hostname como S1.
+
+Switch(config)# hostname S1
+
+S1(config)#
+
+Etapa 2: Configurar o S1 com um endereço IP.
+Os switches podem ser usados sem nenhuma configuração. Os switches enviam informações de uma porta para outra com base nos endereços MAC (Media Access Control)
+
+Pergunta:
+Por que um switch precisa de um endereço IP?
+
+Área de Resposta
+Digite suas respostas aqui.
+Mostrar resposta
+a.     No modo de configuração global, insira os seguintes comandos para configurar S1 com um endereço IP na VLAN 1.
+
+S1(config)# interface vlan 1
+
+S1(config-if)# ip address 192.168.1.253 255.255.255.0
+
+S1(config-if)# no shutdown
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to up
+
+Pergunta:
+O que faz o comando no shutdown?
+
+Área de Resposta
+Digite suas respostas aqui.
+Mostrar resposta
+b.     Saia do modo de configuração e salve a configuração.
+
+S1(config-if)# end
+
+S1#
+
+S1# copy running-config startup-config
+
+Destination filename [startup-config]?
+
+Building configuration...
+
+[OK]
+
+c.     Verificar a configuração de endereço IP em S1.
+
+S1# show ip interface brief
+
+<output omitted>
+
+ Vlan1 192.168.1.253 YES manual up up
+
+fechar janela de configuração
+
+Etapa 3: Configure o S2 com um hostname e um endereço IP.
+Nesta etapa, você configurará o S2 com um nome de host e um endereço IP.
+
+abrir janela de configuração
+
+a.     Clique em S2. Na guia CLI, entre no modo de configuração global.
+
+b.     Configure o switch S2 com um hostname usando as informações da Tabela de Endereçamento.
+
+c.     Use as informações da Tabela de Endereçamento, repita o mesmo processo para configurar o switch S2 com um endereço IP.
+
+d.     Saia do modo de configuração. Verificar a configuração de endereço IP em S2.
+
+S2# show ip interface brief
+
+<output omitted>
+
+ Vlan1 192.168.1.254 YES manual up up
+
+e.     Salve o arquivo de configuração na NVRAM. Insira o comando copy running-config startup-config para salvar a nova configuração.
+
+fechar janela de configuração
+
+Parte 2: Configurar os PCs
+Nesta parte, você configurará PC1 e PC2 com endereços IP e verificará a conectividade de rede.
+
+Etapa 1: Configurar ambos os PCs com endereços IP.
+a.     Clique no PC1 e na guia Desktop.
+
+b.     Clique em configuração IP. Na Tabela de endereçamento acima, é possível ver que o endereço IP do PC1 é 192.168.1.1 e a máscara de sub-rede é 255.255.255.0. Digite essas informações no PC1 na janela IP Configuration Configuração de IP).
+
+c.     Repita as etapas anteriores para configurar PC2. Use o endereço IP listado na tabela de endereços para configurar PC2.
+
+Etapa 2: Teste a conectividade a partir dos PCs.
+a.     Clique em PC1. Feche a janela IP Configuration (Configuração de IP) se ainda estiver aberta. Na guia Desktop, clique em Command Prompt (Prompt de comando).
+
+b.     Digite o comando ping e o endereço IP de S1.
+
+Packet Tracer PC Command Line 1.0
+
+PC> ping 192.168.1.253
+
+Pergunta:
+Deu certo? Explique.
+
+Área de Resposta
+Digite suas respostas aqui.
+Mostrar resposta
+f.       Pingue S2 e PC2 a partir de PC1.
+
+g.     Repita os pings para S1, S2 e PC1 a partir de PC2.
+
+Todos os pings devem ser bem-sucedidos. Se o primeiro resultado do ping for 80%, tente novamente. Ele deve ser 100%. Você aprenderá como um ping pode falhar no primeiro resultado mais tarde em seus estudos. Se não conseguir executar o ping em nenhum dos dispositivos, verifique se há erros na sua configuração.
+
+Etapa 3: Verifique a conectividade de rede a partir dos switches.
+É possível verificar a conectividade de rede com o comando ping. É muito importante haver conectividade pela rede.
+
+a.     No S1, envie pings para outros dispositivos na rede. O ping para o PC1 está exposto abaixo como exemplo.
+
+S1> ping 192.168.1.1
+
+ 
+
+Type escape sequence to abort.
+
+Sending 5, 100-byte ICMP Echos to 192.168.1.1, timeout is 2 seconds:
+
+!!!!!
+
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/1 ms
+
+b.     No S2, envie pings para outros dispositivos na rede.
+
+Todos os pings devem ser bem-sucedidos. Se o primeiro resultado do ping for 80%, tente novamente. Ele deve ser 100%. Você aprenderá como um ping pode falhar no primeiro resultado mais tarde em seus estudos. Se não conseguir executar o ping em nenhum dos dispositivos, verifique se há erros na sua configuração.
+
+

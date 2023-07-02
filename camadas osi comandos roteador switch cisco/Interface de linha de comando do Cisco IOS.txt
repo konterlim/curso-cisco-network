@@ -1,0 +1,366 @@
+Interface de linha de comando do Cisco IOS
+A interface da linha de comando (CLI) do Cisco IOS é um programa baseado em texto que permite inserir e executar o comandos do Cisco IOS para configurar, monitorar e administrar dispositivos da Cisco. É possível usar a CLI da Cisco com tarefas de gerenciamento em banda ou fora da banda.
+
+Os comandos da CLI são usados para modificar a configuração de dispositivo e exibir o status atual dos processos no roteador. Para usuários experientes, a CLI oferece muitos recursos de economia de tempo para criar configurações simples e complexas. Quase todos os dispositivos de rede da Cisco usam uma CLI semelhante. Quando o roteador conclui a sequência de inicialização e o prompt Router> aparece, a CLI pode ser usada para inserir comandos do Cisco IOS.
+
+Router con0 is now available
+
+
+Press RETURN to get started!
+
+
+
+Router> enable
+Router# configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)# hostname R1
+R1(config)# interface gigabitethernet 0/0/0
+R1(config-if)#
+Os técnicos familiarizados com os comandos IOS e a operação de CLI facilmente monitoram e configuram diferentes dispositivos de rede porque os mesmos comandos básicos são usados configurar um switch e um roteador. A CLI tem um sistema amplo de ajuda que auxilia os usuários na configuração e no monitoramento de dispositivos.
+
+ Modos de Comando Primários
+Todos os dispositivos de rede requerem um SO e podem ser configurados usando a CLI ou uma GUI. O uso da CLI pode fornecer ao administrador de rede controle e flexibilidade mais precisos do que usar a GUI. Este tópico aborda o uso da CLI para navegar pelo Cisco IOS.
+
+Como recurso de segurança, o software Cisco IOS separa o acesso de gerenciamento nestes dois modos de comando:
+
+Modo EXEC do usuário - Este modo tem recursos limitados, mas é útil para operações básicas. Ele permite apenas um número limitado de comandos de monitoramento básicos, mas não permite a execução de nenhum comando que possa alterar a configuração do dispositivo. O modo EXEC usuário é identificado pelo prompt da CLI que termina com o símbolo >.
+Modo EXEC privilegiado - Para executar comandos de configuração, um administrador de rede deve acessar o modo EXEC privilegiado. Modos de configuração mais altos, como o modo de configuração global, só podem ser acessados do modo EXEC privilegiado. O modo EXEC privilegiado pode ser identificado pelo prompt que termina com o símbolo #.
+
+Uma observação sobre as atividades do verificador de sintaxe
+Quando estiver aprendendo a modificar as configurações do dispositivo, convém começar em um ambiente seguro e que não seja de produção antes de experimentá-lo em equipamentos reais. O NetACAD oferece diferentes ferramentas de simulação para ajudar a desenvolver suas habilidades de configuração e solução de problemas. Como estas são ferramentas de simulação, elas geralmente não têm toda a funcionalidade de equipamentos reais. Uma dessas ferramentas é o Verificador de Sintaxe. Em cada Verificador de Sintaxe, você recebe um conjunto de instruções para inserir um conjunto específico de comandos. Você não pode progredir no Verificador de Sintaxe a menos que o comando exato e completo seja inserido conforme especificado. Ferramentas de simulação mais avançadas, como o Packet Tracer, permitem que você insira comandos abreviados, assim como faria em equipamentos reais.
+
+Entre no modo EXEC privilegiado usando o comando enable
+
+Switch>enable
+Retorne ao modo EXEC do usuário usando o comando disable
+
+Switch#disable
+Digite novamente o modo EXEC privilegiado.
+
+Switch>enable
+Entre no modo de configuração global usando o comando configure terminal
+
+Switch#configure terminal
+Saia do modo de configuração global e retorne ao modo EXEC privilegiado usando o comandoexit
+
+Switch(config)#exit
+Digite novamente o modo de configuração global.
+
+Switch#configure terminal
+Digite o modo de subconfiguração de linha para a porta do console usando o comando line console 0 .
+
+Switch(config)#line console 0
+Retorne ao modo de configuração global usando o comando exit
+
+Switch(config-line)#exit
+Digite o modo de subconfiguração de linha VTY usando o comando line vty 0 15 .
+
+Switch(config)#line vty 0 15
+Retorne ao modo de configuração global.
+
+Switch(config-line)#exit
+Entre no modo de subconfiguração da interface da VLAN 1 usando o comando interface vlan 1
+
+Switch(config)#interface vlan 1
+No modo de configuração da interface, alterne para o modo de subconfiguração do console de linha usando o comando de configuração line console 0 global.
+
+Switch(config-if)#line console 0
+Retorne ao modo EXEC privilegiado usando o comando end
+
+Switch(config-line)#end
+Você navegou com êxito entre os vários modos de linha de comando do IOS.
+
+Estrutura de Comandos Básicos do IOS
+Um administrador de rede deve conhecer a estrutura básica de comandos do IOS para poder usar a CLI para a configuração do dispositivo.
+
+Um dispositivo Cisco IOS é compatível com muitos comandos. Cada comando do IOS possui um formato ou sintaxe específica e pode ser executado apenas no modo apropriado. A sintaxe geral de um comando, mostrada na figura, é o comando seguido por quaisquer palavras-chave e argumentos apropriados.
+
+Palavra-chave - Este é um parâmetro específico definido no sistema operacional (na figura, protocolos ip).
+Argumento - Não é predefinido; é um valor ou variável definida pelo usuário (na figura, 192.168.10.5).
+Depois de inserir cada comando completo, incluindo palavras-chave e argumentos, pressione a tecla Enter para enviar o comando ao interpretador de comandos.
+
+Sintaxe de Comandos do IOS
+Um comando pode exigir um ou mais argumentos. Para determinar as palavras-chave e os argumentos necessários para um comando, consulte a sintaxe de comando. A sintaxe fornece o padrão, ou formato, que deve ser usado ao inserir um comando.
+
+Conforme identificado na tabela, o texto em negrito indica comandos e palavras-chave inseridas conforme mostrado. O texto em itálico indica um argumento para o qual o usuário fornece o valor.
+
+Por exemplo, a sintaxe para usar o comando description é description string. O argumento é um valor string fornecido pelo usuário. O comando description é normalmente usado para identificar a finalidade de uma interface. Por exemplo, digitando o comando, description Connects no switch principal do escritório da matriz, descreve onde o outro dispositivo está no final da conexão.
+
+Os exemplos a seguir demonstram as convenções usadas para documentar e utilizar comandos do IOS:
+
+ping ip-address - O comando é ping, e o argumento definido pelo usuário ip-address é o endereço IP do dispositivo de destino. Por exemplo, ping 10.10.10.5.
+traceroute ip-address - O comando é traceroute, e o argumento definido pelo usuário ip-address é o endereço IP do dispositivo de destino. Por exemplo, traceroute 192.168.254.254.
+Se um comando é complexo com vários argumentos, você pode vê-lo representado assim:
+
+Switch(config-if)# switchport port-security aging { static | time time | type {absolute | inactivity}}
+O comando normlamente vem seguido de uma descrição detalhada do comando e cada argumento no Referênica de Comando no Cisco IOS.
+
+A Referência de Comandos do Cisco IOS é a fonte definitiva de informações para um determinado comando do IOS.
+
+ Teclas de Atalho e Atalhos
+A CLI do IOS fornece teclas de atalho e atalhos que facilitam a configuração, o monitoramento e a solução de problemas.
+
+Os comandos e as palavras-chave podem ser abreviados para o número mínimo de caracteres que identifica uma seleção exclusiva. Por exemplo, o comando configure pode ser abreviado para conf porque configure é o único comando que se inicia com conf. Uma versão ainda mais curta , con não dará certo porque mais de um comando se inicia com con. Palavras-chave também podem ser abreviadas.
+
+A tabela lista os pressionamentos de teclas para aprimorar a edição da linha de comando.
+
+Nota: Embora a tecla Delete normalmente exclua o caractere à direita do prompt, a estrutura de comando do IOS não reconhece a tecla Delete.
+
+Quando uma saída de comando produz mais texto do que pode ser exibido em uma janela de terminal, o IOS exibirá um prompt “—More—” . A tabela a seguir descreve os pressionamentos de teclas que podem ser usados quando esse prompt é exibido.
+
+
+ Comandos 'Show'
+O Cisco IOS fornece comandos para verificar a operação de interfaces de roteador e switch.
+
+Os comandos show da CLI do Cisco IOS exibem informações importantes sobre a configuração e a operação do dispositivo. Os técnicos de rede usam os comandos show extensivamente para visualizar arquivos de configuração, verificar o status das interfaces e processos do dispositivo e verificar o status operacional do dispositivo. O status de quase todos os processos ou funções do roteador pode ser exibido por meio de um comando show .
+
+show running-config
+Verifique as definições e configurações correntes.
+
+                
+R1# show running-config
+
+(Saída omitida)
+
+!
+versão 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1
+!
+interface GigabitEthernet0/0/0
+ description Link para R2
+ ip address 209.165.200.225 255.255.255.252
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ description Link para a LAN
+ ip address 192.168.10.1 255.255.255.0
+ negotiation auto
+!
+router ospf 10
+ network 192.168.10.0 0.0.0.255 area 0
+ network 209.165.200.224 0.0.0.3 area 0
+!
+banner motd ^C Apenas acesso autorizado! ^C
+!
+line con 0
+ password 7 14141B180F0B
+ login
+line vty 0 4
+ password 7 00071A150754
+ login
+ transport input telnet ssh
+!
+end
+R1#
+
+show interfaces
+Verifica o status da interface e mostra quaisquer mensagens de erro.
+
+R1# show interfaces
+GigabitEthernet0/0/0 is up, line protocol is up
+  Hardware is ISR4321-2x1GE, address is a0e0.af0d.e140 (bia a0e0.af0d.e140)
+  Description: Link para R2
+  O endereço da Internet é 209.165.200.225/30
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+    reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive not supported
+  Full Duplex, 100Mbps, link type is auto, media type is RJ45
+  output flow-control is off, input flow-control is off
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:01, output 00:00:21, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+    5127 packets input, 590285 bytes, 0 no buffer
+    Received 29 broadcasts (0 IP multicasts)
+    0 runts, 0 giants, 0 throttles
+    0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+    watchdog, 5043 multicast, 0 pausa de entrada
+    watchdog, 5043 multicast, 0 pausa de entrada
+    0 output errors, 0 collisions, 2 interface resets
+    0 unknown protocol drops
+    0 babbles, 0 late collision, 0 deferred
+    1 lost carrier, 0 no carrier, 0 pause output
+    0 output buffer failures, 0 output buffers swapped out
+
+show ip interface
+Verifica informação de camada 3 de uma interface.
+
+                
+R1# show ip interface
+GigabitEthernet0/0/0 is up, line protocol is up
+  Internet address is 209.165.200.225/30
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1500 bytes
+  Helper address is not set
+  Directed broadcast forwarding is disabled
+  Multicast reserved groups joined: 224.0.0.5 224.0.0.6
+  Outgoing Common access list is not set
+  Outgoing access list is not set
+  Inbound Common access list is not set
+  Inbound access list is not set
+  Proxy ARP is enabled
+  Local Proxy ARP is disabled
+  Security level is default
+  Split horizon is enabled
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are never sent
+  IP fast switching is enabled
+  IP Flow switching is disabled
+  IP CEF switching is enabled
+  IP CEF switching turbo vector
+  IP Null turbo vector
+  Associated unicast routing topologies:
+        Topology "base", operation state is UP
+  IP multicast fast switching is enabled
+  IP multicast distributed fast switching is disabled
+  IP route-cache flags are Fast, CEF
+  Router Discovery is disabled
+  IP output packet accounting is disabled
+  IP access violation accounting is disabled
+  TCP/IP header compression is disabled
+  RTP/IP header compression is disabled
+  Probe proxy name replies are disabled
+  Policy routing is disabled
+  Network address translation is disabled
+  BGP Policy Mapping is disabled
+  Input features: MCI Check
+  IPv4 WCCP Redirect outbound is disabled
+  IPv4 WCCP Redirect inbound is disabled
+  IPv4 WCCP Redirect exclude is disabled
+ 
+(Saída omitida)
+
+show arp
+Verifica a lista de hosts conhecidos nas LANs Ethernet locais.
+
+                
+R1# show arp
+Protocol   Address          Age (min) Hardware Addr Type Interface
+Internet   192.168.10.1      - a0e0.af0d.e141 ARPA GigabitEthernet0/0/1
+Internet   192.168.10.10     95 c07b.bcc4.a9c0 ARPA GigabitEthernet0/0/1
+Internet   209.165.200.225   - a0e0.af0d.e140 ARPA GigabitEthernet0/0/0
+Internet   209.165.200.226   138 a03d.6fe1.9d90 ARPA GigabitEthernet0/0/0
+R1#
+
+show ip route
+Verifica as informações de roteamento da Camada 3.
+
+R1# show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+   D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+   N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+   E1 - OSPF external type 1, E2 - OSPF external type 2
+   i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+   ia - IS-IS inter area, * - candidate default, U - per-user static route
+   o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+   a - application route
+   + - replicated route, % - next hop override, p - overrides from PfR
+O gateway de último recurso é 209.165.200.226 para a rede 0.0.0.0
+O*E2 0.0.0.0/0 [110/1] via 209.165.200.226, 02:19:50, Gigabitethernet0/0/0
+   10.0.0.0/24 is subnetted, 1 subnets
+O   10.1.1.0 [110/3] via 209.165.200.226, 02:05:42, GigabitEthernet0/0/0
+   192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C   192.168.10.0/24 is directly connected, GigabitEthernet0/0/1
+L   192.168.10.1/32 is directly connected, GigabitEthernet0/0/1
+   209.165.200.0/24 is variably subnetted, 3 subnets, 2 masks
+C   209.165.200.224/30 is directly connected, GigabitEthernet0/0/0
+L   209.165.200.225/32 is directly connected, GigabitEthernet0/0/0
+O   209.165.200.228/30 [110/2] via 209.165.200.226, 02:07:19, GigabitEthernet0/0/0
+R1#
+
+show protocols
+Verifica quais protocolos estão operacionais.
+
+                
+R1# show protocols
+Valores globais:
+  Internet Protocol routing is enabled
+GigabitEthernet0/0/0 is up, line protocol is up
+  Internet address is 209.165.200.225/30
+GigabitEthernet0/0/1 is up, line protocol is up
+  Internet address is 192.168.10.1/24
+Serial0/1/0 is down, line protocol is down
+Serial0/1/1 is down, line protocol is down
+GigabitEthernet0 is administratively down, line protocol is down
+R1#
+
+show version
+Verifica a memória, as interfaces e as licenças do dispositivo.
+
+                
+R1# show version
+Software Cisco IOS XE, Versão 03.16.08.S - Versão de Suporte Extended
+Cisco IOS Software, ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 15.5(3)S8, RELEASE SOFTWARE
+(fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2018 by Cisco Systems, Inc.
+Compilado Qua 08/08/18 10:48 por mcpre
+
+(Saída omitida)
+
+ROM: IOS-XE ROMMON
+R1 uptime is 2 hours, 25 minutes
+Uptime for this control processor is 2 hours, 27 minutes
+System returned to ROM by reload
+System image file is "bootflash:/isr4300-universalk9.03.16.08.S.155-3.S8-ext.SPA.bin"
+Last reload reason: LocalSoft
+
+(Saída omitida)
+
+Informações sobre a licença do pacote de tecnologia:
+-----------------------------------------------------------------
+Technology     Technology-package     Technology-package
+               Current      Type          Next reboot
+------------------------------------------------------------------
+appxk9         appxk9       RightToUse    appxk9
+uck9           None         None          None
+securityk9     securityk9   Permanent     securityk9
+ipbase         ipbasek9     Permanent     ipbasek9
+cisco ISR4321/K9 (1RU) processor with 1647778K/6147K bytes of memory.
+Processor board ID FLM2044W0LT
+2 Gigabit Ethernet interfaces
+2 Serial interfaces
+32768K bytes de memória de configuração não volátil.
+4194304K bytes de memória física.
+3207167K bytes de memória flash no flash de inicialização:.
+978928K bytes de flash USB at usb0 :.
+Configuration register is 0x2102
+R1#
+
+O Cisco IOS CLI é um programa baseado em texto que permite inserir e executar comandos do Cisco IOS para configurar, monitorar e manter dispositivos Cisco. É possível usar a CLI da Cisco com tarefas de gerenciamento em banda ou fora da banda.
+Os comandos da CLI são usados para modificar a configuração de dispositivo e exibir o status atual dos processos no roteador. Quando o roteador conclui a sequência de inicialização e o prompt Router> aparece, a CLI pode ser usada para inserir comandos do Cisco IOS.
+
+Como recurso de segurança, o software Cisco IOS separa o acesso de gerenciamento nestes dois modos de comando:
+
+Modo EXEC do usuário - Este modo é útil para operações básicas. Ele permite um número limitado de comandos básicos de monitoramento, mas não permite a execução de nenhum comando que possa alterar a configuração do dispositivo. O modo EXEC usuário é identificado pelo prompt da CLI que termina com o símbolo >.
+Modo EXEC privilegiado - Para executar comandos de configuração, um administrador de rede deve acessar o modo EXEC privilegiado. O modo EXEC privilegiado pode ser identificado pelo prompt que termina com o símbolo #. Modos de configuração mais altos, como o modo de configuração global, só podem ser acessados do modo EXEC privilegiado. O modo de configuração global é identificado pelo prompt da CLI que termina com (config)#.
+Os comandos usados para navegar entre os diferentes modos de comando do IOS são:
+
+habilitar
+desabilitar
+configurar terminal
+sair
+finalizar
+Ctrl+Z
+line console 0
+line vty 0 15
+interface vlan 1
+
+Cada comando do IOS possui um formato ou sintaxe específica e pode ser executado apenas no modo apropriado. A sintaxe geral para um comando é o comando seguido por quaisquer palavras-chave e argumentos adequados. A palavra-chave é um parâmetro específico definido no sistema operacional. O argumento não é predefinido; é um valor ou variável definida pelo usuário.
+
+A sintaxe fornece o padrão, ou formato, que deve ser usado ao inserir um comando. O texto em negrito indica comandos e palavras-chave que são inseridos conforme mostrado.
+O texto em itálico indica um argumento para o qual o usuário fornece o valor.
+[x] colchetes indicam um elemento opcional (palavra-chave ou argumento).
+{x} chaves indicam um elemento obrigatório (palavra-chave ou argumento).
+

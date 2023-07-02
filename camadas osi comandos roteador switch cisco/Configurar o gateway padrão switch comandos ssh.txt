@@ -1,0 +1,87 @@
+Configurar o gateway padrão switch
+
+Gateway padrão em um host
+Se sua rede local tiver apenas um roteador, será o roteador gateway e todos os hosts e switches da rede deverão ser configurados com essas informações. Se sua rede local tiver vários roteadores, você deverá selecionar um deles para ser o roteador de gateway padrão. Este tópico explica como configurar o gateway padrão em hosts e switches.
+
+Para que um dispositivo final se comunique pela rede, ele deve ser configurado com as informações de endereço IP, incluindo o endereço de gateway padrão. O gateway padrão só é usado quando o host deseja enviar um pacote a um dispositivo em outra rede. O endereço do gateway padrão geralmente é o endereço da interface do roteador associado à rede local do host. O endereço IP do dispositivo host e o endereço da interface do roteador devem estar na mesma rede.
+
+Por exemplo, suponha que uma topologia de rede IPv4 consista em um roteador que interconecta duas LANs separadas. G0/0/0 está conectado à rede 192.168.10.0, enquanto G0/0/1 está conectado à rede 192.168.11.0. Cada dispositivo host está configurado com o endereço correto do gateway padrão.
+
+Neste exemplo, se PC1 enviar um pacote para PC2, o gateway padrão não será usado. Em vez disso, o PC1 endereça o pacote com o endereço IPv4 do PC2 e encaminha o pacote diretamente para o PC2 através do comutador.
+
+E se o PC1 enviou um pacote para o PC3? O PC1 endereçaria o pacote com o endereço IPv4 do PC3, mas encaminharia o pacote para seu gateway padrão, que é a interface G0/0/0 de R1. O roteador aceita o pacote e acessa sua tabela de roteamento para determinar que G0 / 0/1 é a interface de saída apropriada com base no endereço de destino. Em seguida, o R1 encaminha o pacote para fora da interface apropriada para alcançar o PC3.
+
+O mesmo processo ocorreria em uma rede IPv6, embora isso não seja mostrado na topologia. Os dispositivos usariam o endereço IPv6 do roteador local como gateway padrão.
+
+Gateway padrão em um switch
+Um comutador que interconecta computadores clientes geralmente é um dispositivo da Camada 2. Como tal, um switch de Camada 2 não precisa de um endereço IP para funcionar corretamente. No entanto, uma configuração IP pode ser configurada em um switch para dar acesso remoto a um administrador ao switch.
+
+Para se conectar e gerenciar um switch em uma rede IP local, ele deve ter uma interface virtual de switch (SVI) configurada. O SVI é configurado com um endereço IPv4 e uma máscara de sub-rede na LAN local. O switch também deve ter um endereço de gateway padrão configurado para gerenciar remotamente o switch de outra rede.
+
+O endereço de gateway padrão geralmente é configurado em todos os dispositivos que se comunicam além da rede local.
+
+Para configurar um gateway padrão IPv4 em um switch, use o comando de configuração global ip default-gateway ip-address . O ip-address que está configurado é o endereço IPv4 da interface do roteador local conectada ao switch.
+
+A figura mostra um administrador estabelecendo uma conexão remota para o switch S1 em outra rede.
+
+O diagrama é uma topologia de rede mostrando um roteador R1 conectado a dois switches, S1 na rede 192.168.10.0/24 e S2 na rede 192.168.11.0/24. Um usuário está conectado ao S2 e uma seta mostra que o usuário está acessando S1 remotamente. Acima do usuário há uma caixa mostrando que o usuário tem acesso CLI ao S1 e está exibindo a configuração em execução.
+S1# show running-configBuilding configuration...!service password-encryption!hostname S1!Interface Vlan1  ip address 192.168.10.50.255.255.255.0!!ip default-gateway 192.168.10.1
+.1G0/0/0
+.1G0/0/1
+PC1
+PC2
+S2
+.10
+.11
+192.168.10.0/24
+192.168.11.0/24
+S1
+R1
+.50
+asset.descriptionOutput OmittedSaída omitidaSaída omitida
+
+Neste exemplo, o host administrador usaria seu gateway padrão para enviar o pacote para a interface G0/0/1 de R1. R1 encaminharia o pacote para S1 fora de sua interface G0/0/0. Como o endereço IPv4 de origem do pacote veio de outra rede, S1 exigiria um gateway padrão para encaminhar o pacote para a interface G0/0/0 de R1. Portanto, o S1 deve ser configurado com um gateway padrão para poder responder e estabelecer uma conexão SSH com o host administrativo.
+
+Observação: Os pacotes provenientes de hosts conectados ao switch já devem ter o endereço do gateway padrão configurado nos sistemas operacionais desses computadores.
+
+Um switch de grupo de trabalho também pode ser configurado com um endereço IPv6 em um SVI. No entanto, o switch não requer que o endereço IPv6 do gateway padrão seja configurado manualmente. O switch receberá automaticamente seu gateway padrão da mensagem de anúncio do roteador ICMPv6 do roteador.
+
+Verificador de Sintaxe — Configurar o Gateway Padrão
+
+Entre no modo de configuração global.
+
+S1#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Configure 192.168.10.1 como o gateway padrão para S1.
+
+S1(config)#ip default-gateway 192.168.10.1
+S1(config)#
+Você configurou com êxito o gateway padrão no comutador S1.
+
+Os elementos a serem configurados em um switch LAN incluem nome do host, informações de endereço IP de gerenciamento, senhas e informações descritivas. Um endereço de gerenciamento permite acessar o dispositivo por clientes Telnet, SSH ou HTTP. As informações de endereço IP que devem ser configuradas em um switch incluem o endereço IP, a máscara de sub-rede e o gateway padrão. Para proteger um switch Cisco LAN, configure senhas em cada um dos vários métodos de acesso à linha de comando. Atribua senhas a métodos de acesso remoto, como Telnet, SSH e a conexão do console. Atribua também uma senha ao modo privilegiado no qual as alterações de configuração podem ser feitas.
+
+Para acessar o switch remotamente, configure um endereço IP e uma máscara de sub-rede no SVI. Use o comando de configuração global interface vlan 1 . Atribua um endereço IPv4 usando o comando ip address ip-address subnet-mask de configuração da interface. Por fim, ative a interface virtual com o comando de configuração de interface no shutdown . Após a configuração desses comandos, o switch terá todos os elementos IPv4 prontos para comunicação pela rede
+
+Etapa 1. Configurar o nome do dispositivo.
+Etapa 2. Proteger o modo EXEC privilegiado.
+Etapa 3. Proteger o modo EXEC usuário.
+Etapa 4. Proteger o acesso remoto Telnet/SSH.
+Etapa 5. Proteger todas as senhas do arquivo de configuração.
+Etapa 6. Apresentar a notificação legal.
+Etapa 7. Salvar a configuração.
+
+Todo o acesso ao roteador deve ser protegido. O modo EXEC privilegiado fornece ao usuário acesso completo ao dispositivo e sua configuração. É muito importante usar uma senha forte ao proteger o modo EXEC privilegiado, pois esse modo permite o acesso à configuração do dispositivo. A notificação legal avisa os usuários de que o dispositivo só deve ser acessado por usuários permitidos. A configuração do roteador seria perdida se o roteador perdesse energia. Por esse motivo, é importante salvar a configuração quando as alterações são implementadas.
+
+Etapa 1. Verifique o suporte SSH – show ip ssh
+Etapa 2. Configure o domínio IP – ip domain-name domain-name
+Etapa 3. Gerar pares de chaves RSA - crypto key generate rsa
+Etapa 4. Configurar autenticação de usuário - username username secret password
+Etapa 5. Configurar as linhas vty - line vty
+Etapa 6. Ativar SSH versão 2 - ip ssh version 2
+
+Para exibir os dados de versão e configuração de SSH no dispositivo configurado como um servidor SSH, use o comando show ip ssh. No exemplo, SSH versão 2 está habilitado. Para verificar as conexões SSH com o dispositivo, use o comando show ssh.
+
+Se sua rede local tiver apenas um roteador, será o roteador gateway e todos os hosts e switches da rede deverão ser configurados com essas informações. Se sua rede local tiver vários roteadores, você deverá selecionar um deles para ser o roteador de gateway padrão. O gateway padrão só é usado quando o host deseja enviar um pacote a um dispositivo em outra rede. O endereço do gateway padrão geralmente é o endereço da interface do roteador associado à rede local do host. O endereço IP do dispositivo host e o endereço da interface do roteador devem estar na mesma rede.
+
+Para conectar e gerenciar um switch em uma rede IP local, ele deve ter um SVI configurado. O SVI é configurado com um endereço IPv4 e uma máscara de sub-rede na LAN local. O switch também deve ter um endereço de gateway padrão configurado para gerenciar remotamente o switch de outra rede. Para configurar um gateway padrão IPv4 em um switch, use o comando de configuração global ip default-gateway ip-address . O ip-address que está configurado é o endereço IPv4 da interface do roteador local conectada ao switch.
+
