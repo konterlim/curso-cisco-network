@@ -1,0 +1,80 @@
+Métodos de controle de acesso à mídia
+
+Comunicação Half e Full Duplex
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+Compreender a comunicação duplex é importante ao discutir as topologias de LAN porque se refere à direção da transmissão de dados entre dois dispositivos. Existem dois modos comuns de duplex.
+
+Ambos os dispositivos podem transmitir e receber na mídia, mas não podem fazê-lo simultaneamente. WLANs e topologias de barramento herdadas com hubs Ethernet usam o modo half-duplex. Half-duplex permite que apenas um dispositivo envie ou receba por vez no meio compartilhado. Aperte o play na figura para ver a animação que mostra a comunicação half-duplex.
+
+Ambos os dispositivos podem transmitir e receber simultaneamente na mídia compartilhada. A camada de enlace de dados assume que a mídia está disponível para transmissão para ambos os nós a qualquer momento. Os switches Ethernet operam em modo full-duplex por padrão, mas podem operar em half-duplex se estiverem conectados a um dispositivo como um hub Ethernet. Aperte o play na figura para ver a animação que mostra a comunicação full-duplex.
+
+Em resumo, as comunicações half-duplex restringem a troca de dados em uma direção por vez. Full-duplex permite que o envio e recebimento de dados ocorram simultaneamente.
+
+É importante que duas interfaces interconectadas, como uma NIC de host e uma interface em um switch Ethernet, operem usando o mesmo modo duplex. Caso contrário, haverá uma incompatibilidade duplex criando ineficiência e latência no link.
+
+Métodos de controle de acesso
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+LANs Ethernet e WLANs são exemplos de redes multiacesso. Uma rede multiacesso é uma rede que pode ter dois ou mais dispositivos finais tentando acessar a rede simultaneamente.
+
+Algumas redes multiacesso exigem regras para controlar como os dispositivos compartilham a mídia física. Existem dois métodos básicos de controle de acesso para mídia compartilhada:
+
+Acesso baseado em contenção
+acesso controlado
+
+Em redes multiacesso baseadas em contenção, todos os nós estão operando em half-duplex, competindo pelo uso do meio. No entanto, apenas um dispositivo pode enviar por vez. Portanto, há um processo se mais de um dispositivo transmitir ao mesmo tempo. Exemplos de métodos de acesso baseados em contenção incluem o seguinte:
+
+Acesso múltiplo com detecção de portadora com detecção de colisão (CSMA/CD) usado em LANs Ethernet de topologia de barramento herdadas
+Acesso múltiplo com detecção de operadora com prevenção de colisão (CSMA/CA) usado em LANs sem fio
+
+Em uma rede multiacesso baseada em controle, cada nó tem seu próprio tempo para usar o meio. Esses tipos determinísticos de redes legadas são ineficientes porque um dispositivo deve esperar sua vez de acessar o meio. Exemplos de redes multiacesso que usam acesso controlado incluem o seguinte:
+Token Ring Legado
+Legado ARCNET
+
+Nota : Hoje, as redes Ethernet operam em full-duplex e não requerem um método de acesso.
+
+Acesso Baseado em Contenção - CSMA/CD
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Exemplos de redes de acesso baseadas em contenção incluem o seguinte:
+
+LAN sem fio (usa CSMA/CA)
+LAN Ethernet de topologia de barramento herdada (usa CSMA/CD)
+LAN Ethernet herdada usando um hub (usa CSMA/CD)
+Essas redes operam no modo half-duplex, o que significa que apenas um dispositivo pode enviar ou receber por vez. Isso requer um processo para controlar quando um dispositivo pode enviar e o que acontece quando vários dispositivos enviam ao mesmo tempo.
+
+Se dois dispositivos transmitirem ao mesmo tempo, ocorrerá uma colisão. Para LANs Ethernet herdadas, ambos os dispositivos detectarão a colisão na rede. Esta é a porção de detecção de colisão (CD) do CSMA/CD. A NIC compara os dados transmitidos com os dados recebidos, ou reconhecendo que a amplitude do sinal é maior que o normal na mídia. Os dados enviados por ambos os dispositivos serão corrompidos e precisarão ser reenviados.
+
+Clique em cada botão para obter uma imagem e uma descrição do processo CSMA/CD em LANs Ethernet herdadas que usam um hub.
+
+PC1 envia um quadro
+O PC1 possui um quadro Ethernet para enviar ao PC3. A NIC PC1 precisa determinar se algum dispositivo está transmitindo no meio. Se não detectar um sinal de portadora (ou seja, não está recebendo transmissões de outro dispositivo), assumirá que a rede está disponível para enviar.
+
+
+O hub recebe o quadro
+O hub Ethernet recebe e envia o quadro. Um hub Ethernet também é conhecido como repetidor multiporta. Quaisquer bits recebidos em uma porta de entrada são regenerados e enviados para todas as outras portas, conforme mostrado na figura.
+
+Se outro dispositivo, como o PC2, quiser transmitir, mas estiver recebendo um quadro no momento, ele deverá aguardar até que o canal seja liberado, conforme mostrado na figura.
+
+O hub envia o quadro
+Todos os dispositivos conectados ao hub receberão o quadro. No entanto, como o quadro tem um endereço de link de dados de destino para PC3, somente esse dispositivo aceitará e copiará o quadro inteiro. Todos os outros NICs de dispositivo irão ignorar o quadro, conforme mostrado na figura.
+
+Acesso Baseado em Contenção - CSMA/CA
+Outra forma de CSMA usada pelas WLANs IEEE 802.11 é o acesso múltiplo/evitação de colisão com detecção de operadora (CSMA/CA).
+
+O CMSA/CA usa um método semelhante ao CSMA/CD para detectar se a mídia está limpa. CMSA/CA usa técnicas adicionais. Em ambientes sem fio, pode não ser possível para um dispositivo detectar uma colisão. CMSA/CA não detecta colisões, mas tenta evitá-las esperando antes de transmitir. Cada dispositivo que transmite inclui o tempo de duração necessário para a transmissão. Todos os outros dispositivos wireless recebem esta informação e sabem quanto tempo o meio ficará indisponível.
+
+Na figura, se o host A estiver recebendo um quadro sem fio do ponto de acesso, os hosts B e C também verão o quadro e por quanto tempo o meio ficará indisponível.
+
+Depois que um dispositivo sem fio envia um quadro 802.11, o receptor retorna uma confirmação para que o remetente saiba que o quadro chegou.
+
+Seja uma LAN Ethernet usando hubs ou uma WLAN, os sistemas baseados em contenção não se adaptam bem sob uso pesado de mídia.
+
+Observação : as LANs Ethernet que usam switches não usam um sistema baseado em contenção porque o switch e a NIC do host operam no modo full-duplex.
+
+O que aprendi neste módulo?
+Topologias
+Os dois tipos de topologias usados ​​nas redes LAN e WAN são físicos e lógicos. A camada de enlace de dados "vê" a topologia lógica de uma rede ao controlar o acesso de dados ao meio. A topologia lógica influencia o tipo de estrutura de rede e o controle de acesso à mídia usado. Três tipos comuns de topologias WAN físicas são: ponto a ponto, hub e spoke e malha. As topologias físicas ponto a ponto conectam diretamente dois dispositivos finais (nós). Adicionar conexões físicas intermediárias pode não alterar a topologia lógica. Em LANs multiacesso, os nós são interconectados usando topologias em estrela ou em estrela estendida. Nesse tipo de topologia, os nós são conectados a um dispositivo intermediário central.
+
+As topologias físicas da LAN incluem: estrela, estrela estendida, barramento e anel. As comunicações half-duplex trocam dados em uma direção por vez. Full-duplex envia e recebe dados simultaneamente. Duas interfaces interconectadas devem usar o mesmo modo duplex ou haverá uma incompatibilidade duplex criando ineficiência e latência no link. LANs Ethernet e WLANs são exemplos de redes multiacesso. Uma rede multiacesso é uma rede que pode ter vários nós acessando a rede simultaneamente.
+
+Algumas redes multiacesso exigem regras para controlar como os dispositivos compartilham a mídia física. Existem dois métodos básicos de controle de acesso para mídia compartilhada: acesso baseado em contenção e acesso controlado. Em redes multiacesso baseadas em contenção, todos os nós estão operando em half-duplex. Existe um processo se mais de um dispositivo transmite ao mesmo tempo. Exemplos de métodos de acesso baseados em contenção incluem: CSMA/CD para LANs Ethernet de topologia de barramento e CSMA/CA para WLANs.
+

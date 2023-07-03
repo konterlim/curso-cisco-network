@@ -1,0 +1,57 @@
+ Camada de Enlace de Dados
+
+ Topologias Físicas e Lógicas
+Conforme você aprendeu no tópico anterior, a camada de enlace de dados prepara os dados da rede para a rede física. Ele deve conhecer a topologia lógica de uma rede para poder determinar o que é necessário para transferir quadros de um dispositivo para outro. Este tópico explica as maneiras pelas quais a camada de enlace de dados funciona com diferentes topologias de rede lógica.
+
+A topologia de uma rede é o arranjo, ou o relacionamento, dos dispositivos de rede e as interconexões entre eles.
+
+Existem dois tipos de topologias usadas ao descrever redes LAN e WAN:
+
+Topologia física – Identifica as conexões físicas e como os dispositivos finais e intermediários (ou seja, roteadores, switches e pontos de acesso sem fio) estão interconectados. A topologia também pode incluir a localização específica do dispositivo, como o número da sala e a localização no rack do equipamento. As topologias físicas são geralmente ponto-a-ponto ou estrela.
+Topologia lógica - Refere-se à forma como uma rede transfere quadros de um nó para o próximo. Essa topologia identifica conexões virtuais usando interfaces de dispositivo e esquemas de endereçamento IP da Camada 3.
+A camada de enlace de dados "vê" a topologia lógica de uma rede ao controlar o acesso de dados ao meio. É a topologia lógica que influencia o tipo de estrutura de rede e o controle de acesso ao meio usado.
+
+A figura exibe uma topologia física de amostra para uma pequena rede de amostra.
+
+Topologia Física
+
+ Topologias WAN
+
+ WANs são comumente interconectadas usando três topologias físicas comuns de WAN.
+ Ponto a ponto
+Esta é a topologia de WAN mais simples e comum. Consiste em um link permanente entre dois pontos finais
+
+Hub e Spoke
+Esta é uma versão WAN da topologia em estrela na qual um site central interconecta sites de filiais por meio do uso de links ponto a ponto. As filiais não podem trocar dados com outras filiais sem passar pelo local central.
+
+A imagem mostra cinco roteadores. Uma rota no meio é conectada por quatro linhas, representando quatro links, aos outros quatro roteadores.
+
+
+Malha
+Essa topologia fornece alta disponibilidade, mas exige que cada sistema final esteja interconectado a todos os outros sistemas. Portanto, os custos administrativos e físicos podem ser significativos. Cada link é essencialmente um link ponto a ponto para o outro nó.
+
+Um híbrido é uma variação ou combinação de quaisquer topologias. Por exemplo, uma malha parcial é uma topologia híbrida na qual alguns, mas não todos, os dispositivos finais estão interconectados.
+
+Topologia WAN ponto a ponto
+As topologias físicas ponto a ponto conectam diretamente dois nós, conforme mostrado na figura. Nesse arranjo, dois nós não precisam compartilhar a mídia com outros hosts. Além disso, ao usar um protocolo de comunicação serial, como o protocolo ponto a ponto (PPP), um nó não precisa determinar se um quadro de entrada é destinado a ele ou a outro nó. Portanto, os protocolos lógicos de enlace de dados podem ser muito simples, pois todos os quadros na mídia só podem viajar de ou para os dois nós. O nó coloca os quadros na mídia em uma extremidade e esses quadros são retirados da mídia pelo nó na outra extremidade do circuito ponto a ponto.
+
+As topologias ponto a ponto são limitadas a dois nós.
+
+Observação : uma conexão ponto a ponto pela Ethernet exige que o dispositivo determine se o quadro de entrada é destinado a esse nó.
+
+Um nó de origem e um nó de destino podem ser indiretamente conectados um ao outro por alguma distância geográfica usando vários dispositivos intermediários. Entretanto, a utilização de dispositivos físicos na rede não afeta a topologia lógica, conforme ilustrado na figura. Na figura, adicionar conexões físicas intermediárias pode não alterar a topologia lógica. A conexão lógica ponto a ponto é a mesma. A imagem mostra um exemplo de rede ponto a ponto que consiste em dois roteadores, rotulados Source Node e Destination Node, cada um conectado a uma nuvem de rede por meio de links WAN. Os dois roteadores são mostrados enviando quadros para a nuvem da rede.
+
+Topologias LAN
+Em LANs multiacesso, os dispositivos finais (ou seja, nós) são interconectados usando topologias em estrela ou em estrela estendida, conforme mostrado na figura. Neste tipo de topologia, os dispositivos finais são conectados a um dispositivo intermediário central, neste caso, um switch Ethernet. Uma estrela estendida estende essa topologia interconectando vários switches Ethernet. As topologias em estrela e estendida são fáceis de instalar, muito escaláveis ​​(fáceis de adicionar e remover dispositivos finais) e fáceis de solucionar problemas. As primeiras topologias em estrela interconectavam dispositivos finais usando hubs Ethernet.
+
+Às vezes pode haver apenas dois dispositivos conectados na LAN Ethernet. Um exemplo são dois roteadores interconectados. Este seria um exemplo de Ethernet usado em uma topologia ponto a ponto.
+
+Topologias de LAN herdadas
+
+As primeiras tecnologias Ethernet e Token Ring LAN legadas incluíam dois outros tipos de topologias:
+
+Barramento - Todos os sistemas finais são encadeados entre si e terminados de alguma forma em cada extremidade. Dispositivos de infraestrutura, como switches, não são necessários para interconectar os dispositivos finais. As redes Ethernet herdadas geralmente eram topologias de barramento usando cabos coaxiais porque eram baratas e fáceis de configurar.
+Anel - Os sistemas finais são conectados aos seus respectivos vizinhos formando um anel. O anel não precisa ser terminado, ao contrário da topologia de barramento. As redes Legacy Fiber Distributed Data Interface (FDDI) e Token Ring usavam topologias em anel.
+As figuras ilustram como os dispositivos finais são interconectados nas LANs. É comum que uma linha reta em gráficos de rede represente uma LAN Ethernet incluindo uma estrela simples e uma estrela estendida.
+
+

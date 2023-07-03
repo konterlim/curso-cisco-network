@@ -1,0 +1,72 @@
+Cabeamento de Fibra Óptica
+
+Propriedades do cabeamento de fibra ótica
+Como você aprendeu, o cabeamento de fibra ótica é outro tipo de cabeamento usado em redes. Por ser caro, não é tão comumente usado quanto aos vários tipos de cabeamento de cobre. Mas o cabeamento de fibra ótica tem certas propriedades que o tornam a melhor opção em certas situações, que você descobrirá neste tópico.
+
+O cabo de fibra óptica transmite dados por longas distâncias e larguras de banda mais altas do que qualquer outra mídia de rede. Diferentemente dos fios de cobre, o cabo de fibra óptica pode transmitir sinais com menos atenuação e é completamente imune à interferência de EMI e RFI. A fibra óptica é comumente usada para interconectar dispositivos de rede.
+
+A fibra ótica é um fio flexível, extremamente fino e transparente de vidro muito puro, não muito mais espesso do que um fio de cabelo humano. Os bits são codificados em fibra como pulsos de luz. O cabo de fibra ótica atua como um guia de onda, ou “tubo de luz”, para transmitir luz entre as duas extremidades com o mínimo de perda do sinal.
+
+Como uma analogia, considere um rolo de papel toalha vazio com o interior revestido como um espelho. Ele tem mil metros de comprimento e um pequeno ponteiro laser é usado para enviar sinais de código Morse na velocidade da luz. Basicamente, é assim que o cabo de fibra óptica funciona, só que tem um diâmetro menor e usa tecnologias de luz sofisticadas.
+
+Os cabos de fibra ótica são amplamente classificados em dois tipos:
+
+Fibra monomodo (SMF)
+Fibra multimodo (MMF)
+
+Fibra Monomodo
+O SMF consiste em um núcleo muito pequeno e usa uma tecnologia laser cara para enviar um único raio de luz, conforme mostrado na figura. O SMF é popular em situações de longa distância que se estendem por centenas de milhas, como os exigidos em aplicações de telefonia de longo curso e TV a cabo.
+
+Fibra Multimodo
+O MMF consiste em um núcleo maior e usa emissores de LED para enviar pulsos de luz. Especificamente, a luz de um LED entra na fibra multimodo em diferentes ângulos, como mostrado na figura. Os MMFs são populares em LANs porque podem ser alimentados por LEDs de baixo custo. Ele fornece largura de banda de até 10 Gbps em links de até 550 metros de comprimento.
+
+Uma das diferenças destacadas entre MMF e SMF é a quantidade de dispersão. O termo dispersão se refere ao espalhamento do pulso de luz com o tempo. Maior dispersão significa aumento da perda de força do sinal. MMF tem uma dispersão maior do que SMF. É por isso que o MMF só pode viajar até 500 metros antes da perda de sinal.
+
+Uso de cabeamento de fibra ótica
+Agora, o cabeamento de fibra ótica é usado em quatro setores:
+
+Redes Corporativas - Isso é usado para aplicativos de cabeamento de backbone e dispositivos de infraestrutura de interconexão.
+Fiber-to-the-Home (FTTH) - Isso é usado para fornecer serviços de banda larga sempre ativos para residências e pequenas empresas.
+Redes de longa distância - Isso é usado por provedores de serviços para conectar países e cidades.
+Redes de Cabos Submarinos - São usados ​​para fornecer soluções monitoradas de alta velocidade e alta capacidade, capazes de sobreviver em ambientes submarinos hostis em distâncias transoceânicas. Pesquise na internet por “mapa de telegeografia de cabos submarinos” para visualizar vários mapas on-line.
+
+Conectores de fibra ótica
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Um conector de fibra ótica termina o final de uma fibra ótica. Uma variedade de conectores de fibra ótica está disponível. As principais diferenças entre os tipos de conectores são as dimensões e os métodos de acoplamento. As empresas decidem os tipos de conectores que serão usados, com base em seu equipamento.
+
+Nota : Alguns switches e roteadores possuem portas que suportam conectores de fibra ótica por meio de um transceptor plugável de fator de forma pequeno (SFP). Pesquise na internet para vários tipos de SFPs.
+
+Os conectores ST foram um dos primeiros tipos de conectores usados. O conector trava com segurança com um mecanismo estilo baioneta 'twist-on/twist-off'.
+
+Os conectores SC às vezes são chamados de 'conectores quadrados' ou 'conectores padrão'. Eles são um conector LAN e WAN amplamente adotado que usa um mecanismo push-pull para garantir uma inserção positiva. Esse tipo de conector é usado com fibra multimodo e monomodo.
+
+Os conectores LC simplex são uma versão menor do conector SC. Às vezes, eles são chamados de conectores pequenos ou locais e estão crescendo rapidamente em popularidade devido ao seu tamanho menor.
+
+Um conector LC multimodo duplex é semelhante a um conector LC simplex, mas usa um conector duplex.
+
+Até recentemente, a luz só podia viajar em uma direção sobre fibra ótica. fibras Duas eram necessárias para suportar a operação full duplex. Portanto, os cabos de conexão de fibra óptica agrupam dois cabos de fibra óptica e os terminam com um par de conectores padrão de fibra única. Alguns conectores de fibra aceitam fibras de transmissão e de recepção em um único conector, conhecido como conector duplex, conforme mostrado no Conector LC Duplex Multimodo na Figura. Padrões BX, como 100BASE-BX, usam comprimentos de onda diferentes para enviar e receber através de uma única fibra.
+
+ Patch Cords de Fibra
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Os cabos de fibra são necessários para interconectar dispositivos da infraestrutura. O uso das cores diferencia entre cabos monomodo e multimodo. A cor amarela indica cabos de fibra monomodo e laranja é para cabos de fibra multimodo.
+
+ Fibra Versus Cobre
+Há muitas vantagens em usar o cabo de fibra ótica em comparação com o cabo de cobre. A tabela destaca algumas diferenças.
+
+Atualmente, na maioria dos ambientes empresariais, a fibra ótica é usada principalmente como cabeamento de backbone para conexões ponto a ponto de alto tráfego entre instalações de distribuição de dados. Ele também é usado para a interconexão de edifícios em campus multi-construção. Como os cabos de fibra ótica não conduzem eletricidade e têm uma baixa perda de sinal, eles são adequados para esses usos.
+
+O Que Aprendi Neste Módulo?
+
+Antes que qualquer comunicação de rede possa ocorrer, é necessário estabelecer uma conexão física com uma rede local. Uma conexão física pode ser uma conexão com fio usando um cabo ou uma conexão sem fio usando ondas de rádio. As placas de interface de rede (NICs) conectam um dispositivo à rede. As NICs Ethernet são usadas para uma conexão com fio, enquanto as NICs WLAN (Rede Local Sem Fio) são usadas para conexão sem fio. A camada física do modelo OSI fornece os meios para transportar os bits que formam um quadro da camada de enlace de dados no meio físico de rede. Ela aceita um quadro completo da camada de enlace de dados e codificada como uma série de sinais que são transmitidos para o meio físico local. Os bits codificados que compreendem um quadro são recebidos por um dispositivo final ou um dispositivo intermediário.
+
+A camada física consiste em circuitos eletrônicos, meios físicos e conectores combinados por engenheiros. Os padrões da camada física abordam três áreas funcionais: componentes físicos, codificação e sinalização. Largura de banda é a capacidade na qual um meio pode transportar dados. A largura de banda digital mede a quantidade de dados que podem fluir de um lugar para outro durante um determinado tempo. A taxa de transferência é a medida da transferência de bits pela mídia durante um determinado período de tempo e geralmente é menor que uma largura de banda. O termo latência se refere ao tempo necessário para os dados viajarem de um ponto a outro, incluindo atrasos. Goodput é a medida de dados usáveis ​​transferidos em um determinado período.
+
+Cabo de cobre - Os sinais são padrões de pulsos elétricos.
+Cabo de fibra ótica - Os sinais são padrões de luz.
+Sem fio - Os sinais são padrões de configuração por microondas.
+
+As redes usam mídia de cobre porque é barata, fácil de instalar e tem baixa resistência à rede elétrica. Entretanto, ela é limitada pela distância e interferência de sinal. Os valores de tempo e tensão dos pulsos elétricos também são interpretados à interferência de duas fontes: EMI e diafonia. Três tipos de cabeamento de cobre são: UTP, STP e cabo coaxial (coaxial). UTP tem uma jaqueta externa para proteger os fios de cobre contra danos físicos, pares torcidos para proteger o sinal de interferência e isolamento plástico codificado por núcleos que isolam eletricamente os fios uns dos outros e identificam cada par. O cabo STP usa quatro pares de fios, cada um enrolado em uma blindagem de alumínio, que é enrolado em uma trança ou folha de metal geral. O cabo coaxial recebe esse nome pelo fato de haver dois condutores que orientam o mesmo eixo. Coax é usado para conectar antenas a dispositivos sem fio. Os provedores de internet por cabo usam coaxial dentro das instalações de seus clientes.
+
+O cabeamento UTP consiste em quatro pares de fios de cobre com código de núcleos que foram torcidos juntos e depois envoltos em uma bainha de plástico flexível. O cabo UTP não usa blindagem para contrabalançar os efeitos de EMI e RFI. Em vez disso, os projetistas de cabos descobrem outras maneiras de limitar o efeito negativo da diafonia: cancelamento e variação do número de torções por par de fios. O cabeamento UTP está em conformidade com os padrões estabelecidos conjuntamente pela ANSI/TIA. As características elétricas do cabeamento de cobre são definidas pelo Instituto de Engenharia Elétrica e Eletrônica (IEEE). O cabo UTP geralmente é terminado com um conector RJ-45. Os principais tipos de cabos que são obtidos usando convenções de fiação específicas são Ethernet Direto (Straight-through) e Ethernet Cruzado (Crossover).
+
+O cabo de fibra óptica transmite dados por longas distâncias e larguras de banda mais altas do que qualquer outra mídia de rede. O cabo de fibra óptica pode transmitir sinais com menos atenuação que o fio de cobre e é completamente imune a EMI e RFI. A fibra ótica é um fio flexível, extremamente fino e transparente de vidro muito puro, não muito mais espesso que um fio de cabelo humano. Os bits são codificados em fibra como pulsos de luz. O cabeamento de fibra óptica está sendo usado agora em quatro tipos de indústria: redes empresariais, FTTH, redes de longo curso e redes de cabos submarinos. Existem quatro tipos de conectores de fibra ótica: ST, SC, LC e LC multimodo duplex. Os cabos de patch de fibra ótica incluem multimodo SC-SC, monomodo LC-LC, multimodo ST-LC e monomodo SC-ST. Na maioria dos ambientes empresariais,

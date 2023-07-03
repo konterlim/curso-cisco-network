@@ -1,0 +1,36 @@
+Cabos UTP diretos e cruzados
+Situações diversas podem exigir que os cabos UTP estejam conectados de acordo com diferentes convenções de fiação. Isso significa que os fios individuais do cabo precisam ser conectados em ordem diferente para conjuntos diferentes de pinos nos conectores RJ-45.
+
+Estes são os principais tipos de cabo obtidos com o uso de convenções de cabeamento específicas:
+
+Ethernet direto - o tipo mais comum de cabo de rede. Geralmente é usado para interconectar um host a um switch e um switch a um roteador.
+Ethernet Cruzado (Crossover) - Um cabo usado para interconectar dispositivos semelhantes. Por exemplo, para conectar um switch a um switch, um host a um host ou um roteador a um roteador. No entanto, os cabos cruzados agora são considerados legados, pois as NICs usam o cruzamento de interface dependente médio (Auto-MDIX) para detectar automaticamente o tipo de cabo e fazer a conexão interna.
+Nota : Outro tipo de cabo é o cabo rollover, que é proprietário da Cisco. É usado para conectar uma estação de trabalho a uma porta do console do roteador ou do switch.
+
+O uso incorreto de um cabo crossover ou direto entre dois dispositivos não danifica os dispositivos, mas a conectividade e comunicação entre os dispositivos não será realizada. Este é um erro comum e verificar se as conexões do dispositivo estão corretas deve ser a primeira ação de solução de problemas se a conectividade não foi alcançada.
+
+A figura identifica os pares de fios individuais para os padrões T568A e T568B.
+
+Padrões T568A e T568B
+
+Padrões de Cabeamento e Conectores UTP
+O cabeamento UTP está em conformidade com os padrões estabelecidos conjuntamente pela ANSI/TIA. Especificamente, o ANSI/TIA-568 estipula os padrões de cabeamento comercial para instalações de LAN e é o padrão mais comumente usado em ambientes de cabeamento de LAN. Alguns dos elementos definidos são os seguintes:
+
+Tipos de cabo
+comprimento do cabo
+Conectores
+terminação do cabo
+Métodos de teste de cabo
+As características elétricas do cabeamento de cobre são definidas pelo Instituto de Engenharia Elétrica e Eletrônica (IEEE). O IEEE classifica o cabeamento UTP de acordo com o desempenho. Os cabos são colocados nas categorias, com base na capacidade de transportar taxas de largura de banda mais altas. Por exemplo, o cabo Categoria 5 é normalmente usado em instalações 100BASE-TX Fast Ethernet. Outras categorias incluem cabo Categoria 5 aprimorado (5e), ​​Categoria 6 e Categoria 6a.
+
+Os cabos em categorias mais altas são desenvolvidos e construídos para suportar taxas de dados mais elevados. À medida que as novas tecnologias Ethernet de velocidade de gigabit estão sendo desenvolvidas e adotadas, a Categoria 5e é agora o tipo de cabo minimamente aceitável, com a Categoria 6 sendo o tipo recomendado para novas instalações prediais.
+
+A figura mostra três categorias de cabo UTP:
+
+A categoria 3 foi originalmente usada para comunicação de voz por linhas de voz, mas posteriormente usada para transmissão de dados.
+As categorias 5 e 5e são usadas para transmissão de dados. A Categoria 5 suporta 100 Mbps e a Categoria 5e suporta 1000 Mbps.
+A categoria 6 tem um separador adicionado entre cada par de fios para suportar velocidades mais altas. Categoria 6 suporta até 10 Gbps.
+Categoria 7 também suporta 10 Gbps.
+Categoria 8 suporta 40 Gbps.
+Alguns fabricantes de cabos que excedem as especificações da Categoria ANSI/TIA 6a e os classificam como Categoria 7.
+
