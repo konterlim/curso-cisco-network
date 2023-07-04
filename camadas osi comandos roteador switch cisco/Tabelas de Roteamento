@@ -1,0 +1,102 @@
+Tabelas de Roteamento
+
+Decisão de Encaminhamento de Pacotes do Roteador
+O tópico anterior discutiu tabelas de roteamento de host. A maioria das redes também contém roteadores, que são dispositivos intermediários. Os roteadores também contêm tabelas de roteamento. Este tópico aborda as operações do roteador na camada de rede. Quando um host envia um pacote para outro host, ele consulta sua tabela de roteamento para determinar para onde enviar o pacote. Se o host de destino estiver em uma rede remota, o pacote será encaminhado para o gateway padrão, que geralmente é o roteador local.
+
+O que acontece quando um pacote chega em uma interface de roteador?
+
+O roteador examina o endereço IP de destino do pacote e pesquisa sua tabela de roteamento para determinar para onde encaminhar o pacote. A tabela de roteamento contém uma lista de todos os endereços de rede conhecidos (prefixos) e para onde encaminhar o pacote. Essas entradas são conhecidas como entradas de rota ou rotas. O roteador encaminhará o pacote usando a melhor (mais longa) entrada de rota correspondente.
+
+ Decisão de Encaminhamento de Pacotes do Roteador
+O tópico anterior discutiu tabelas de roteamento de host. A maioria das redes também contém roteadores, que são dispositivos intermediários. Os roteadores também contêm tabelas de roteamento. Este tópico aborda as operações do roteador na camada de rede. Quando um host envia um pacote para outro host, ele consulta sua tabela de roteamento para determinar para onde enviar o pacote. Se o host de destino estiver em uma rede remota, o pacote será encaminhado para o gateway padrão, que geralmente é o roteador local.
+
+O que acontece quando um pacote chega em uma interface de roteador?
+
+O roteador examina o endereço IP de destino do pacote e pesquisa sua tabela de roteamento para determinar para onde encaminhar o pacote. A tabela de roteamento contém uma lista de todos os endereços de rede conhecidos (prefixos) e para onde encaminhar o pacote. Essas entradas são conhecidas como entradas de rota ou rotas. O roteador encaminhará o pacote usando a melhor (mais longa) entrada de rota correspondente.
+
+Tabela de roteamento do roteador IP
+A tabela de roteamento do roteador contém entradas de rota de rede listando todos os possíveis destinos de rede conhecidos.
+
+A tabela de roteamento armazena três tipos de entradas de rota:
+
+Redes conectadas diretamente - Essas entradas de rota de rede são interfaces de roteador ativas. Os roteadores adicionam uma rota conectada diretamente quando uma interface é configurada com um endereço IP e é ativada. Cada interface do roteador está conectada a um segmento de rede diferente. Na figura, as redes conectadas diretamente na tabela de roteamento R1 IPv4 seriam 192.168.10.0/24 e 209.165.200.224/30.
+Redes remotas - Essas entradas de rota de rede são conectadas a outros roteadores. Os roteadores aprendem sobre redes remotas sendo explicitamente configurados por um administrador ou trocando informações de rota usando um protocolo de roteamento dinâmico. Na figura, a rede remota na tabela de roteamento R1 IPv4 seria 10.1.1.0/24.
+Rota padrão – Como um host, a maioria dos roteadores também inclui uma entrada de rota padrão, um gateway de último recurso. A rota padrão é usada quando não há correspondência melhor (mais) na tabela de roteamento IP. Na figura, a tabela de roteamento R1 IPv4 provavelmente incluiria uma rota padrão para encaminhar todos os pacotes para o roteador R2.
+
+R1 tem duas redes conectadas diretamente:
+
+192.168.10.0/24
+209.165.200.224/30
+R1 também possui redes remotas (ou seja, 10.1.1.0/24 e a Internet) sobre as quais pode aprender.
+
+Um roteador pode aprender sobre redes remotas de duas maneiras:
+
+Manualmente - As redes remotas são inseridas manualmente na tabela de rotas usando rotas estáticas.
+Dinamicamente - As rotas remotas são aprendidas automaticamente usando um protocolo de roteamento dinâmico.
+
+R1 é configurado manualmente com uma rota estática para alcançar a rede 10.1.1.0/24. Se esse caminho for alterado, R1 exigirá uma nova rota estática.
+
+Caso haja alteração na topologia da rede, a rota estática não é atualizada automaticamente e deve ser reconfigurada manualmente. Por exemplo, na figura R1 tem uma rota estática para alcançar a rede 10.1.1.0/24 via R2. Se esse caminho não estiver mais disponível, R1 precisaria ser reconfigurado com uma nova rota estática para a rede 10.1.1.0/24 via R3. Portanto, o roteador R3 precisaria ter uma entrada de rota em sua tabela de roteamento para enviar pacotes destinados a 10.1.1.0/24 para R2.
+
+Se a rota de R1 via R2 não estiver mais disponível, uma nova rota estática via R3 precisaria ser configurada. Uma rota estática não se ajusta automaticamente às alterações de topologia.
+
+O roteamento estático tem as seguintes características:
+
+Uma rota estática deve ser configurada manualmente.
+O administrador precisa reconfigurar uma rota estática se houver uma alteração na topologia e a rota estática não for mais viável.
+Uma rota estática é apropriada para uma rede pequena e quando há poucos ou nenhum link redundante.
+
+Roteamento Dinâmico
+Um protocolo de roteamento dinâmico permite que os roteadores aprendam automaticamente sobre redes remotas, incluindo uma rota padrão, de outros roteadores. Os roteadores que usam protocolos de roteamento dinâmico compartilham automaticamente as informações de roteamento com outros roteadores e compensam quaisquer alterações de topologia sem envolver o administrador da rede. Se houver uma mudança na topologia da rede, os roteadores compartilham essas informações usando o protocolo de roteamento dinâmico e atualizam automaticamente suas tabelas de roteamento.
+
+Os protocolos de roteamento dinâmico incluem Open Shortest Path First (OSPF) e Enhanced Interior Gateway Routing Protocol (EIGRP). A figura mostra um exemplo de roteadores R1 e R2 compartilhando automaticamente informações de rede usando o protocolo de roteamento OSPF.
+
+R1 está usando o protocolo de roteamento OSPF para informar R2 sobre a rede 192.168.10.0/24.
+R2 está usando o protocolo de roteamento OSPF para informar R1 sobre a rede 10.1.1.0/24.
+A configuração básica requer apenas que o administrador de rede habilite as redes conectadas diretamente no protocolo de roteamento dinâmico. O protocolo de roteamento dinâmico fará automaticamente o seguinte:
+
+Descubra redes remotas
+Manter informações de roteamento atualizadas
+Escolha o melhor caminho para as redes de destino
+Tente encontrar um novo melhor caminho se o caminho atual não estiver mais disponível
+Quando um roteador é configurado manualmente com uma rota estática ou aprende sobre uma rede remota dinamicamente usando um protocolo de roteamento dinâmico, o endereço da rede remota e o endereço do próximo salto são inseridos na tabela de roteamento IP. Conforme mostrado na figura, se houver uma alteração na topologia da rede, os roteadores se ajustarão automaticamente e tentarão encontrar um novo melhor caminho.
+
+R1, R2 e R3 estão usando o protocolo de roteamento dinâmico OSPF. Se houver uma alteração na topologia da rede, eles podem se ajustar automaticamente para encontrar um novo melhor caminho.
+
+Nota : É comum que alguns roteadores usem uma combinação de rotas estáticas e um protocolo de roteamento dinâmico.
+
+Tabelas de roteamento do roteador IPv4
+Este é um componente do reprodutor de mídia. Selecione o botão play/pause para assistir ou ouvir.
+Ao contrário de uma tabela de roteamento do computador host, não há cabeçalhos de coluna identificando as informações contidas na tabela de roteamento de um roteador. É importante aprender o significado dos diferentes itens incluídos em cada entrada da tabela de roteamento.
+
+Introdução a uma tabela de roteamento IPv4
+Observe na figura que R2 está conectado à internet. Portanto, o administrador configurou R1 com uma rota estática padrão enviando pacotes para R2 quando não há nenhuma entrada específica na tabela de roteamento que corresponda ao endereço IP de destino. R1 e R2 também estão usando roteamento OSPF para anunciar redes conectadas diretamente.
+
+
+R1# show ip route
+Codes: L - local, C - connected,
+ S - static
+, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, 
+* - candidate default
+, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+Gateway of last resort is 209.165.200.226 to network 0.0.0.0
+S*    0.0.0.0/0 [1/0] via 209.165.200.226, GigabitEthernet0/0/1
+      10.0.0.0/24 is subnetted, 1 subnets
+O        10.1.1.0 [110/2] via 209.165.200.226, 00:02:45, GigabitEthernet0/0/1
+      192.168.10.0/24 is variably  subnetted, 2 subnets, 2 masks
+C        192.168.10.1/24 is directly connected, GigabitEthernet0/0/0
+L        192.168.10.1/32 is directly connected, GigabitEthernet0/0/0
+      209.165.200.0/24 is variably  subnetted, 2 subnets, 2 masks
+C        209.165.200.224/30 is  directly connected, GigabitEthernet0/0/1
+L        209.165.200.225/32 is  directly connected, GigabitEthernet0/0/1
+R1#
+
+

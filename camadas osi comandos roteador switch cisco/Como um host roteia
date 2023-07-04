@@ -1,0 +1,71 @@
+Como um host roteia
+
+ Decisão de encaminhamento de host
+Com IPv4 e IPv6, os pacotes são sempre criados no host de origem. O host de origem deve ser capaz de direcionar o pacote para o host de destino. Para fazer isso, os dispositivos finais do host criam sua própria tabela de roteamento. Este tópico discute como os dispositivos finais usam tabelas de roteamento.
+
+Outra função da camada de rede é direcionar os pacotes entre os hosts. Um host pode enviar um pacote para o seguinte:
+
+Itself - Um host pode executar ping em si mesmo enviando um pacote para um endereço IPv4 especial de 127.0.0.1 ou um endereço IPv6 ::1, que é conhecido como interface de loopback. O ping da interface de loopback testa a pilha de protocolo TCP/IP no host.
+Host local - Este é um host de destino que está na mesma rede local que o host de envio. Os hosts de origem e destino compartilham o mesmo endereço de rede.
+Host remoto - Este é um host de destino em uma rede remota. Os hosts de origem e destino não compartilham o mesmo endereço de rede.
+A figura ilustra a conexão do PC1 a um host local na mesma rede e a um host remoto localizado em outra rede.
+
+Se um pacote é destinado a um host local ou a um host remoto é determinado pelo dispositivo final de origem. O dispositivo final de origem determina se o endereço IP de destino está na mesma rede em que o próprio dispositivo de origem está. O método de determinação varia de acordo com a versão do IP:
+
+Em IPv4 - O dispositivo de origem usa sua própria máscara de sub-rede junto com seu próprio endereço IPv4 e o endereço IPv4 de destino para fazer essa determinação.
+Em IPv6 - O roteador local anuncia o endereço de rede local (prefixo) para todos os dispositivos na rede.
+Em uma rede doméstica ou comercial, você pode ter vários dispositivos com e sem fio interconectados usando um dispositivo intermediário, como um switch LAN ou um ponto de acesso sem fio (WAP). Este dispositivo intermediário fornece interconexões entre hosts locais na rede local. Os hosts locais podem se comunicar e compartilhar informações sem a necessidade de dispositivos adicionais. Se um host estiver enviando um pacote para um dispositivo configurado com a mesma rede IP do dispositivo host, o pacote é simplesmente encaminhado para fora da interface do host, por meio do dispositivo intermediário e diretamente para o dispositivo de destino.
+
+Obviamente, na maioria das situações, queremos que nossos dispositivos possam se conectar além do segmento de rede local, como outras residências, empresas e a Internet. Os dispositivos que estão além do segmento de rede local são conhecidos como hosts remotos. Quando um dispositivo de origem envia um pacote para um dispositivo de destino remoto, é necessária a ajuda de roteadores e roteamento. Roteamento é o processo de identificar o melhor caminho para um destino. O roteador conectado ao segmento de rede local é chamado de gateway padrão.
+
+Gateway Padrão
+O gateway padrão é o dispositivo de rede (ou seja, roteador ou switch de Camada 3) que pode rotear o tráfego para outras redes. Se você usar a analogia de que uma rede é como uma sala, o gateway padrão é como uma porta. Se você quiser chegar a outra sala ou rede, precisará encontrar a porta.
+
+Em uma rede, um gateway padrão geralmente é um roteador com os seguintes recursos:
+
+Ele tem um endereço IP local no mesmo intervalo de endereços que outros hosts na rede local.
+Ele pode aceitar dados na rede local e encaminhar dados para fora da rede local.
+Ele roteia o tráfego para outras redes.
+Um gateway padrão é necessário para enviar tráfego para fora da rede local. O tráfego não pode ser encaminhado para fora da rede local se não houver gateway padrão, se o endereço do gateway padrão não estiver configurado ou se o gateway padrão estiver inativo.
+
+Um host roteia para o gateway padrão
+Uma tabela de roteamento de host geralmente inclui um gateway padrão. No IPv4, o host recebe o endereço IPv4 do gateway padrão dinamicamente do Dynamic Host Configuration Protocol (DHCP) ou configurado manualmente. No IPv6, o roteador anuncia o endereço do gateway padrão ou o host pode ser configurado manualmente.
+
+Na figura, PC1 e PC2 são configurados com o endereço IPv4 192.168.10.1 como gateway padrão.
+
+Ter um gateway padrão configurado cria uma rota padrão na tabela de roteamento do PC. Uma rota padrão é a rota ou caminho que seu computador seguirá ao tentar entrar em contato com uma rede remota.
+
+Tanto o PC1 quanto o PC2 terão uma rota padrão para enviar todo o tráfego destinado a redes remotas para R1.
+
+Tabelas de Roteamento de Host
+Em um host Windows, o comando route print ou netstat -r pode ser usado para exibir a tabela de roteamento do host. Ambos os comandos geram a mesma saída. A saída pode parecer impressionante no início, mas é bastante simples de entender.
+
+A figura exibe uma topologia de amostra e a saída gerada pelo comando netstat –r .
+
+Tabela de roteamento IPv4 para PC1
+C:\Users\PC1> netstat -r
+(output omitted)
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination         Netmask       Gateway       Interface    Metric
+          0.0.0.0           0.0.0.0   192.168.10.1   192.168.10.10       25
+        127.0.0.0         255.0.0.0       On-link        127.0.0.1      306
+        127.0.0.1   255.255.255.255       On-link        127.0.0.1      306
+  127.255.255.255   255.255.255.255       On-link        127.0.0.1      306
+     192.168.10.0     255.255.255.0       On-link    192.168.10.10      281
+    192.168.10.10   255.255.255.255       On-link    192.168.10.10      281
+   192.168.10.255   255.255.255.255       On-link    192.168.10.10      281
+        224.0.0.0         240.0.0.0       On-link        127.0.0.1      306
+        224.0.0.0         240.0.0.0       On-link    192.168.10.10      281
+  255.255.255.255   255.255.255.255       On-link        127.0.0.1      306
+  255.255.255.255   255.255.255.255       On-link    192.168.10.10      281
+(output omitted)
+Nota: A saída exibe apenas a tabela de rotas IPv4.
+
+Inserir o comando netstat -r ou o comando route print equivalente exibe três seções relacionadas às conexões de rede TCP/IP atuais:
+
+Lista de Interface - Lista o endereço Media Access Control (MAC) e o número de interface atribuído de cada interface com capacidade de rede no host, incluindo adaptadores Ethernet, Wi-Fi e Bluetooth.
+Tabela de rotas IPv4 - Lista todas as rotas IPv4 conhecidas, incluindo conexões diretas, rede local e rotas padrão locais.
+Tabela de rotas IPv6 - Lista todas as rotas IPv6 conhecidas, incluindo conexões diretas, rede local e rotas padrão locais.
+

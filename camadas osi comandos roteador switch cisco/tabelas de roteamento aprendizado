@@ -1,0 +1,15 @@
+tabelas de roteamento
+que aprendi neste módulo?
+Como um host roteia
+Um host pode enviar um pacote para si mesmo, outro host local e um host remoto. No IPv4, o dispositivo de origem usa sua própria máscara de sub-rede junto com seu próprio endereço IPv4 e o endereço IPv4 de destino para determinar se o host de destino está na mesma rede. No IPv6, o roteador local anuncia o endereço de rede local (prefixo) para todos os dispositivos na rede, para fazer essa determinação. O gateway padrão é o dispositivo de rede (ou seja, roteador) que pode rotear o tráfego para outras redes. Em uma rede, um gateway padrão geralmente é um roteador que possui um endereço IP local no mesmo intervalo de endereços que outros hosts na rede local, pode aceitar dados na rede local e encaminhar dados para fora da rede local e rotear o tráfego para outras redes. Uma tabela de roteamento de host geralmente inclui um gateway padrão. No IPv4, o host recebe o endereço IPv4 do gateway padrão dinamicamente via DHCP ou é configurado manualmente. No IPv6, o roteador anuncia o endereço do gateway padrão ou o host pode ser configurado manualmente. Em um host Windows, oO comando route print ou netstat -r pode ser usado para exibir a tabela de roteamento do host.
+
+Tabelas de roteamento
+Quando um host envia um pacote para outro host, ele consulta sua tabela de roteamento para determinar para onde enviar o pacote. Se o host de destino estiver em uma rede remota, o pacote será encaminhado para o gateway padrão, que geralmente é o roteador local. O que acontece quando um pacote chega em uma interface de roteador? O roteador examina o endereço IP de destino do pacote e pesquisa sua tabela de roteamento para determinar para onde encaminhar o pacote. A tabela de roteamento contém uma lista de todos os endereços de rede conhecidos (prefixos) e para onde encaminhar o pacote. Essas entradas são conhecidas como entradas de rota ou rotas. O roteador encaminhará o pacote usando a melhor (mais longa) entrada de rota correspondente.
+
+A tabela de roteamento de um roteador armazena três tipos de entradas de rota: redes conectadas diretamente, redes remotas e uma rota padrão. Os roteadores aprendem sobre redes remotas manualmente ou dinamicamente usando um protocolo de roteamento dinâmico. As rotas estáticas são entradas de rota configuradas manualmente. As rotas estáticas incluem o endereço de rede remota e o endereço IP do roteador do próximo salto. OSPF e EIGRP são dois protocolos de roteamento dinâmico. O comando do modo EXEC privilegiado show ip route é usado para exibir a tabela de roteamento IPv4 em um roteador Cisco IOS. No início de uma tabela de roteamento IPv4 há um código que é usado para identificar o tipo de rota ou como a rota foi aprendida. Fontes de rota comuns (códigos) incluem:
+
+L - Endereço IP da interface local conectada diretamente
+C - Rede conectada diretamente
+S - A rota estática foi configurada manualmente por um administrador
+O - Open Shortest Path First (OSPF)
+D - Enhanced Interior Gateway Routing Protocol (EIGRP)
