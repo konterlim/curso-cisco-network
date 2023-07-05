@@ -1,0 +1,87 @@
+Endereçamento Dinâmico para IPv6 GUAs
+
+Mensagens RS e RA
+Se você não deseja configurar GUAs IPv6 estaticamente, não precisa se preocupar. A maioria dos dispositivos obtém seus GUAs IPv6 dinamicamente. Este tópico explica como esse processo funciona usando as mensagens Router Advertisement (RA) e Router Solicitation (RS). Este tópico é bastante técnico, mas quando você entender a diferença entre os três métodos que um anúncio de roteador pode usar, bem como como o processo EUI-64 para criar um ID de interface difere de um processo gerado aleatoriamente, você terá feito um enorme dê um salto em sua experiência em IPv6!
+
+Para o GUA, um dispositivo obtém o endereço dinamicamente por meio de mensagens do Internet Control Message Protocol versão 6 (ICMPv6). Os roteadores IPv6 enviam periodicamente mensagens ICMPv6 RA, a cada 200 segundos, para todos os dispositivos habilitados para IPv6 na rede. Uma mensagem RA também será enviada em resposta a um host enviando uma mensagem ICMPv6 RS, que é uma solicitação de uma mensagem RA. Ambas as mensagens são mostradas na figura.
+
+As mensagens RS são enviadas para todos os roteadores IPv6 por hosts solicitando informações de endereçamento.
+As mensagens RA são enviadas para todos os nós IPv6. Se o Método 1 (somente SLAAC) for usado, o RA incluirá as informações de prefixo de rede, tamanho do prefixo e gateway padrão.
+As mensagens RA estão nas interfaces Ethernet do roteador IPv6. O roteador deve estar habilitado para roteamento IPv6, que não é habilitado por padrão. Para habilitar um roteador como um roteador IPv6, o comando de configuração global ipv6 unicast-routing deve ser usado.
+
+A mensagem ICMPv6 RA é uma sugestão para um dispositivo sobre como obter um IPv6 GUA. A decisão final cabe ao sistema operacional do dispositivo. A mensagem ICMPv6 RA inclui o seguinte:
+
+Prefixo da rede e comprimento do prefixo - informa ao dispositivo a qual rede ele pertence.
+Endereço de gateway padrão - Este é um IPv6 LLA, o endereço IPv6 de origem da mensagem RA.
+Endereços DNS e nome de domínio - Estes são os endereços dos servidores DNS e um nome de domínio.
+Existem três métodos para mensagens RA:
+
+Método 1: SLAAC - “Tenho tudo o que você precisa, incluindo o prefixo, o comprimento do prefixo e o endereço de gateway padrão.”
+Método 2: SLAAC com um servidor DHCPv6 sem estado - “Aqui estão minhas informações, mas você precisa obter outras informações, como endereços DNS de um servidor DHCPv6 sem estado.”
+Método 3: Stateful DHCPv6 (sem SLAAC) - “Posso fornecer seu endereço de gateway padrão. Você precisa solicitar a um servidor DHCPv6 com estado todas as suas outras informações.”
+
+
+O roteador envia uma mensagem RA com o prefixo do link local.
+O PC usa SLAAC para obter um prefixo da mensagem RA e cria seu próprio ID de interface.
+
+ Processo EUI-64
+IEEE definiu o Extended Unique Identifier (EUI) ou modificou o processo EUI-64. Esse processo usa o endereço MAC Ethernet de 48 bits de um cliente e insere outros 16 bits no meio do endereço MAC de 48 bits para criar um ID de interface de 64 bits.
+
+Os endereços Ethernet MAC geralmente são representados em hexadecimal e são compostos de duas partes:
+
+Organizationally Unique Identifier (OUI) - O OUI é um código de fornecedor de 24 bits (6 dígitos hexadecimais) atribuído pelo IEEE.
+Identificador do dispositivo - O identificador do dispositivo é um valor exclusivo de 24 bits (6 dígitos hexadecimais) dentro de um OUI comum.
+Um ID de interface EUI-64 é representado em binário e é composto de três partes:
+
+OUI de 24 bits do endereço MAC do cliente, mas o 7º bit (o bit universalmente/localmente (U/L)) é invertido. Isso significa que se o 7º bit for 0, ele se tornará 1 e vice-versa.
+O valor de 16 bits inserido fffe (em hexadecimal).
+Identificador de dispositivo de 24 bits do endereço MAC do cliente.
+O processo EUI-64 é ilustrado na figura, usando o endereço R1 GigabitEthernet MAC de fc99:4775:cee0.
+
+Passo 1: Divida o endereço MAC entre o OUI e o identificador do dispositivo.
+
+Passo 2: Insira o valor hexadecimal fffe, que em binário é: 1111 1111 1111 1110.
+
+Etapa 3: converta os 2 primeiros valores hexadecimais do OUI em binário e inverta o bit U/L (bit 7). Neste exemplo, o 0 no bit 7 é alterado para 1.
+
+O resultado é um ID de interface gerado por EUI-64 de fe99:47ff:fe75:cee0.
+
+Observação : o uso do bit U/L e os motivos para inverter seu valor são discutidos na RFC 5342.
+
+A saída de exemplo para o comando ipconfig mostra o IPv6 GUA sendo criado dinamicamente usando SLAAC e o processo EUI-64. Uma maneira fácil de identificar que um endereço provavelmente foi criado usando EUI-64 é observando o fffe localizado no meio do ID da interface.
+
+A vantagem do EUI-64 é que o endereço Ethernet MAC pode ser usado para determinar o ID da interface. Ele também permite que os administradores de rede rastreiem facilmente um endereço IPv6 para um dispositivo final usando o endereço MAC exclusivo. No entanto, isso causou preocupações de privacidade entre muitos usuários que temiam que seus pacotes pudessem ser rastreados até o computador físico real. Devido a essas preocupações, um ID de interface gerado aleatoriamente pode ser usado.
+
+ID da Interface Gerada EUI-64
+C:\> ipconfig
+Windows IP Configuration
+Ethernet adapter Local Area Connection:
+   Connection-specific DNS Suffix . :
+   IPv6 Address. . . . . . . . . . . : 
+2001:db8:acad:1:
+fc99:47
+ff:fe
+75:cee0
+   Link-local IPv6 Address . . . . . : fe80::fc99:47ff:fe75:cee0
+   Default Gateway . . . . . . . . . : fe80::1
+C:\>
+
+IDs de interface gerados aleatoriamente
+Dependendo do sistema operacional, um dispositivo pode usar um ID de interface gerado aleatoriamente em vez de usar o endereço MAC e o processo EUI-64. A partir do Windows Vista, o Windows usa um ID de interface gerado aleatoriamente em vez de um criado com EUI-64. Windows XP e sistemas operacionais Windows anteriores usavam EUI-64.
+
+Após o ID da interface ser estabelecido, seja pelo processo EUI-64 ou por geração aleatória, ele pode ser combinado com um prefixo IPv6 na mensagem RA para criar um GUA, conforme mostrado na figura.
+
+ID de interface gerado aleatoriamente de 64 bits
+C:\> ipconfig
+Windows IP Configuration
+Ethernet adapter Local Area Connection:
+   Connection-specific DNS Suffix  . :
+   IPv6 Address. . . . . . . . . . . : 
+2001:db8:acad:1:
+50a5:8a35:a5bb:66e1
+   Link-local IPv6 Address . . . . . : fe80::50a5:8a35:a5bb:66e1
+   Default Gateway . . . . . . . . . : fe80::1
+C:\>
+
+Observação : para garantir a exclusividade de qualquer endereço unicast IPv6, o cliente pode usar um processo conhecido como detecção de endereço duplicado (DAD). Isso é semelhante a uma solicitação ARP para seu próprio endereço. Se não houver resposta, o endereço é único.
+

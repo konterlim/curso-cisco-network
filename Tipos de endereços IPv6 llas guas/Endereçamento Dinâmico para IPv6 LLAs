@@ -1,0 +1,128 @@
+ Endereçamento Dinâmico para IPv6 LLAs e comandos 
+
+ O comando show ipv6 interface brief exibe o endereço IPv6 das interfaces Ethernet. O EUI-64 usa esse endereço MAC para gerar o ID da interface para o LLA. Além disso, o comando show ipv6 interface brief exibe a saída abreviada para cada uma das interfaces. A saída [up/up] na mesma linha da interface indica o estado da interface da Camada 1/Camada 2. Isso é o mesmo que as colunas Status e Protocol no comando IPv4 equivalente.
+
+Observe que cada interface possui dois endereços IPv6. O segundo endereço para cada interface é o GUA que foi configurado. O primeiro endereço, aquele que começa com fe80, é o endereço unicast local de link para a interface. Lembre-se de que o LLA é adicionado automaticamente à interface quando um GUA é atribuído.
+
+Além disso, observe que o R1 Serial 0/1/0 LLA é o mesmo que sua interface GigabitEthernet 0/0/0. As interfaces seriais não têm endereços Ethernet MAC, portanto, o Cisco IOS usa o endereço MAC da primeira interface Ethernet disponível. Isso é possível porque as interfaces locais de link só precisam ser exclusivas nesse link.
+
+O comando show ipv6 interface brief em R1
+
+                
+R1# show ipv6 interface brief
+GigabitEthernet0/0/0   [up/up]
+    FE80::1:1
+    2001:DB8:ACAD:1::1
+GigabitEthernet0/0/1   [up/up]
+    FE80::1:2
+    2001:DB8:ACAD:2::1
+Serial0/1/0            [up/up]
+    FE80::1:3
+    2001:DB8:ACAD:3::1
+Serial0/1/1            [down/down]
+unassigned
+R1#
+
+
+Conforme mostrado no exemplo, o comando show ipv6 route pode ser usado para verificar se as redes IPv6 e os endereços de interface IPv6 específicos foram instalados na tabela de roteamento IPv6. O comando show ipv6 route exibirá apenas redes IPv6, não redes IPv4.
+
+Dentro da tabela de rotas, um C ao lado de uma rota indica que esta é uma rede conectada diretamente. Quando a interface do roteador é configurada com um GUA e está no estado “up/up”, o prefixo IPv6 e o ​​comprimento do prefixo são adicionados à tabela de roteamento IPv6 como uma rota conectada.
+
+Nota : O L indica uma rota local, o endereço IPv6 específico atribuído à interface. Este não é um LLA. Os LLAs não são incluídos na tabela de roteamento do roteador porque não são endereços roteáveis.
+
+O IPv6 GUA configurado na interface também é instalado na tabela de roteamento como uma rota local. A rota local tem um prefixo /128. As rotas locais são usadas pela tabela de roteamento para processar com eficiência pacotes com um endereço de destino do endereço da interface do roteador.
+
+O comando show ipv6 route em R1
+
+                
+R1# show ipv6 route
+IPv6 Routing Table - default - 7 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+ 
+C   2001:DB8:ACAD:1::/64 [0/0]
+     via GigabitEthernet0/0/0, directly connected
+L   2001:DB8:ACAD:1::1/128 [0/0]
+     via GigabitEthernet0/0/0, receive
+C   2001:DB8:ACAD:2::/64 [0/0]
+     via GigabitEthernet0/0/1, directly connected
+L   2001:DB8:ACAD:2::1/128 [0/0]
+     via GigabitEthernet0/0/1, receive
+C   2001:DB8:ACAD:3::/64 [0/0]
+     via Serial0/1/0, directly connected
+L   2001:DB8:ACAD:3::1/128 [0/0]
+     via Serial0/1/0, receive
+L   FF00::/8 [0/0]
+     via Null0, receive
+R1#
+
+O comando ping para IPv6 é idêntico ao comando usado com IPv4, exceto que um endereço IPv6 é usado. Conforme mostrado no exemplo, o comando é usado para verificar a conectividade da Camada 3 entre R1 e PC1. Ao efetuar ping de um LLA de um roteador, o Cisco IOS solicitará ao usuário a interface de saída. Como o LLA de destino pode estar em um ou mais de seus links ou redes, o roteador precisa saber para qual interface enviar o ping.
+
+O comando ping em R1
+
+                
+R1# ping 2001:db8:acad:1::10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:1::10, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R1#
+
+
+Verificador de sintaxe - Verifique a configuração do endereço IPv6
+Use os comandos show para verificar a configuração do endereço IPv6 nas interfaces do roteador R1.
+
+Digite o comando show que exibirá um breve resumo do status da interface IPv6.
+
+R1#
+mostrar resumo da interface ipv6
+GigabitEthernet0/0/0 [para cima/para cima]
+    FE80::1:1
+    2001:DB8:ACAD:1::1
+GigabitEthernet0/0/1 [para cima/para cima]
+    FE80::2:1
+    2001:DB8:ACAD:2::1
+Serial0/1/0 [para cima/para cima]
+    FE80::3:1
+    2001:DB8:ACAD:3::1
+Serial0/1/1 [para baixo/para baixo]
+    não atribuído
+GigabitEthernet0 [administrativamente inativo/inativo]
+    não atribuído
+Verifique a conectividade de R1 para PC2 em 2001:db8:acad:1::10.
+
+R1#
+mostrar rota ipv6
+Tabela de roteamento IPv6 - padrão - 7 entradas
+Códigos: C - Conectado, L - Local, S - Estático, U - Rota estática por usuário
+       B - BGP, HA - Home Agent, MR - Mobile Router, R - RIP
+       H - NHRP, I1 - ISIS L1, I2 - ISIS L2, IA - interárea ISIS
+       IS - resumo ISIS, D - EIGRP, EX - EIGRP externo, NM - NEMO
+       ND - ND Padrão, NDp - ND Prefixo, DCE - Destino, NDr - Redirecionamento
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2, la - LISP alt
+       lr - registros de sites LISP, ld - LISP dyn-eid, a - Aplicativo
+C 2001:DB8:ACAD:1::/64 [0/0]
+     via GigabitEthernet0/0, conectado diretamente
+L 2001:DB8:ACAD:1::1/128 [0/0]
+     via GigabitEthernet0/0, receba
+C 2001:DB8:ACAD:2::/64 [0/0]
+     via GigabitEthernet0/1, conectado diretamente
+L 2001:DB8:ACAD:2::1/128 [0/0]
+     via GigabitEthernet0/1, receba
+C 2001:DB8:ACAD:3::/64 [0/0]
+     via Serial0/0/1, conectado diretamente
+L 2001:DB8:ACAD:3::1/128 [0/0]
+     via Serial0/0/1, receba
+L FF00::/8 [0/0]
+     via Null0, receber
+R1#
+ping 2001:db8:acad:1::10
+Digite a sequência de escape para abortar.
+Enviando 5 ecos ICMP de 100 bytes para 2001:DB8:ACAD:1::10, o tempo limite é de 2 segundos:
+!!!!!
+A taxa de sucesso é de 100 por cento (5/5), ida e volta min/avg/max = 1/1/1 ms
+Você verificou com sucesso a configuração do endereço IPv6.
+
+
+copy running-config startup-config
+

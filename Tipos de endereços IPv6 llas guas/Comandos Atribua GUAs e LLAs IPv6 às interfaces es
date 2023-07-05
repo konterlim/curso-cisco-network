@@ -1,0 +1,43 @@
+Comandos Atribua GUAs e LLAs IPv6 às interfaces especificadas no roteador R1.
+
+Configure and activate IPv6 on the GigabitEthernet 0/0/0 interface with the following addresses:
+
+Use g0/0/0 as the interface name
+LLA - fe80::1:1
+GUA - 2001:db8:acad:1::1/64
+Activate the interface
+Exit interface configuration mode
+R1(config)#interface g0/0/0
+R1(config-if)#ipv6 address fe80::1:1 link-local
+R1(config-if)#ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)#no shutdown
+%LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up
+R1(config-if)#exit
+Configure and activate IPv6 on the Gigabit Ethernet 0/0/1 interface with the following addresses:
+
+Use g0/0/1 as the interface name
+LLA - fe80::2:1
+GUA - 2001:db8:acad:2::1/64
+Activate the interface
+Exit interface configuration mode
+R1(config)#interface g0/0/1
+R1(config-if)#ipv6 address fe80::2:1 link-local
+R1(config-if)#ipv6 address 2001:db8:acad:2::1/64
+R1(config-if)#no shutdown
+%LINK-3-UPDOWN: Interface GigabitEthernet0/0/1, changed state to up
+R1(config-if)#exit
+Configure and activate IPv6 on the serial 0/1/0 interface with the following addresses:
+
+Use s0/1/0 as the interface name
+LLA - fe80::3:1
+GUA - 2001:db8:acad:3::1/64
+Activate the interface
+Exit interface configuration mode
+R1(config)#interface s0/1/0
+R1(config-if)#ipv6 address fe80::3:1 link-local
+R1(config-if)#ipv6 address 2001:db8:acad:3::1/64
+R1(config-if)#no shutdown
+%LINK-3-UPDOWN: Interface Serial0/1/0, changed state to up
+R1(config-if)#exit
+R1(config)#
+You successfully configured IPv6 GUAs on the interfaces of router R1.

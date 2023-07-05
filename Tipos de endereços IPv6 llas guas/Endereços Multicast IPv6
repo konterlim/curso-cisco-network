@@ -1,0 +1,40 @@
+Endereços Multicast IPv6
+
+Endereços Multicast IPv6 Atribuídos
+Anteriormente neste módulo, você aprendeu que existem três grandes categorias de endereços IPv6: unicast, anycast e multicast. Este tópico apresenta mais detalhes sobre endereços multicast.
+
+Os endereços multicast IPv6 são semelhantes aos endereços multicast IPv4. Lembre-se de que um endereço multicast é usado para enviar um único pacote para um ou mais destinos (grupo multicast). Os endereços multicast IPv6 têm o prefixo ff00::/8.
+
+Nota : Os endereços multicast só podem ser endereços de destino e não endereços de origem.
+
+Existem dois tipos de endereços multicast IPv6:
+
+Endereços multicast conhecidos
+Endereços multicast de nó solicitado
+
+
+Endereços Multicast IPv6 Conhecidos
+Endereços multicast IPv6 conhecidos são atribuídos. Os endereços multicast atribuídos são endereços multicast reservados para grupos predefinidos de dispositivos. Um endereço multicast atribuído é um único endereço usado para alcançar um grupo de dispositivos executando um protocolo ou serviço comum. Endereços multicast atribuídos são usados ​​em contexto com protocolos específicos, como DHCPv6.
+
+Estes são dois grupos multicast designados por IPv6 comuns:
+
+ff02::1 Grupo multicast de todos os nós - Este é um grupo multicast ao qual todos os dispositivos habilitados para IPv6 se juntam. Um pacote enviado para este grupo é recebido e processado por todas as interfaces IPv6 do link ou rede. Isso tem o mesmo efeito que um endereço de broadcast em IPv4. A figura mostra um exemplo de comunicação usando o endereço multicast de todos os nós. Um roteador IPv6 envia mensagens ICMPv6 RA para o grupo multicast de todos os nós.
+ff02::2 All-routers multicast group - Este é um grupo multicast ao qual todos os roteadores IPv6 se juntam. Um roteador torna-se membro desse grupo quando é habilitado como um roteador IPv6 com o comando de configuração global ipv6 unicast-routing . Um pacote enviado para este grupo é recebido e processado por todos os roteadores IPv6 no link ou rede.
+
+Endereços multicast IPv6 de nós solicitados
+Um endereço multicast de nó solicitado é semelhante ao endereço multicast de todos os nós. A vantagem de um endereço multicast de nó solicitado é que ele é mapeado para um endereço Ethernet multicast especial. Isso permite que o NIC Ethernet filtre o quadro examinando o endereço MAC de destino sem enviá-lo ao processo IPv6 para verificar se o dispositivo é o destino pretendido do pacote IPv6.
+
+
+Existem três tipos de endereços IPv6: unicast, multicast e anycast. O IPv6 não usa a notação de máscara de sub-rede decimal com ponto. Como o IPv4, o comprimento do prefixo é representado em notação de barra e é usado para indicar a parte da rede de um endereço IPv6. Um endereço unicast IPv6 identifica exclusivamente uma interface em um dispositivo habilitado para IPv6. Os endereços IPv6 geralmente têm dois endereços unicast: GUA e LLA. Os endereços locais exclusivos IPv6 têm os seguintes usos: são usados ​​para endereçamento local dentro de um site ou entre um número limitado de sites, podem ser usados ​​para dispositivos que nunca precisarão acessar outra rede e não são roteados globalmente ou traduzidos para um endereço IPv6 global. Os endereços IPv6 globais unicast (GUAs) são globalmente exclusivos e roteáveis ​​na Internet IPv6. Esses endereços são equivalentes a endereços IPv4 públicos. Um GUA tem três partes: um prefixo de roteamento global, um ID de sub-rede e um ID de interface. Um endereço local de link IPv6 (LLA) permite que um dispositivo se comunique com outros dispositivos habilitados para IPv6 no mesmo link e somente nesse link (sub-rede). Os dispositivos podem obter um LLA de forma estática ou dinâmica.
+
+
+O comando Cisco IOS para configurar um endereço IPv4 em uma interface é ip address ip-address subnet-mask. Em contraste, o comando para configurar um IPv6 GUA em uma interface é ipv6 address ipv6-address/prefix-length. Assim como no IPv4, a configuração de endereços estáticos em clientes não é dimensionada para ambientes maiores. Por esse motivo, a maioria dos administradores de rede em uma rede IPv6 habilitará a atribuição dinâmica de endereços IPv6. Configurar o LLA manualmente permite criar um endereço reconhecível e fácil de lembrar. Normalmente, só é necessário criar LLAs reconhecíveis nos roteadores. Os LLAs podem ser configurados manualmente usando o comando ipv6 address ipv6-link-local-address link-local.
+
+
+Um dispositivo obtém um GUA dinamicamente por meio de mensagens ICMPv6. Os roteadores IPv6 enviam periodicamente mensagens ICMPv6 RA, a cada 200 segundos, para todos os dispositivos habilitados para IPv6 na rede. Uma mensagem RA também será enviada em resposta a um host enviando uma mensagem ICMPv6 RS, que é uma solicitação de uma mensagem RA. A mensagem ICMPv6 RA inclui: prefixo de rede e comprimento do prefixo, endereço de gateway padrão e os endereços DNS e nome de domínio. As mensagens RA têm três métodos: SLAAC, SLAAC com um servidor DHCPv6 sem estado e DHCPv6 com estado (sem SLAAC). Com SLAAC, o dispositivo cliente usa as informações na mensagem RA para criar seu próprio GUA porque a mensagem contém o prefixo e o ID da interface. Com SLAAC com DHCPv6 sem estado, a mensagem RA sugere que os dispositivos usem SLAAC para criar seu próprio IPv6 GUA, use o roteador LLA como o endereço de gateway padrão,
+
+Com o DHCPv6 com estado, o RA sugere que os dispositivos usem o roteador LLA como endereço de gateway padrão e o servidor DHCPv6 com estado para obter um GUA, um endereço de servidor DNS, nome de domínio e todas as outras informações necessárias. O ID da interface pode ser criado usando o processo EUI-64 ou um número de 64 bits gerado aleatoriamente. O processo EUIs usa o endereço MAC Ethernet de 48 bits do cliente e insere outros 16 bits no meio do endereço MAC para criar um ID de interface de 64 bits. Dependendo do sistema operacional, um dispositivo pode usar um ID de interface gerado aleatoriamente.
+
+
+
+

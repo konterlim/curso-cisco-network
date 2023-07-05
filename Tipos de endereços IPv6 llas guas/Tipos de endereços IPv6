@@ -1,0 +1,104 @@
+Tipos de endereços IPv6
+
+Unicast, Multicast, Anycast
+Assim como no IPv4, existem diferentes tipos de endereços IPv6. Na verdade, existem três grandes categorias de endereços IPv6:
+
+Unicast - Um endereço unicast IPv6 identifica exclusivamente uma interface em um dispositivo habilitado para IPv6.
+Multicast - Um endereço multicast IPv6 é usado para enviar um único pacote IPv6 para vários destinos.
+Anycast - Um endereço IPv6 anycast é qualquer endereço IPv6 unicast que pode ser atribuído a vários dispositivos. Um pacote enviado para um endereço anycast é roteado para o dispositivo mais próximo com esse endereço. Os endereços Anycast estão além do escopo deste curso.
+Ao contrário do IPv4, o IPv6 não possui um endereço de broadcast. No entanto, há um endereço multicast de todos os nós IPv6 que fornece essencialmente o mesmo resultado.
+
+ Comprimento do prefixo IPv6
+O prefixo, ou parte da rede, de um endereço IPv4 pode ser identificado por uma máscara de sub-rede decimal com ponto ou comprimento do prefixo (notação de barra). Por exemplo, um endereço IPv4 de 192.168.1.10 com máscara de sub-rede decimal com pontos 255.255.255.0 é equivalente a 192.168.1.10/24.
+
+No IPv6, é chamado apenas de comprimento do prefixo. O IPv6 não usa a notação de máscara de sub-rede decimal com ponto. Como o IPv4, o comprimento do prefixo é representado em notação de barra e é usado para indicar a parte da rede de um endereço IPv6.
+
+O comprimento do prefixo pode variar de 0 a 128. O comprimento do prefixo IPv6 recomendado para LANs e a maioria dos outros tipos de redes é /64, 
+
+O prefixo ou parte da rede do endereço tem 64 bits de comprimento, deixando outros 64 bits para o ID da interface (parte do host) do endereço.
+
+É altamente recomendável usar um ID de interface de 64 bits para a maioria das redes. Isso ocorre porque a autoconfiguração de endereço sem estado (SLAAC) usa 64 bits para o ID da interface. Também facilita a criação e o gerenciamento de sub-redes.
+
+O prefixo ou parte da rede do endereço tem 64 bits de comprimento, deixando outros 64 bits para o ID da interface (parte do host) do endereço.
+
+É altamente recomendável usar um ID de interface de 64 bits para a maioria das redes. Isso ocorre porque a autoconfiguração de endereço sem estado (SLAAC) usa 64 bits para o ID da interface. Também facilita a criação e o gerenciamento de sub-redes.
+
+Tipos de endereços Unicast IPv6
+Um endereço unicast IPv6 identifica exclusivamente uma interface em um dispositivo habilitado para IPv6. Um pacote enviado para um endereço unicast é recebido pela interface à qual foi atribuído esse endereço. Semelhante ao IPv4, um endereço IPv6 de origem deve ser um endereço unicast. O endereço IPv6 de destino pode ser unicast ou multicast. A figura mostra os diferentes tipos de endereços unicast IPv6.
+
+Endereços Unicast IPv6
+
+
+Ao contrário dos dispositivos IPv4 que possuem apenas um único endereço, os endereços IPv6 normalmente possuem dois endereços unicast:
+
+Global Unicast Address (GUA) - É semelhante a um endereço IPv4 público. Esses são endereços globalmente exclusivos e roteáveis ​​pela Internet. Os GUAs podem ser configurados estaticamente ou atribuídos dinamicamente.
+Link-Local Address (LLA) - Isso é necessário para todos os dispositivos habilitados para IPv6. Os LLAs são usados ​​para se comunicar com outros dispositivos no mesmo link local. Com IPv6, o termo link refere-se a uma sub-rede. Os LLAs estão confinados a um único link. Sua exclusividade só deve ser confirmada nesse link porque eles não são roteáveis além do link. Em outras palavras, os roteadores não encaminharão pacotes com origem de link local ou endereço de destino.
+
+Uma observação sobre o endereço local exclusivo
+Endereços locais exclusivos (faixa fc00::/7 a fdff::/7) ainda não são comumente implementados. Portanto, este módulo abrange apenas a configuração GUA e LLA. No entanto, endereços locais exclusivos podem eventualmente ser usados ​​para endereçar dispositivos que não devem ser acessíveis externamente, como servidores e impressoras internas.
+
+Os endereços locais exclusivos do IPv6 têm alguma semelhança com os endereços privados RFC 1918 para IPv4, mas existem diferenças significativas:
+
+Endereços locais exclusivos são usados ​​para endereçamento local dentro de um site ou entre um número limitado de sites.
+Endereços locais exclusivos podem ser usados ​​para dispositivos que nunca precisarão acessar outra rede.
+Endereços locais exclusivos não são roteados globalmente ou convertidos em um endereço IPv6 global.
+Observação : muitos sites também usam a natureza privada dos endereços RFC 1918 para tentar proteger ou ocultar sua rede de possíveis riscos de segurança. No entanto, esse nunca foi o uso pretendido dessas tecnologias, e o IETF sempre recomendou que os sites tomassem as devidas precauções de segurança em seu roteador voltado para a Internet.
+
+ IPv6 GUA
+Os endereços IPv6 globais unicast (GUAs) são globalmente exclusivos e roteáveis ​​na Internet IPv6. Esses endereços são equivalentes a endereços IPv4 públicos. O Internet Committee for Assigned Numbers and Numbers (ICANN), o operador da Internet Assigned Numbers Authority (IANA), aloca blocos de endereços IPv6 para os cinco RIRs. Atualmente, apenas GUAs com os três primeiros bits de 001 ou 2000::/3 estão sendo atribuídos, conforme mostrado na figura.
+
+A figura mostra o intervalo de valores para o primeiro hexteto onde o primeiro dígito hexadecimal para GUAs atualmente disponíveis começa com 2 ou 3. Isso é apenas 1/8 do espaço de endereço IPv6 total disponível, excluindo apenas uma parte muito pequena para outros tipos de endereços unicast e multicast.
+
+Nota : O endereço 2001:db8::/32 foi reservado para fins de documentação, incluindo o uso em exemplos
+
+Um GUA tem três partes:
+
+Prefixo de Roteamento Global
+ID da sub-rede
+ID da interface
+
+Estrutura IPv6 GUA
+Prefixo de Roteamento Global
+
+O prefixo de roteamento global é o prefixo, ou rede, parte do endereço atribuído pelo provedor, como um ISP, a um cliente ou site. Por exemplo, é comum que os ISPs atribuam um prefixo de roteamento global /48 a seus clientes. O prefixo de roteamento global geralmente varia dependendo das políticas do ISP.
+
+A figura anterior mostra um GUA usando um prefixo de roteamento global /48. Os prefixos /48 são um prefixo de roteamento global comum que é atribuído e será usado na maioria dos exemplos ao longo deste curso.
+
+Por exemplo, o endereço IPv6 2001:db8:acad::/48 possui um prefixo de roteamento global que indica que os primeiros 48 bits (3 hextetos) (2001:db8:acad) é como o ISP conhece esse prefixo (rede). Os dois pontos duplos (::) após o comprimento do prefixo /48 significa que o resto do endereço contém todos os 0s. O tamanho do prefixo de roteamento global determina o tamanho do ID da sub-rede.
+
+ID da sub-rede
+
+O campo ID da sub-rede é a área entre o prefixo de roteamento global e o ID da interface. Ao contrário do IPv4, em que você deve emprestar bits da parte do host para criar sub-redes, o IPv6 foi projetado tendo em mente as sub-redes. O ID da sub-rede é usado por uma organização para identificar sub-redes em seu site. Quanto maior o ID da sub-rede, mais sub-redes disponíveis.
+
+Nota : Muitas organizações estão recebendo um prefixo de roteamento global /32. Usar o prefixo /64 recomendado para criar um ID de interface de 64 bits deixa um ID de sub-rede de 32 bits. Isso significa que uma organização com um prefixo de roteamento global /32 e um ID de sub-rede de 32 bits terá 4,3 bilhões de sub-redes, cada uma com 18 quintilhões de dispositivos por sub-rede. São tantas sub-redes quanto endereços IPv4 públicos!
+
+O endereço IPv6 na figura anterior tem um prefixo de roteamento global /48, que é comum entre muitas redes corporativas. Isso torna especialmente fácil examinar as diferentes partes do endereço. Usando um comprimento de prefixo /64 típico, os primeiros quatro hextetos são para a parte de rede do endereço, com o quarto hexteto indicando o ID da sub-rede. Os quatro hextetos restantes são para o ID da interface.
+
+ID da interface
+
+O ID da interface IPv6 é equivalente à parte do host de um endereço IPv4. O termo ID de interface é usado porque um único host pode ter várias interfaces, cada uma com um ou mais endereços IPv6. A figura mostra um exemplo da estrutura de um IPv6 GUA. É altamente recomendável que, na maioria dos casos, as sub-redes /64 sejam usadas, o que cria um ID de interface de 64 bits. Um ID de interface de 64 bits permite 18 quintilhões de dispositivos ou hosts por sub-rede.
+
+Uma sub-rede ou prefixo /64 (prefixo de roteamento global + ID da sub-rede) deixa 64 bits para o ID da interface. Isso é recomendado para permitir que dispositivos habilitados para SLAAC criem seu próprio ID de interface de 64 bits. Também torna o desenvolvimento de um plano de endereçamento IPv6 simples e eficaz.
+
+Observação : Ao contrário do IPv4, no IPv6, os endereços de host all-0s e all-1s podem ser atribuídos a um dispositivo. O endereço all-1s pode ser usado porque os endereços de broadcast não são usados ​​no IPv6. O endereço all-0s também pode ser usado, mas é reservado como um endereço anycast de roteador de sub-rede e deve ser atribuído apenas a roteadores.
+
+IPv6 LLA
+Um endereço local de link IPv6 (LLA) permite que um dispositivo se comunique com outros dispositivos habilitados para IPv6 no mesmo link e somente nesse link (sub-rede). Pacotes com um LLA de origem ou destino não podem ser roteados além do link do qual o pacote se originou.
+
+O GUA não é um requisito. No entanto, toda interface de rede habilitada para IPv6 deve ter um LLA.
+
+Se um LLA não for configurado manualmente em uma interface, o dispositivo criará automaticamente o seu próprio sem se comunicar com um servidor DHCP. Os hosts habilitados para IPv6 criam um LLA IPv6 mesmo se o dispositivo não tiver sido atribuído a um endereço IPv6 unicast global. Isso permite que dispositivos habilitados para IPv6 se comuniquem com outros dispositivos habilitados para IPv6 na mesma sub-rede. Isso inclui a comunicação com o gateway padrão (roteador).
+
+LLAs IPv6 estão no intervalo fe80::/10. O /10 indica que os primeiros 10 bits são 1111 1110 10xx xxxx. O primeiro hexteto tem um intervalo de 1111 1110 10 00 0000 (fe80) a 1111 1110 10 11 1111 (febf).
+
+A figura mostra um exemplo de comunicação usando IPv6 LLAs. O PC pode se comunicar diretamente com a impressora usando os LLAs.
+
+Os roteadores usam o LLA dos roteadores vizinhos para enviar atualizações de roteamento.
+Os hosts usam o LLA de um roteador local como gateway padrão.
+Nota : Normalmente, é o LLA do roteador, e não o GUA, que é usado como gateway padrão para outros dispositivos no link.
+
+Há duas maneiras de um dispositivo obter um LLA:
+
+Estaticamente - Isso significa que o dispositivo foi configurado manualmente.
+Dinamicamente - Isso significa que o dispositivo cria seu próprio ID de interface usando valores gerados aleatoriamente ou usando o método Extended Unique Identifier (EUI), que usa o endereço de controle de acesso à mídia (MAC) do cliente junto com bits adicionais.
+
