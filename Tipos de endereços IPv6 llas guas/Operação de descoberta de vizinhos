@@ -1,0 +1,47 @@
+Operação de descoberta de vizinhos
+
+Mensagens de descoberta de vizinho IPv6
+O protocolo de descoberta de vizinho IPv6 às vezes é chamado de ND ou NDP. Neste curso, vamos nos referir a ele como ND. O ND fornece resolução de endereço, descoberta de roteador e serviços de redirecionamento para IPv6 usando ICMPv6. ICMPv6 ND usa cinco mensagens ICMPv6 para executar estes serviços:
+
+Mensagens de solicitação de vizinho
+Mensagens de anúncio do vizinho
+Mensagens de solicitação de roteador
+Mensagens de anúncio do roteador
+Redirecionar mensagem
+A solicitação de vizinho e as mensagens de anúncio de vizinho são usadas para mensagens de dispositivo para dispositivo, como resolução de endereço (semelhante ao ARP para IPv4). Os dispositivos incluem computadores host e roteadores.
+
+Solicitação de roteador e mensagens de anúncio de roteador são para troca de mensagens entre dispositivos e roteadores. Normalmente, a descoberta de roteador é usada para alocação de endereço dinâmico e autoconfiguração de endereço sem estado (SLAAC).
+
+Nota : A quinta mensagem ICMPv6 ND é uma mensagem de redirecionamento que é usada para uma melhor seleção do próximo salto. Isso está além do escopo deste curso.
+
+O IPv6 ND é definido no IETF RFC 4861
+
+
+Descoberta de vizinho IPv6 - resolução de endereço
+Assim como o ARP para IPv4, os dispositivos IPv6 usam IPv6 ND para determinar o endereço MAC de um dispositivo que possui um endereço IPv6 conhecido.
+
+Solicitação de vizinho ICMPv6 e mensagens de anúncio de vizinho são usadas para resolução de endereço MAC. Isso é semelhante às solicitações ARP e às respostas ARP usadas pelo ARP para IPv4. Por exemplo, suponha que o PC1 deseja executar ping no PC2 no endereço IPv6 2001:db8:acad::11. Para determinar o endereço MAC para o endereço IPv6 conhecido, o PC1 envia uma mensagem de solicitação de vizinho ICMPv6
+
+As mensagens de solicitação de vizinho ICMPv6 são enviadas usando endereços multicast Ethernet e IPv6 especiais. Isso permite que o NIC Ethernet do dispositivo receptor determine se a mensagem de solicitação de vizinho é para si mesmo sem ter que enviá-la ao sistema operacional para processamento.
+
+O PC2 responde à solicitação com uma mensagem de anúncio de vizinho ICMPv6 que inclui seu endereço MAC.
+
+
+Rede remota de descoberta de vizinho IPv6
+Na Parte 2 desta atividade, você executará etapas semelhantes às da parte anterior, exceto neste caso, o host de destino está em outra LAN. Observe como o processo Neighbor Discovery difere do processo que você observou na parte anterior. Preste muita atenção a algumas das etapas de endereçamento adicionais que ocorrem quando um dispositivo se comunica com outro que está em uma rede diferente.
+
+Etapa 1: Capturar eventos para comunicação remota.
+a.      Clique no botão Redefinir Simulação para limpar os eventos anteriores. Exiba e limpe todas as entradas na tabela de dispositivos vizinhos IPv6 como foi feito na parte anterior.
+
+b.      Verifique se apenas ICMPv6 e NDP estão listados nos Filtros da Lista de Eventos - Eventos Visíveis.
+
+c.      No prompt de comandos no PCA1, emita o comando ping –n 1 2001:db8:acad:2::a para executar ping no host PCB1.
+
+d.      Clique em Play (Hands Free) em PLAY CONTROLS fora do Simulation Panel. Se solicitado, clique em Exibir eventos anteriores na janela Buffer cheio -- Packet Tracer.
+
+e.      Quando o processo de ping estiver concluído, clique no quadrado na coluna Type para o primeiro evento, que deve ser ICMPv6 . Como a mensagem começa com esse evento, há apenas uma PDU de saída. Observe que faltam as informações da Camada 2, como no cenário anterior.
+
+Neighbor Discovery Operation
+IPv6 não usa ARP, ele usa o protocolo ND para resolver endereços MAC. O ND fornece resolução de endereço, descoberta de roteador e serviços de redirecionamento para IPv6 usando ICMPv6. ICMPv6 ND usa cinco mensagens ICMPv6 para executar estes serviços: solicitação de vizinho, anúncio de vizinho, solicitação de roteador, anúncio de roteador e redirecionamento. Assim como o ARP para IPv4, os dispositivos IPv6 usam IPv6 ND para resolver o endereço MAC de um dispositivo para um endereço IPv6 conhecido.
+
+
