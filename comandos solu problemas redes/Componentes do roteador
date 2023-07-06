@@ -1,0 +1,66 @@
+ Componentes do roteador
+Independentemente de sua função, tamanho ou complexidade, todos os modelos de roteadores são essencialmente computadores. Assim como computadores, tablets e dispositivos inteligentes, os roteadores também exigem o seguinte:
+
+Sistema operacional (SO)
+Unidade de processamento central (CPU)
+Memória de acesso aleatório (RAM)
+Memória somente leitura (ROM)
+Memória de acesso aleatório não volátil (NVRAM)
+Como todos os computadores, tablets e dispositivos inteligentes, os roteadores Cisco requerem uma CPU para executar as instruções do sistema operacional, como inicialização do sistema, funções de roteamento e funções de comutação.
+
+A CPU requer um sistema operacional para fornecer funções de roteamento e comutação. O Cisco Internetwork Operating System (IOS) é o software de sistema usado para a maioria dos dispositivos Cisco, independentemente do tamanho e tipo do dispositivo. Ele é usado para roteadores, switches LAN, pequenos pontos de acesso sem fio, grandes roteadores com dezenas de interfaces e muitos outros dispositivos.
+
+
+ Ligue o roteador
+Antes de iniciar a instalação de qualquer equipamento, é importante certificar-se de ler o guia de início rápido e outras documentações que acompanham o dispositivo. A documentação contém informações importantes sobre segurança e procedimentos.
+
+ Observe as mensagens de inicialização no laptop enquanto o roteador é inicializado.
+
+Mensagens de inicialização do roteador
+                
+Located isr4200-universalk9_ias.16.09.04.SPA.bin
+#################################################....
+(output omitted)
+ 
+Package header rev 3 structure detected
+IsoSize = 486723584
+Calculating SHA-1 hash...Validate package: SHA-1 hash:
+        calculated 4155409B:CC0DB23E:6D72A6AE:EA887F82:AC94DC6A
+        expected   4155409B:CC0DB23E:6D72A6AE:EA887F82:AC94DC6A
+RSA Signed RELEASE Image Signature Verification Successful.
+Image validated
+ 
+             Restricted Rights Legend
+ 
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+ 
+           Cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+ 
+ 
+ 
+Cisco IOS Software [Fuji], ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9_IAS-M), Version 16.9.4, RELEASE
+SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2019 by Cisco Systems, Inc.
+Compiled Thu 22-Aug-19 18:09 by mcpre
+ 
+(output omitted)
+
+Portas de Gerenciamento
+Semelhante a um switch Cisco, existem várias maneiras de acessar a interface de linha de comando em um roteador Cisco. Os métodos mais comuns são os seguintes:
+
+Console - usa uma conexão serial ou USB de baixa velocidade para fornecer conexão direta e acesso de gerenciamento fora de banda a um dispositivo Cisco.
+SSH - Método para acessar remotamente uma sessão CLI em uma interface de rede ativa, incluindo a interface de gerenciamento.
+Porta AUX - Usada para gerenciamento remoto do roteador usando uma linha telefônica dial-up e modem.
+A porta do console é uma porta física localizada no roteador. Ao usar o SSH, deve haver uma interface de rede ativa configurada com um endereço IP válido para a rede. Pode ser uma das interfaces de rede ativas usadas para tráfego de rede ou pode ser a interface de gerenciamento.
+
+Além dessas portas de gerenciamento, os roteadores também possuem interfaces de rede para receber e encaminhar pacotes IP. A maioria dos roteadores possui várias interfaces usadas para conectar-se a várias redes. Normalmente, as interfaces se conectam a vários tipos de redes, conforme mostrado na figura, o que significa que diferentes tipos de mídia e conectores são necessários.
+
+

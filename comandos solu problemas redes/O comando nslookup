@@ -1,0 +1,103 @@
+O comando nslookup
+Quando um dispositivo de rede está sendo configurado, um ou mais endereços de servidor DNS são fornecidos para que o cliente DNS possa usar para resolução de nomes. Normalmente, o ISP fornece os endereços a serem usados ​​para os servidores DNS. Quando um aplicativo de usuário solicita a conexão a um dispositivo remoto por nome, o cliente DNS solicitante consulta o servidor de nomes para resolver o nome em um endereço numérico.
+
+Os sistemas operacionais de computador também possuem um utilitário chamado nslookup que permite ao usuário consultar manualmente os servidores de nomes para resolver um determinado nome de host. Este utilitário também pode ser usado para solucionar problemas de resolução de nomes e para verificar o status atual dos servidores de nomes.
+
+Nesta figura, quando o comando nslookup é emitido, o servidor DNS padrão configurado para seu host é exibido. O nome de um host ou domínio pode ser inserido no prompt nslookup . O utilitário nslookup tem muitas opções disponíveis para testes extensivos e verificação do processo DNS.
+
+C:∖Users> nslookup
+Default Server:  dns-sj.cisco.com
+Address:  171.70.168.183
+> www.cisco.com
+Server:   dns-sj.cisco.com
+Address:  171.70.168.183
+Name:    origin-www.cisco.com
+Addresses:  2001:420:1101:1::a
+          173.37.145.84
+Aliases:  www.cisco.com
+> cisco.netacad.net
+Server:  dns-sj.cisco.com
+Address:  171.70.168.183
+Name:    cisco.netacad.net
+Address:  72.163.6.223
+>
+
+
+Pratique a digitação do comando nslookup no Windows e no Linux.
+
+No prompt de comando do Windows, digite o comando nslookup para iniciar uma consulta manual dos servidores de nomes.
+
+C:>
+nslookup
+Servidor Padrão: Desconhecido
+Endereço: 10.10.10.1
+A saída lista o nome e o endereço IP do servidor DNS configurado no cliente. Observe que o endereço do servidor DNS pode ser configurado manualmente ou aprendido dinamicamente por meio do DHCP. Agora você está no modo nslookup . Digite o nome de domínio www.cisco.com.
+
+www.cisco.com
+Servidor: Desconhecido
+Endereço: 10.10.10.1
+Resposta não autorizada:
+Nome: e2867.dsca.akamaiedge.net
+Endereços: 2600:1404:a:395::b33
+          2600:1404:a:38e::b33
+          172.230.155.162
+Aliases: www.cisco.com
+          www.cisco.com.akadns.net
+          wwwds.cisco.com.edgekey.net
+          wwwds.cisco.com.edgekey.net.globalredir.akadns.net
+A saída lista os endereços IP relacionados a www.cisco.com que o servidor 'e2867' possui atualmente em seu banco de dados. Observe que os endereços IPv6 também são listados. Além disso, são mostrados vários aliases que resolverão para www.cisco.com.
+
+Digite o comando exit para sair do modo nslookup e retornar à linha de comando do Windows.
+
+saída
+Você pode consultar diretamente os servidores DNS simplesmente adicionando o nome de domínio ao comando nslookup .
+
+Digite nslookup www.google.com .
+
+C:>
+nslookup www.google.com
+Servidor: Desconhecido
+Endereço: 10.10.10.1
+Resposta não autorizada:
+Nome: www.google.com
+Endereços: 2607:f8b0:4000:80f::2004
+          172.217.12.36
+ 
+ 
+===========================================
+Agora você está trabalhando no prompt de comando do Linux. O comando nslookup é o mesmo.
+
+Digite o comando nslookup para iniciar uma consulta manual dos servidores de nomes.
+Digite www.cisco.com no prompt >.
+Digite o comando exit para sair do modo nslookup e retornar à linha de comando do Linux.
+usuário@cisconetacad$
+nslookup
+Servidor: 127.0.1.1
+Endereço: 127.0.1.1#53
+www.cisco.com
+Resposta não autorizada:
+www.cisco.com nome canônico = www.cisco.com.akadns.net.
+www.cisco.com.akadns.net nome canônico = wwwds.cisco.com.edgekey.net.
+wwwds.cisco.com.edgekey.net nome canônico = wwwds.cisco.com.edgekey.net.globalredir.akadns.net.
+wwwds.cisco.com.edgekey.net.globalredir.akadns.net nome canônico = e144.dscb.akamaiedge.net.
+Nome: e144.dscb.akamaiedge.net
+Endereço: 23.60.112.170
+saída
+Como no Windows, você pode consultar diretamente os servidores DNS simplesmente adicionando o nome de domínio ao comando nslookup . Digite nslookup www.google.com .
+
+usuário@cisconetacad$
+nslookup www.google.com
+Servidor: 127.0.0.53
+Endereço: 127.0.0.53#53
+
+Resposta não autorizada:
+Nome: www.google.com
+Endereço: 172.217.6.164
+Nome: www.google.com
+Endereço: 2607:f8b0:4000:812::2004
+Você usou com êxito o comando nslookup para verificar o status dos nomes de domínio.
+
+nslookup 72.163.6.233
+
+
+As informações da tabela do cliente devem corresponder às informações do host local, que você pode ver usando o comando ipconfig /all . Além disso, o endereço IP no cliente deve estar na mesma rede que a interface LAN do roteador sem fio. A interface LAN do roteador sem fio deve ser definida como o gateway padrão. Se as informações de configuração do cliente não concordarem com as informações da tabela do cliente, o endereço deverá ser liberado ( ipconfig /release ) e renovado ( ipconfig /renew ) para formar uma nova ligação.

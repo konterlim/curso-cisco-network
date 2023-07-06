@@ -1,0 +1,18 @@
+Causas de problemas sem fio
+Se o cliente sem fio não conseguir se conectar ao AP, pode ser devido a problemas de conectividade sem fio. As comunicações sem fio dependem de sinais de radiofrequência (RF) para transportar dados. Muitos fatores podem afetar nossa capacidade de conectar hosts usando RF:
+
+Nem todos os padrões sem fio são compatíveis. O 802.11ac (banda de 5 GHz) não é compatível com os padrões 802.11b/g/n (banda de 2,4 GHz). Dentro da banda de 2,4 GHz, cada padrão usa uma tecnologia diferente. A menos que especificamente configurado, o equipamento em conformidade com um padrão pode não funcionar com o equipamento em conformidade com outro. Na figura, a rede de 2,4 GHz está configurada para suportar dispositivos legados.
+Cada conversa sem fio deve ocorrer em um canal separado e sem sobreposição. Alguns dispositivos AP podem ser configurados para selecionar o canal de throughput menos congestionado ou mais alto. Embora as configurações automáticas funcionem, a configuração manual do canal AP fornece maior controle e pode ser necessária em alguns ambientes.
+A força de um sinal de RF diminui com a distância. Se a força do sinal for muito baixa, os dispositivos não conseguirão associar e mover dados de forma confiável. O sinal pode cair. O utilitário do cliente NIC pode ser usado para exibir a intensidade do sinal e a qualidade da conexão.
+Os sinais de RF são suscetíveis a interferências de fontes externas, incluindo outros dispositivos funcionando na mesma frequência. Uma pesquisa no local deve ser usada para detectar isso.
+Os APs compartilham a largura de banda disponível entre os dispositivos. À medida que mais dispositivos se associam ao AP, a largura de banda de cada dispositivo individual diminui, causando problemas de desempenho da rede. A solução é reduzir o número de clientes sem fio usando cada canal.
+
+
+Erros de autenticação e associação
+As WLANs modernas incorporam várias tecnologias para ajudar a proteger os dados na WLAN. A configuração incorreta de qualquer um deles pode impedir a comunicação. Algumas das configurações mais comuns definidas incorretamente incluem SSID, autenticação e criptografia.
+
+O SSID é uma cadeia alfanumérica com distinção entre maiúsculas e minúsculas com até 32 caracteres. Deve combinar no AP e no cliente. Se o SSID for transmitido e detectado, isso não é um problema. Se o SSID não for transmitido, ele deve ser inserido manualmente no cliente. Se o cliente estiver configurado com o SSID errado, ele não se associará ao AP. Além disso, se estiver presente outro AP que transmitiu o SSID, o cliente pode associar-se automaticamente a ele.
+Na maioria dos APs, a autenticação aberta é configurada por padrão, permitindo que todos os dispositivos se conectem. Se for configurada uma forma de autenticação mais segura, é necessária uma chave. Tanto o cliente quanto o AP devem ser configurados com a mesma chave. Se as chaves não corresponderem, a autenticação falhará e os dispositivos não serão associados.
+Criptografia é o processo de alterar os dados para que não possam ser usados ​​por ninguém sem a chave de criptografia adequada. Se a criptografia estiver habilitada, a mesma chave de criptografia deve ser configurada no AP e no cliente. Se o cliente se associar ao AP, mas não puder enviar ou receber dados, o problema pode ser a chave de criptografia.
+
+

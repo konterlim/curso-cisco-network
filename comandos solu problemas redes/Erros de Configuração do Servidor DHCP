@@ -1,0 +1,39 @@
+Erros de Configuração do Servidor DHCP
+Se a conexão física com o host com ou sem fio parece estar se conectando conforme o esperado, mas o host não consegue se comunicar em redes remotas ou na Internet, verifique a configuração de IP do cliente.
+
+A configuração de IP pode ter um grande impacto na capacidade de um host se conectar à rede. Um roteador sem fio atua como um servidor DHCP para clientes locais com e sem fio e fornece configuração de IP, incluindo o endereço IP, máscara de sub-rede, gateway padrão e geralmente os endereços IP dos servidores DNS. O servidor DHCP vincula o endereço IP a um endereço MAC do cliente e armazena essas informações em uma tabela do cliente. Geralmente é possível visualizar esta tabela usando a GUI de configuração incluída no roteador.
+
+As informações da tabela do cliente devem corresponder às informações do host local, que você pode ver usando o comando ipconfig /all . Além disso, o endereço IP no cliente deve estar na mesma rede que a interface LAN do roteador sem fio. A interface LAN do roteador sem fio deve ser definida como o gateway padrão. Se as informações de configuração do cliente não concordarem com as informações da tabela do cliente, o endereço deverá ser liberado ( ipconfig /release ) e renovado ( ipconfig /renew ) para formar uma nova ligação.
+
+Na maioria dos casos, o roteador sem fio recebe seu próprio endereço IP por DHCP do ISP. Certifique-se de que o roteador tenha um endereço IP e tente liberar e renovar o endereço usando o utilitário GUI.
+
+Verifique a configuração da Internet
+Se os hosts na rede local com e sem fio puderem se conectar ao roteador sem fio e a outros hosts na rede local, mas não à Internet, conforme mostrado no exemplo, o problema pode estar na conexão entre o roteador e o ISP.
+
+C:∖> ping 10.18.32.12
+Pinging 10.18.32.12 with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.18.32.12:
+     Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+     Há muitas maneiras de verificar a conectividade entre o roteador e o ISP. Usando a GUI, uma maneira de verificar a conectividade é examinar a página de status do roteador. Conforme mostrado na figura, deve mostrar o endereço IP atribuído pelo ISP (64.100.0.11 neste exemplo).
+
+     Se esta página não mostrar nenhuma conexão, o roteador sem fio pode não estar conectado. Verifique todas as conexões físicas e indicadores de LED. Se o modem DSL ou a cabo for um dispositivo separado, verifique também essas conexões e indicadores. Se o ISP exigir um nome de login ou senha, verifique se eles estão configurados para corresponder aos fornecidos pelo ISP. Usando a GUI, as configurações de senha normalmente podem ser localizadas na página de configuração do Setup. Em seguida, tente restabelecer a conectividade clicando no botão Conectar ou renovação de endereço IP na página de status. Se o roteador sem fio ainda não se conectar, entre em contato com o ISP para verificar se o problema está ocorrendo do lado dele.
+
+     Verifique as configurações do firewall
+Se todas as camadas 1 a 3 parecem estar operando normalmente e você pode executar ping com sucesso no endereço IP do servidor remoto, é hora de verificar as camadas superiores. Por exemplo, se um firewall de rede for usado ao longo do caminho, é importante verificar se a porta TCP ou UDP do aplicativo está aberta e se nenhuma lista de filtros está bloqueando o tráfego para essa porta.
+
+Se todos os clientes estiverem obtendo a configuração de IP correta e puderem se conectar ao roteador sem fio, mas não conseguirem fazer ping entre si ou não puderem acessar um servidor ou aplicativo remoto, o problema pode estar nas regras do roteador. Verifique todas as configurações do roteador para garantir que nenhuma restrição de segurança possa estar causando o problema. Verifique se os firewalls locais nos dispositivos cliente não estão impedindo a funcionalidade da rede.
+
+Dividir e conquistar com ping
+Problemas de conectividade ocorrem em redes sem fio, redes com fio e redes que usam ambas. Ao solucionar problemas de uma rede com conexões com fio e sem fio, geralmente é melhor solucionar problemas usando uma técnica de dividir e conquistar para isolar o problema na rede com fio ou sem fio. A maneira mais fácil de determinar se o problema está na rede com ou sem fio é fazer o seguinte:
+
+Faça ping de um cliente sem fio para o gateway padrão. Isso verifica se o cliente sem fio está se conectando conforme o esperado.
+Faça ping de um cliente com fio para o gateway padrão. Isso verifica se o cliente com fio está se conectando conforme o esperado.
+Faça ping do cliente sem fio para um cliente com fio. Isso verifica se o roteador sem fio está funcionando conforme o esperado.
+Depois que o problema é isolado, ele pode ser corrigido.
+

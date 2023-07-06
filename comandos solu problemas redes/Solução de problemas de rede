@@ -1,0 +1,97 @@
+Solução de problemas de rede
+
+Visão geral da solução de problemas de rede
+A solução de problemas é o processo de identificar, localizar e corrigir problemas. Indivíduos experientes geralmente confiam no instinto para solucionar problemas. No entanto, existem técnicas estruturadas que podem ser usadas para determinar a causa e a solução mais prováveis.
+
+Ao solucionar problemas, a documentação adequada deve ser mantida. Esta documentação deve incluir o máximo de informações possível sobre o seguinte:
+
+O problema encontrado
+Etapas tomadas para determinar a causa do problema
+Etapas para corrigir o problema e garantir que ele não ocorra novamente
+Documente todas as etapas realizadas na solução de problemas, mesmo aquelas que não resolveram o problema. Esta documentação torna-se uma referência valiosa caso o mesmo problema ou um problema semelhante ocorra novamente. Mesmo em uma pequena rede doméstica, uma boa documentação economiza horas tentando lembrar como um problema foi corrigido no passado
+
+Coletar informações
+Quando um problema é descoberto pela primeira vez na rede, é importante verificá-lo e determinar quanto da rede é afetado por ele. Depois que o problema for confirmado, a primeira etapa na solução de problemas é coletar informações. A lista de verificação a seguir fornece algumas das informações importantes que você deve verificar.
+
+Natureza do problema
+
+Relatórios do usuário final
+Relatório de verificação do problema
+Equipamento
+
+Fabricante
+Marca / modelo
+Versão do firmware
+Versão do sistema operacional
+Informações sobre propriedade/garantia
+Configuração e Topologia
+
+Topologia física e lógica
+Arquivos de configuração
+Arquivos de registro
+Solução de problemas anterior
+
+Passos dados
+Resultados Alcançados
+Uma das primeiras formas de coletar informações é questionar o indivíduo que relatou o problema, bem como quaisquer outros usuários afetados. As perguntas podem incluir experiências do usuário final, sintomas observados, mensagens de erro e informações sobre alterações recentes na configuração de dispositivos ou aplicativos.
+
+Em seguida, colete informações sobre qualquer equipamento que possa ser afetado. Isso pode ser obtido a partir da documentação. Também é necessária uma cópia de todos os arquivos de log e uma listagem de quaisquer alterações recentes feitas nas configurações do equipamento. Os arquivos de log são gerados pelo próprio equipamento e geralmente podem ser obtidos através do software de gerenciamento. Outras informações sobre o equipamento incluem o fabricante, marca e modelo dos dispositivos afetados, bem como informações sobre propriedade e garantia. A versão de qualquer firmware ou software no dispositivo também é importante porque pode haver problemas de compatibilidade com plataformas de hardware específicas.
+
+Informações sobre a rede também podem ser coletadas usando ferramentas de monitoramento de rede. As ferramentas de monitoramento de rede são aplicativos complexos frequentemente usados ​​em grandes redes para coletar continuamente informações sobre o estado da rede e dos dispositivos de rede. Essas ferramentas podem não estar disponíveis para redes menores.
+
+Depois que todas as informações necessárias forem coletadas, inicie o processo de solução de problemas
+
+
+Métodos estruturados de solução de problemas
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Existem várias abordagens de solução de problemas estruturadas que podem ser usadas. Qual usar vai depender da situação. Cada abordagem tem suas vantagens e desvantagens. Este tópico descreve métodos e fornece diretrizes para escolher o melhor método para uma situação específica.
+
+Clique em cada botão para obter uma descrição das diferentes abordagens de solução de problemas que podem ser usadas.
+
+Baixo para cima
+Na solução de problemas de baixo para cima, você começa com a camada física e os componentes físicos da rede, conforme mostrado na figura, e avança pelas camadas do modelo OSI até que a causa do problema seja identificada.
+
+A solução de problemas de baixo para cima é uma boa abordagem a ser usada quando se suspeita que o problema seja físico. A maioria dos problemas de rede reside nos níveis mais baixos, portanto, a implementação da abordagem de baixo para cima costuma ser eficaz.
+
+A desvantagem da abordagem de solução de problemas de baixo para cima é que ela requer que você verifique cada dispositivo e interface na rede até que a possível causa do problema seja encontrada. Lembre-se de que cada conclusão e possibilidade deve ser documentada para que haja muito trabalho de papel associado a essa abordagem. Um outro desafio é determinar quais dispositivos começar a examinar primeiro.
+
+A figura mostra a abordagem de baixo para cima para solução de problemas com o modelo OSI. A figura mostra o modelo OSI de cinco camadas, física, enlace de dados, rede, transporte e aplicação com setas apontando para cima entre cada camada. Uma seta apontada para a camada física indica para começar na camada física e trabalhar o modelo OSI ao solucionar problemas usando a abordagem de baixo para cima.
+
+Baixo para cima
+Na solução de problemas de baixo para cima, você começa com a camada física e os componentes físicos da rede, conforme mostrado na figura, e avança pelas camadas do modelo OSI até que a causa do problema seja identificada.
+
+A solução de problemas de baixo para cima é uma boa abordagem a ser usada quando se suspeita que o problema seja físico. A maioria dos problemas de rede reside nos níveis mais baixos, portanto, a implementação da abordagem de baixo para cima costuma ser eficaz.
+
+A desvantagem da abordagem de solução de problemas de baixo para cima é que ela requer que você verifique cada dispositivo e interface na rede até que a possível causa do problema seja encontrada. Lembre-se de que cada conclusão e possibilidade deve ser documentada para que haja muito trabalho de papel associado a essa abordagem. Um outro desafio é determinar quais dispositivos começar a examinar primeiro.
+
+
+Careca
+Conforme mostrado na figura, a solução de problemas de cima para baixo começa com os aplicativos do usuário final e avança pelas camadas do modelo OSI até que a causa do problema seja identificada.
+
+Os aplicativos de usuário final de um sistema final são testados antes de abordar as peças de rede mais específicas. Use essa abordagem para problemas mais simples ou quando achar que o problema está em um software.
+
+A desvantagem da abordagem de cima para baixo é que ela exige a verificação de todos os aplicativos de rede até que a possível causa do problema seja encontrada. Cada conclusão e possibilidade deve ser documentada. O desafio é determinar qual aplicativo começar a examinar primeiro.
+
+
+
+Dividir e conquistar
+A figura mostra a abordagem de dividir e conquistar para solucionar um problema de rede.
+
+O administrador de rede seleciona uma camada e testa em ambas as direções dessa camada.
+
+Na solução de problemas de dividir e conquistar, você começa coletando as experiências do usuário sobre o problema, documenta os sintomas e então, usando essas informações, faz uma estimativa informada sobre qual camada OSI iniciar sua investigação. Quando se verifica que uma camada está funcionando corretamente, pode-se presumir que as camadas abaixo dela estão funcionando. O administrador pode trabalhar as camadas OSI. Se uma camada OSI não estiver funcionando corretamente, o administrador pode trabalhar no modelo de camada OSI.
+
+Por exemplo, se os usuários não puderem acessar o servidor da web, mas puderem fazer ping no servidor, o problema está acima da camada 3. Se o ping do servidor não for bem-sucedido, o problema provavelmente está em uma camada OSI inferior.
+
+Siga o caminho
+Essa é uma das técnicas de solução de problemas mais básicas. A abordagem primeiro descobre o caminho do tráfego desde a origem até o destino. O escopo da solução de problemas é reduzido apenas aos links e dispositivos que estão no caminho de encaminhamento. O objetivo é eliminar os links e dispositivos que são irrelevantes para a tarefa de solução de problemas em questão. Esta abordagem geralmente complementa uma das outras abordagens.
+
+Comparação
+Essa abordagem também é chamada de abordagem das diferenças e tenta resolver o problema alterando os elementos não operacionais para serem consistentes com os que funcionam. Você compara configurações, versões de software, hardware ou outras propriedades de dispositivo, links ou processos entre situações de trabalho e não trabalho e identifica diferenças significativas entre eles.
+
+A fraqueza desse método é que ele pode levar a uma solução funcional, sem revelar claramente a causa raiz do problema.
+
+Suposição Educada
+Essa abordagem também é chamada de abordagem de solução de problemas imediata. Este é um método de solução de problemas menos estruturado que usa uma suposição baseada nos sintomas do problema. O sucesso desse método varia de acordo com sua experiência e capacidade de solução de problemas. Técnicos experientes são mais bem-sucedidos porque podem confiar em seu amplo conhecimento e experiência para isolar e resolver problemas de rede de forma decisiva. Com um administrador de rede menos experiente, esse método de solução de problemas pode ser muito aleatório para ser eficaz.
+
+

@@ -1,0 +1,47 @@
+comando tracert
+Embora o ping seja o comando de solução de problemas de rede mais comumente usado, existem outros comandos úteis disponíveis em dispositivos Windows.
+
+O comando ping pode verificar a conectividade de ponta a ponta. No entanto, se houver um problema e o dispositivo não puder executar ping no destino, o comando ping não indicará onde a conexão realmente caiu. Para fazer isso, outro comando conhecido como traceroute ou tracert deve ser usado. O Microsoft Windows usa o comando tracert , enquanto outros sistemas operacionais geralmente usam o comando traceroute .
+
+O utilitário tracert fornece informações de conectividade sobre o caminho que um pacote percorre para chegar ao destino e sobre cada roteador (salto) ao longo do caminho. Também indica quanto tempo um pacote leva para chegar da origem a cada salto e voltar (tempo de ida e volta). O utilitário tracert pode ajudar a identificar onde um pacote pode ter sido perdido ou atrasado devido a gargalos ou lentidão na rede.
+
+Na figura, o usuário está rastreando o caminho até Cisco. O caminho é exclusivo para este usuário. Seu caminho terá uma lista diferente de saltos e pode ser mais curto ou mais longo (número de saltos).
+
+Nota : Observe na saída que o 2º salto falhou. Isso provavelmente se deve a uma configuração de firewall naquele dispositivo que não permite a resposta de pacotes do comando tracert . No entanto, o dispositivo encaminha os pacotes para o próximo salto.
+
+C:∖> tracert www.cisco.com
+
+Tracing route to e2867.dsca.someispedge.net [104.95.63.78]
+over a maximum of 30 hops:
+
+   1     1 ms     1 ms       <1 ms      10.10.10.1
+   2     *        *           *         Request timed out.
+   3     8 ms     8 ms        8 ms      24-155-250-94.dyn.yourisp.net [172.30.250.94]
+   4     22 ms    23 ms      23 ms      24-155-121-218.static.yourisp.net [172.30.121.218]
+   5     23 ms    24 ms      25 ms      dls-b22-link.anotherisp.net [64.0.70.170]
+   6     25 ms    24 ms      25 ms      dls-b23-link.anotherisp.net [192.168.137.106]
+   7     24 ms    23 ms      21 ms      someisp-ic-341035-dls-b1.c.anotherisp.net [192.168.169.47]
+   8     25 ms    24 ms      23 ms      ae3.databank-dfw5.netarch.someisp.com [10.250.230.195]
+   9     25 ms    24 ms      24 ms      a104-95-63-78.deploy.static.someisptechnologies.com [104.95.63.78]
+
+Trace complete.
+
+C:">
+O comando tracert básico permitirá apenas até 30 saltos entre um dispositivo de origem e destino antes de assumir que o destino é inacessível. Esse número é ajustável usando o parâmetro -h . Outros modificadores, exibidos como opções na figura, também estão disponíveis.
+
+C:∖> tracert
+
+Usage: tracert [-d] [-h maximum_hops] [-j host-list] [-w timeout]
+               [-R] [-S srcaddr] [-4] [-6] target_name
+
+Options:
+    -d                    Do not resolve addresses to hostnames.
+    -h maximum_hops       Maximum number of hops to search for target.
+    -j host-list          Loose source route along host-list (IPv4-only).
+    -w timeout            Wait timeout milliseconds for each reply.
+    -R                    Trace round-trip path (IPv6-only).
+    -S srcaddr            Source address to use (IPv6-only).
+    -4                    Force using IPv4.
+    -6                    Force using IPv6.
+
+C:∖>

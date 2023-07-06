@@ -1,0 +1,25 @@
+Ligar o switch
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Os switches Cisco, como a maioria dos switches, são pré-configurados para operar em uma LAN assim que são ligados. Todas as portas de interface no switch estão ativas e começarão a encaminhar o tráfego imediatamente quando os dispositivos forem conectados a elas. É importante lembrar que nenhuma configuração de segurança é habilitada por padrão. Você precisará definir as configurações básicas de segurança antes de colocar o switch na rede.
+
+As três etapas básicas para ligar um switch são as seguintes:
+
+Etapa 1 . Verifique os componentes.
+Etapa 2 . Conecte os cabos ao switch.
+Etapa 3 . Ligue o interruptor.
+
+Observação : Você também pode conectar os cabos após a alimentação ser aplicada.
+
+Quando o switch está ligado, o autoteste de inicialização (POST) começa. Durante o POST, os LEDs piscam enquanto uma série de testes determina que o switch está funcionando corretamente.
+
+O POST é concluído quando o LED SYST pisca rapidamente em verde. Se o switch falhar no POST, o LED SYST ficará âmbar. Quando um switch falha no POST, é necessário devolver o switch para reparos.
+
+Quando todos os procedimentos de inicialização forem concluídos, o switch Cisco estará pronto para ser configurado.
+
+Arquivos de inicialização do IOS
+Conforme mostrado na figura, um dispositivo Cisco carrega os dois arquivos a seguir na RAM quando é inicializado:
+
+Arquivo de imagem IOS - O IOS facilita a operação básica dos componentes de hardware do dispositivo. O arquivo de imagem IOS é armazenado na memória flash.
+Arquivo de configuração de inicialização - O arquivo de configuração de inicialização contém comandos que são usados ​​para configurar inicialmente um roteador e switch e criar o arquivo de configuração em execução armazenado na RAM. O arquivo de configuração de inicialização é armazenado na NVRAM. Todas as alterações de configuração são armazenadas no arquivo de configuração em execução e são implementadas imediatamente pelo IOS.
+O arquivo de configuração em execução é modificado quando o administrador da rede realiza a configuração do dispositivo. Quando são feitas alterações no arquivo running-config, ele deve ser salvo na NVRAM como o arquivo de configuração de inicialização caso o roteador seja reiniciado ou fique sem energia.
+

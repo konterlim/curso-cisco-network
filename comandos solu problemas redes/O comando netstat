@@ -1,0 +1,72 @@
+O comando netstat
+Às vezes, é necessário saber quais conexões TCP ativas estão abertas e em execução em um host em rede. O comando netstat é um importante utilitário de rede que pode ser usado para verificar essas conexões. Conforme mostrado no exemplo, o comando netstat lista o protocolo em uso, o endereço local e o número da porta, o endereço externo e o número da porta e o estado da conexão.
+
+C:∖> netstat
+
+Active Connections
+
+   Proto     Local Address          Foreign Address          State
+   TCP       10.10.10.130:58520     dfw28s01-in-f14:https    ESTABLISHED
+   TCP       10.10.10.130:58522     dfw25s25-in-f14:https    ESTABLISHED
+   TCP       10.10.10.130:58523     dfw25s25-in-f14:https    ESTABLISHED
+   TCP       10.10.10.130:58525     ec2-3-13-132-189:https   ESTABLISHED
+   TCP       10.10.10.130:58579     203.104.160.12:https     ESTABLISHED
+   TCP       10.10.10.130:58580     104.16.249.249:https     ESTABLISHED
+   TCP       10.10.10.130:58624     52.242.211.89:https      ESTABLISHED
+   TCP       10.10.10.130:58628     24-155-92-110:https      ESTABLISHED
+   TCP       10.10.10.130:58651     ec2-18-211-133-65:https  ESTABLISHED
+   TCP       10.10.10.130:58686     do-33:https              ESTABLISHED
+   TCP       10.10.10.130:58720     172.253.119.189:https    ESTABLISHED
+   TCP       10.10.10.130:58751     ec2-35-170-0-145:https   ESTABLISHED
+   TCP       10.10.10.130:58753     ec2-44-224-80-214:https  ESTABLISHED
+   TCP       10.10.10.130:58755     a23-65-237-228:https     ESTABLISHED
+
+C:∖>
+Conexões TCP inexplicadas podem representar uma grande ameaça à segurança. Isso ocorre porque eles podem indicar que algo ou alguém está conectado ao host local. Além disso, conexões TCP desnecessárias podem consumir recursos valiosos do sistema, diminuindo assim o desempenho do host. Netstat deve ser usado para examinar as conexões abertas em um host quando o desempenho parece estar comprometido.
+
+Muitas opções úteis estão disponíveis para o comando netstat . Essas opções podem ser visualizadas digitando netstat /? no prompt de comando, conforme mostrado no exemplo.
+
+C:∖> netstat /?
+Displays protocol statistics and current TCP/IP network connections.
+
+NETSTAT [-a] [-b] [-e] [-f] [-n] [-o] [-p proto] [-r] [-s] [-t] [-x] [-y] [interval]
+
+   -a            Displays all connections and listening ports.
+   -b            Displays the executable involved in creating each connection or
+                 listening port. In some cases well-known executables host
+                 multiple independent components, and in these cases the
+                 sequence of components involved in creating the connection
+                 or listening port is displayed. In this case the executable
+                 name is in [] at the bottom, on top is the component it called,
+                 and so forth until TCP/IP was reached. Note that this option
+                 can be time-consuming and will fail unless you have sufficient
+                 permissions.
+   -e            Displays Ethernet statistics. This may be combined with the -s
+                 option.
+   -f            Displays Fully Qualified Domain Names (FQDN) for foreign
+                 addresses.
+   -n            Displays addresses and port numbers in numerical form.
+   -o            Displays the owning process ID associated with each connection.
+   -p proto      Shows connections for the protocol specified by proto; proto
+                 may be any of: TCP, UDP, TCPv6, or UDPv6. If used with the -s
+                 option to display per-protocol statistics, proto may be any of:
+                 IP, IPv6, ICMP, ICMPv6, TCP, TCPv6, UDP, or UDPv6.
+   -q            Displays all connections, listening ports, and bound
+                 nonlistening TCP ports. Bound nonlistening ports may or may not
+                 be associated with an active connection.
+   -r            Displays the routing table.
+   -s            Displays per-protocol statistics. By default, statistics are
+                 shown for IP, IPv6, ICMP, ICMPv6, TCP, TCPv6, UDP, and UDPv6;
+                 the -p option may be used to specify a subset of the default.
+   -t            Displays the current connection offload state.
+   -x            Displays NetworkDirect connections, listeners, and shared
+                 endpoints.
+   -y            Displays the TCP connection template for all connections.
+                 Cannot be combined with the other options.
+   interval      Redisplays selected statistics, pausing interval seconds
+                 between each display. Press CTRL+C to stop redisplaying
+                 statistics. If omitted, netstat will print the current
+                 configuration information once.
+
+
+C:∖>

@@ -1,0 +1,83 @@
+Comutadores Cisco
+
+Comutadores Cisco LAN
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+Quando uma rede LAN cresce a ponto de as quatro portas Ethernet fornecidas pelo roteador sem fio não serem suficientes para todos os dispositivos que precisam ser conectados à rede com fio, é hora de adicionar um switch LAN à rede. Um switch pode fornecer conectividade na camada de acesso de uma rede, conectando dispositivos a uma LAN. Um switch pode permitir que a rede cresça sem substituir os dispositivos centrais. Ao escolher um switch, há vários fatores a serem considerados, incluindo os seguintes:
+
+Tipo de portas
+Velocidade necessária
+Expansibilidade
+Gerenciabilidade
+
+Tipo de portas
+Ao selecionar um switch para sua LAN, é fundamental escolher o número e o tipo de portas apropriados. A maioria dos switches de baixo custo suporta apenas portas de interface de par trançado de cobre. Switches com preços mais altos podem ter conexões de fibra óptica. Estes são usados ​​para ligar o switch a outros switches que podem estar localizados em longas distâncias. A série Cisco Catalyst 9300 tem uma variedade de opções, dependendo do seu ambiente.
+
+
+Velocidade Necessária
+As interfaces Ethernet de par trançado em um switch têm velocidades definidas. Uma porta Ethernet 10/100 só pode funcionar a 10 megabits por segundo (Mbps) ou a 100 Mbps. O que isso significa é que, mesmo que o dispositivo que você está conectando à porta de interface do switch 10/100 seja capaz de se conectar em velocidades gigabit, a velocidade máxima na qual ele poderá se comunicar será de 100 Mbps. Os switches também podem incluir portas Gigabit Ethernet. Se a sua conexão com a Internet for superior a 100 Mbps, será necessária uma porta gigabit para aproveitar a maior largura de banda da Internet. As portas Gigabit Ethernet também operarão a 10/100 Mbps. Gigabit Ethernet às vezes é representado como 1000 Mbps. O switch Cisco Catalyst 9300 48S na figura tem duas portas de uplink de 40 Gbps para fornecer um caminho rápido para as 48 portas acessarem o restante da rede e a Internet.
+
+Semelhante a uma porta de switch, os NICs Ethernet operam em larguras de banda específicas, como 10/100 ou 10/100/1000 Mbps. A largura de banda real do dispositivo conectado será a maior largura de banda comum entre a NIC no dispositivo e a porta do switch.
+
+Expansibilidade
+Os dispositivos de rede vêm em configurações físicas fixas e modulares. As configurações fixas têm um tipo e número específico de portas ou interfaces. Os dispositivos modulares possuem slots de expansão que fornecem flexibilidade para adicionar novos módulos conforme necessário. A figura mostra um chassi Cisco Catalyst 9600 no qual você pode instalar diferentes configurações de hardware para atender ao seu ambiente específico
+
+Gerenciabilidade
+Muitos switches básicos e baratos não são configuráveis. Um switch gerenciável que usa um sistema operacional Cisco permite o controle sobre portas individuais ou sobre o switch como um todo. Os controles incluem a capacidade de alterar as configurações de um dispositivo, adicionar segurança de porta e monitorar o desempenho. O administrador de rede na figura está se conectando diretamente a um switch Cisco Catalyst usando um cabo de console.
+
+Velocidades de comutação e métodos de encaminhamento
+
+Métodos de encaminhamento de quadros em switches Cisco
+Como você aprendeu no tópico anterior, os switches usam suas tabelas de endereços MAC para determinar qual porta usar para encaminhar quadros. Com os switches Cisco, na verdade existem dois métodos de encaminhamento de quadro e há bons motivos para usar um em vez do outro, dependendo da situação.
+
+Os switches usam um dos seguintes métodos de encaminhamento para alternar dados entre portas de rede:
+
+Comutação de armazenar e encaminhar - Este método de encaminhamento de quadro recebe o quadro inteiro e calcula o CRC. O CRC usa uma fórmula matemática, baseada no número de bits (1s) no quadro, para determinar se o quadro recebido contém um erro. Se o CRC for válido, o switch procura o endereço de destino, que determina a interface de saída. Em seguida, o quadro é encaminhado para fora da porta correta.
+Cut-through switching - Este método de encaminhamento de quadros encaminha o quadro antes que ele seja totalmente recebido. No mínimo, o endereço de destino do quadro deve ser lido antes que o quadro possa ser encaminhado.
+Uma grande vantagem da comutação de armazenar e encaminhar é que ela determina se um quadro tem erros antes de propagá-lo. Quando um erro é detectado em um quadro, o switch descarta o quadro. Descartar quadros com erros reduz a quantidade de largura de banda consumida por dados corrompidos. A comutação de armazenar e encaminhar é necessária para análise de qualidade de serviço (QoS) em redes convergentes em que a classificação de quadro para priorização de tráfego é necessária. Por exemplo, os fluxos de dados de voz sobre IP (VoIP) precisam ter prioridade sobre o tráfego de navegação na web.
+
+Comutação Cut-Through
+Na comutação cut-through, o comutador age sobre os dados assim que são recebidos, mesmo que a transmissão não esteja completa. O switch armazena em buffer apenas o suficiente do quadro para ler o endereço MAC de destino para que possa determinar para qual porta deve encaminhar os dados. O endereço MAC de destino está localizado nos primeiros 6 bytes do quadro após o preâmbulo. O switch procura o endereço MAC de destino em sua tabela de comutação, determina a porta de interface de saída e encaminha o quadro para seu destino por meio da porta de switch designada. O switch não executa nenhuma verificação de erro no quadro.
+
+Existem duas variantes de comutação cut-through:
+
+Comutação de avanço rápido -  A comutação de avanço rápido oferece o menor nível de latência. A comutação de avanço rápido encaminha imediatamente um pacote após a leitura do endereço de destino. Como a comutação de avanço rápido começa a encaminhar antes que todo o pacote seja recebido, pode haver momentos em que os pacotes são retransmitidos com erros. Isso ocorre com pouca frequência e o NIC de destino descarta o pacote defeituoso após o recebimento. No modo de avanço rápido, a latência é medida do primeiro bit recebido ao primeiro bit transmitido. A comutação rápida é o método cut-through típico de comutação.
+Comutação sem fragmentos -  Na comutação sem fragmentos, o switch armazena os primeiros 64 bytes do quadro antes de encaminhar. A comutação sem fragmentos pode ser vista como um meio-termo entre a comutação de armazenamento e avanço e a comutação de avanço rápido. A razão pela qual a comutação livre de fragmentos armazena apenas os primeiros 64 bytes do quadro é que a maioria dos erros e colisões de rede ocorre durante os primeiros 64 bytes. A comutação sem fragmentos tenta aprimorar a comutação de avanço rápido executando uma pequena verificação de erro nos primeiros 64 bytes do quadro para garantir que não tenha ocorrido uma colisão antes de encaminhar o quadro. A comutação sem fragmentos é um compromisso entre a alta latência e a alta integridade da comutação de armazenamento e encaminhamento e a baixa latência e integridade reduzida da comutação de avanço rápido.
+Alguns switches são configurados para executar a comutação cut-through em uma base por porta até que um limite de erro definido pelo usuário seja atingido e, em seguida, eles mudam automaticamente para armazenar e encaminhar. Quando a taxa de erro cai abaixo do limite, a porta muda automaticamente de volta para a comutação cut-through.
+
+
+Buffer de memória em switches
+Um switch Ethernet pode usar uma técnica de buffer para armazenar quadros antes de encaminhá-los. O buffer também pode ser usado quando a porta de destino está ocupada devido ao congestionamento. O switch armazena o quadro até que ele possa ser transmitido.
+
+Conforme mostrado na tabela, existem dois métodos de buffer de memória:
+
+
+O buffer de memória compartilhada também resulta na capacidade de armazenar quadros maiores com potencialmente menos quadros descartados. Isso é importante com a comutação assimétrica, que permite taxas de dados diferentes em portas diferentes, como ao conectar um servidor a uma porta de switch de 10 Gbps e PCs a portas de 1 Gbps.
+
+
+ Duplex e configurações de velocidade
+Duas das configurações mais básicas em um switch são a largura de banda (às vezes chamada de “velocidade”) e configurações duplex para cada porta de switch individual. É fundamental que as configurações duplex e de largura de banda correspondam entre a porta do switch e os dispositivos conectados, como um computador ou outro switch.
+
+Existem dois tipos de configurações duplex usadas para comunicações em uma rede Ethernet:
+
+Full-duplex  - Ambas as extremidades da conexão podem enviar e receber simultaneamente.
+Half-duplex  - Somente uma extremidade da conexão pode enviar por vez.
+A negociação automática é uma função opcional encontrada na maioria dos switches Ethernet e NICs. Ele permite que dois dispositivos negociem automaticamente a melhor velocidade e capacidades duplex. Full-duplex é escolhido se ambos os dispositivos tiverem a capacidade junto com sua maior largura de banda comum.
+
+O PC-A é conectado ao switch S2 na porta 1, que pode operar em full-duplex ou half-duplex, e em 10 Mbps, 100 Mbps ou 1000 Mbps (1 Gbps). Se ambos os dispositivos estiverem usando autonegociação, o modo de operação será full-duplex e 100 Mbps.
+
+Observação : a maioria dos switches Cisco e NICs Ethernet adotam como padrão a negociação automática para velocidade e duplex. As portas Gigabit Ethernet operam apenas em full-duplex.
+
+A incompatibilidade duplex é uma das causas mais comuns de problemas de desempenho em links Ethernet de 10/100 Mbps. Ocorre quando uma porta do link opera em half-duplex enquanto a outra opera em full-duplex, conforme mostra a figura.
+
+S2 experimentará colisões continuamente porque S1 continua enviando quadros sempre que tem algo para enviar.
+
+A incompatibilidade duplex ocorre quando uma ou ambas as portas em um link são redefinidas e o processo de negociação automática não resulta em ambos os parceiros de link com a mesma configuração. Também pode ocorrer quando os usuários reconfiguram um lado de um link e esquecem de reconfigurar o outro. Ambos os lados de um link devem ter a negociação automática ativada ou ambos os lados devem estar desativados. A melhor prática é configurar ambas as portas do switch Ethernet como full-duplex.
+
+Auto-MDIX
+Antigamente, as conexões entre dispositivos exigiam o uso de um cabo crossover ou direto. O tipo de cabo necessário dependia do tipo de dispositivos de interconexão.
+
+Por exemplo, a figura identifica o tipo de cabo correto necessário para interconectar dispositivos switch a switch, switch a roteador, switch a host ou roteador a host. Um cabo cruzado é usado ao conectar dispositivos semelhantes e um cabo direto é usado para conectar dispositivos diferentes.
+
+Observação : uma conexão direta entre um roteador e um host requer uma conexão cruzada.
+
+
