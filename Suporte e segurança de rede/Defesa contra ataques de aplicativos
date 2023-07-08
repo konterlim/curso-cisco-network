@@ -1,0 +1,37 @@
+Defesa contra ataques de aplicativos
+Existem várias ações que você pode tomar para se defender contra um ataque de aplicativo. Você encontrará alguns deles descritos aqui.
+
+A primeira linha de defesa contra um ataque de aplicativo é escrever um código sólido. 
+A prática de programação prudente envolve tratar e validar todas as entradas de fora de uma função como se fossem hostis. 
+Use ferramentas de teste de segurança para avaliar o código-fonte e o software binário continuamente durante o ciclo de vida do desenvolvimento do software.
+Mantenha todos os softwares, incluindo sistemas operacionais e aplicativos, atualizados e não ignore os prompts de atualização. Lembre-se de que nem todos os programas são atualizados automaticamente.
+
+ Spam
+Spam, também conhecido como lixo eletrônico, é simplesmente e-mail não solicitado. Na maioria dos casos, é um método de publicidade. No entanto, muito spam é enviado em massa por computadores infectados por vírus ou worms – e geralmente contém links maliciosos, malware ou conteúdo enganoso que visa induzir os destinatários a divulgar informações confidenciais, como número de CPF ou informações de conta bancária.
+
+Quase todos os provedores de e-mail filtram o spam, mas ele ainda consome largura de banda. E mesmo se você tiver recursos de segurança implementados, alguns spams ainda podem chegar até você. Fique atento aos seguintes indicadores de spam:
+
+O e-mail não tem linha de assunto.
+O e-mail solicita que você atualize os detalhes da sua conta.
+O texto do e-mail contém palavras com erros ortográficos ou pontuação e caracteres estranhos.
+Os links no e-mail são longos e/ou enigmáticos.
+O e-mail parece correspondência de uma empresa legítima, mas há pequenas diferenças — ou contém informações que não parecem relevantes para você.
+O e-mail pede para você abrir um anexo, muitas vezes com urgência.
+O e-mail se origina de um domínio incomum ou contém links para domínios que provavelmente não pertencem ao remetente identificado.
+Se você receber um e-mail que contenha um ou mais desses indicadores, não  abra  o e-mail ou quaisquer anexos. Muitas organizações têm uma política de e-mail que exige que os funcionários relatem o recebimento desse tipo de e-mail à equipe de segurança cibernética para uma investigação mais aprofundada. Na dúvida, sempre denuncie.
+
+
+Phishing
+Este componente é um flipcard composto por cartões flippable contendo imagem de exibição. Selecione a imagem da face frontal para virar para a face posterior desses cartões para exibir o texto associado.
+Phishing é uma forma de atividade fraudulenta frequentemente usada para roubar informações pessoais.
+
+Phishing
+O phishing ocorre quando um usuário é contatado por e-mail ou mensagem instantânea — ou de qualquer outra forma — por alguém que se faz passar por uma pessoa ou organização legítima. A intenção é induzir o destinatário a instalar malware em seu dispositivo ou compartilhar informações confidenciais, como credenciais de login ou informações financeiras.
+
+Por exemplo, você recebe um e-mail parabenizando-o por ganhar um prêmio. Parece que foi enviado de uma loja de varejo conhecida e pede que você clique em um link para reivindicar seu prêmio. Este link pode, de fato, redirecioná-lo para um site falso que solicita que você insira seus dados pessoais ou pode até instalar um vírus em seu dispositivo.
+
+
+Spear phishing
+Um ataque altamente direcionado, o spear phishing envia e-mails personalizados para uma pessoa específica com base nas informações que o invasor conhece sobre ela – que podem ser seus interesses, preferências, atividades ou projetos de trabalho.
+
+Por exemplo, um cibercriminoso descobre por meio de sua pesquisa que você está procurando comprar um modelo específico de carro. O cibercriminoso ingressa em um fórum de discussão sobre carros do qual você é membro, forja uma oferta de venda de carros e envia um e-mail com um link para ver fotos do carro. Ao clicar no link, você inadvertidamente instala malware em seu dispositivo.

@@ -1,0 +1,40 @@
+ Estouro de buffer
+Buffers são áreas de memória alocadas para um aplicativo. Um estouro de buffer ocorre quando os dados são gravados além dos limites de um buffer. Ao alterar os dados além dos limites de um buffer, o aplicativo pode acessar a memória alocada para outros processos. Isso pode levar a uma falha do sistema ou comprometimento de dados, ou fornecer escalonamento de privilégios.
+
+Essas falhas de memória também podem dar aos invasores controle total sobre o dispositivo de um alvo. Por exemplo, um invasor pode alterar as instruções de um aplicativo vulnerável enquanto o programa está sendo carregado na memória e, como resultado, pode instalar malware e acessar a rede interna do dispositivo infectado.
+
+ Execuções Remotas de Código
+Este componente é um flipcard composto por cartões flippable contendo imagem de exibição. Selecione a imagem da face frontal para virar para a face posterior desses cartões para exibir o texto associado.
+A execução remota de código permite que um cibercriminoso aproveite as vulnerabilidades do aplicativo para executar qualquer comando com os privilégios do usuário que executa o aplicativo no dispositivo de destino.
+
+A escalação de privilégio explora um bug, falha de projeto ou configuração incorreta em um sistema operacional ou aplicativo para obter acesso a recursos que normalmente são restritos.
+
+Selecione a imagem para saber mais sobre o Projeto Metasploit e a carga útil do teste de vulnerabilidade de execução remota de código Meterpreter.
+
+Outros ataques de aplicativos
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+Cada informação que um invasor recebe sobre um sistema ou aplicativo de destino pode ser usada como uma arma valiosa para lançar um ataque perigoso.
+
+CSRF descreve a exploração maliciosa de um site onde comandos não autorizados são enviados do navegador de um usuário para um aplicativo da web confiável.
+
+Um site mal-intencionado pode transmitir esses comandos por meio de tags de imagem especialmente criadas, formulários ocultos ou solicitações de JavaScript — todos os quais podem funcionar sem o conhecimento do usuário.
+
+Também conhecido como ataque de tempo de verificação (TOC) ou tempo de uso (TOU), um ataque de condição de corrida ocorre quando um sistema de computação projetado para lidar com tarefas em uma sequência específica é forçado a executar duas ou mais operações simultaneamente.
+
+Por exemplo, os sistemas operacionais são compostos de threads — a menor sequência de instruções de programa necessárias para executar um processo. Quando dois ou mais threads acessam dados compartilhados e tentam alterá-los ao mesmo tempo, ocorre um ataque de condição de corrida.
+
+Os dados inseridos por um usuário que não são devidamente validados podem afetar o fluxo de dados de um programa e causar vulnerabilidades críticas em sistemas e aplicativos que resultam em estouro de buffer ou ataques de injeção de SQL.
+
+Uma API entrega uma resposta do usuário a um sistema e envia a resposta do sistema de volta ao usuário. Um ataque de API ocorre quando um cibercriminoso abusa de um terminal de API.
+
+Isso descreve uma situação em que uma transmissão de dados válida é repetida ou atrasada de forma maliciosa ou fraudulenta por um invasor, que intercepta, corrige e reenvia os dados para que o destinatário faça o que quiser.
+
+A travessia de diretório ocorre quando um invasor consegue ler arquivos no servidor da Web fora do diretório do site. Um invasor pode então usar essas informações para baixar arquivos de configuração do servidor contendo informações confidenciais, potencialmente expor mais vulnerabilidades do servidor ou até mesmo assumir o controle do servidor!
+
+Esses ataques são explorações de segurança do computador que travam, travam ou interferem de outra forma em um programa ou sistema de destino. Em vez de sobrecarregar a largura de banda da rede como um ataque DoS, os ataques de esgotamento de recursos sobrecarregam os recursos de hardware disponíveis no servidor de destino.
+
+Os ataques de esgotamento de recursos interferem em um aplicativo sobrecarregando os recursos de hardware disponíveis no servidor de destino.
+A execução remota de código ocorre quando invasores exploram uma vulnerabilidade de aplicativo para executar qualquer comando com os privilégios do alvo que executa o aplicativo em seu dispositivo.
+Um estouro de buffer ocorre quando os dados são gravados além dos limites de um buffer, permitindo que o aplicativo acesse a memória alocada para outros processos. Isso pode levar a uma falha do sistema, comprometimento de dados ou fornecer escalonamento de privilégios.
+Os invasores exploram vulnerabilidades de script entre sites injetando scripts contendo código malicioso em uma página da web. Depois que a vítima acessa essa página da Web, os scripts maliciosos passam inadvertidamente para o navegador, dando aos invasores acesso a informações confidenciais.
+

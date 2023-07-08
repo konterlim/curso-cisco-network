@@ -1,0 +1,58 @@
+Firewalls e prevenção de intrusão baseada em host
+
+Propriedades comuns do firewall
+Todos os firewalls compartilham algumas propriedades comuns:
+
+Os firewalls são resistentes a ataques de rede.
+Os firewalls são o único ponto de trânsito entre as redes corporativas internas e as redes externas porque todo o tráfego flui pelo firewall.
+Os firewalls reforçam a política de controle de acesso.
+
+Benefícios do firewall
+Existem vários benefícios de usar um firewall em uma rede:
+
+Eles impedem a exposição de hosts, recursos e aplicativos confidenciais a usuários não confiáveis.
+Eles higienizam o fluxo do protocolo, o que evita a exploração de falhas de protocolo.
+Eles bloqueiam dados maliciosos de servidores e clientes.
+Eles reduzem a complexidade do gerenciamento de segurança descarregando a maior parte do controle de acesso à rede para alguns firewalls na rede.
+
+Limitações do Firewall
+Os firewalls também têm algumas limitações:
+
+Um firewall mal configurado pode ter sérias consequências para a rede, como se tornar um único ponto de falha.
+Os dados de muitos aplicativos não podem passar por firewalls com segurança.
+Os usuários podem procurar proativamente maneiras de contornar o firewall para receber material bloqueado, o que expõe a rede a possíveis ataques.
+O desempenho da rede pode diminuir.
+O tráfego não autorizado pode ser encapsulado ou oculto como tráfego legítimo por meio do firewall.
+
+Tipos de Firewall
+Um contêiner de conteúdo com guias. O conteúdo pode ser texto, gráfico ou ambos.
+É importante entender os diferentes tipos de firewalls e suas capacidades específicas para que o firewall correto seja utilizado para cada situação.
+
+Firewall de filtragem de pacotes (sem estado)
+Os firewalls de filtragem de pacotes geralmente fazem parte de um firewall de roteador, que permite ou nega o tráfego com base nas informações da camada 3 e da camada 4. Eles são firewalls sem estado que usam uma consulta de tabela de política simples que filtra o tráfego com base em critérios específicos.
+
+Por exemplo, os servidores SMTP escutam a porta 25 por padrão. Um administrador pode configurar o firewall de filtragem de pacotes para bloquear a porta 25 de uma estação de trabalho específica para evitar que ela transmita um vírus de e-mail.
+
+Firewall com estado
+Os firewalls dinâmicos são as tecnologias de firewall mais versáteis e comuns em uso. Os firewalls com estado fornecem filtragem de pacotes com estado usando informações de conexão mantidas em uma tabela de estado. A filtragem de estado é uma arquitetura de firewall classificada na camada de rede. Ele também analisa o tráfego em OSI Layer 4 e Layer 5.
+
+Firewall do gateway de aplicativo
+Um firewall de gateway de aplicativo (firewall proxy), conforme mostrado na figura, filtra informações nas camadas 3, 4, 5 e 7 do modelo de referência OSI. A maior parte do controle e filtragem do firewall é feita em software. Quando um cliente precisa acessar um servidor remoto, ele se conecta a um servidor proxy. O servidor proxy se conecta ao servidor remoto em nome do cliente. Portanto, o servidor só vê uma conexão do servidor proxy.
+
+A figura do firewall do gateway de aplicativo mostra as 7 camadas do modelo osi com a camada 7 enfatizada e uma barra conectando as camadas 7 e 6 com as palavras firewall do gateway de aplicativo ao lado, bem como as camadas 3, 4 e 5 enfatizadas com as palavras gateway de aplicativo firewall.
+
+Firewall de Próxima Geração
+Os firewalls de próxima geração (NGFW) vão além dos firewalls com estado, fornecendo:
+
+Prevenção de intrusão integrada
+Conscientização e controle de aplicativos para ver e bloquear aplicativos arriscados
+Caminhos de atualização para incluir futuros feeds de informações
+Técnicas para lidar com ameaças de segurança em evolução
+
+
+Outros métodos de implementação de firewalls incluem:
+
+Firewall baseado em host (servidor e pessoal) -  Um PC ou servidor com software de firewall em execução.
+Firewall transparente -  Filtra o tráfego IP entre um par de interfaces em ponte.
+Firewall híbrido -  Uma combinação dos vários tipos de firewall. Por exemplo, um firewall de inspeção de aplicativo combina um firewall dinâmico com um firewall de gateway de aplicativo.
+

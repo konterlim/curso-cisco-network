@@ -1,0 +1,21 @@
+ Recursos de segurança do sistema Apple
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+Como sabemos, as distribuições Windows e Linux incluem recursos de segurança projetados para proteger terminais. A Apple fornece hardware de sistema e recursos de segurança do macOS que também oferecem proteção robusta para endpoints.
+
+A plataforma de hardware possui recursos de segurança aprimorados, como um processador de segurança especial, integridade de inicialização e um mecanismo de criptografia AES dedicado. Esses recursos estão incluídos em um sistema especial em um chip chamado Secure Enclave.
+
+A proteção de dados da Apple e a criptografia de armazenamento de dados FileVault são suportadas pelo mecanismo de criptografia AES baseado em hardware. Isso permite a criptografia e descriptografia de arquivos à medida que são gravados ou lidos, sem expor as chaves de criptografia à CPU principal, sistema operacional ou aplicativos em execução.
+
+A ROM de inicialização protege o hardware de baixo nível e permite apenas a execução de software original e inalterado do Apple OS.
+
+Os dados de autenticação biométrica são processados ​​no sistema de hardware de segurança. Isso o mantém separado do sistema operacional e do software de aplicativo em execução, incluindo malware.
+
+Find My Mac ajuda a encontrar dispositivos macOS perdidos ou roubados por meio de sua função de rastreamento de localização. Ele também permite o bloqueio de dispositivos remotos e a exclusão de armazenamento se dados críticos estiverem em risco.
+
+A tecnologia antimalware XProtect impede a execução de malware por meio da detecção de malware baseada em assinatura. Ele também alerta os usuários sobre a existência de malware e oferece a opção de remover arquivos de malware detectados.
+
+
+A ferramenta de remoção de malware (MRT) detecta e remove infecções de malware existentes quando as regras de detecção são atualizadas automaticamente pela Apple. Ele também monitora infecções por malware na reinicialização do sistema e no login do usuário.
+
+O Gatekeeper garante que apenas o software autêntico e assinado digitalmente, criado por um desenvolvedor de software registrado pela Apple, tenha permissão para ser instalado.
+

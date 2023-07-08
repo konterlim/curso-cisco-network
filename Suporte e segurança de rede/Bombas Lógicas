@@ -1,0 +1,7 @@
+Bombas Lógicas
+Uma bomba lógica é um programa malicioso que espera por um gatilho, como uma data especificada ou uma entrada no banco de dados, para ativar o código malicioso. Até que esse evento de gatilho aconteça, a bomba lógica permanecerá inativa.
+
+Uma vez ativada, uma bomba lógica implementa um código malicioso que causa danos a um computador de várias maneiras. Ele pode sabotar registros de banco de dados, apagar arquivos e atacar sistemas operacionais ou aplicativos. 
+
+Especialistas em segurança cibernética descobriram recentemente bombas lógicas que atacam e destroem os componentes de hardware em um dispositivo ou servidor, incluindo ventiladores, unidades centrais de processamento (CPU), memória, discos rígidos e fontes de alimentação. A bomba lógica sobrecarrega esses componentes até que superaqueçam ou falhem.
+

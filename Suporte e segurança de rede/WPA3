@@ -1,0 +1,17 @@
+WPA3
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+No momento da redação deste artigo, os dispositivos que suportam a autenticação WPA3 não estavam prontamente disponíveis. No entanto, o WPA2 não é mais considerado seguro. WPA3, se disponível, é o método de autenticação 802.11 recomendado. O WPA3 inclui quatro aplicativos:
+
+WPA3-Pessoal
+WPA3-Enterprise
+Redes Abertas
+Integração da Internet das Coisas (IoT)
+
+No WPA2-Personal, os agentes de ameaças podem ouvir o “aperto de mão” entre um cliente sem fio e o AP e usar um ataque de força bruta para tentar adivinhar o PSK. O WPA3-Personal impede esse ataque usando Simultaneous Authentication of Equals (SAE), um recurso especificado no IEEE 802.11-2016. O PSK nunca é exposto, tornando impossível para o agente da ameaça adivinhar.
+
+WPA3-Enterprise ainda usa autenticação 802.1X/EAP. No entanto, requer o uso de um conjunto criptográfico de 192 bits e elimina a mistura de protocolos de segurança para os padrões 802.11 anteriores. O WPA3-Enterprise adere ao Conjunto de Algoritmos de Segurança Nacional Comercial (CNSA), que é comumente usado em redes Wi-Fi de alta segurança.
+
+As redes abertas em WPA2 enviam o tráfego do usuário em texto não autenticado e não criptografado. No WPA3, as redes Wi-Fi abertas ou públicas ainda não usam nenhuma autenticação. No entanto, eles usam criptografia sem fio oportunista (OWE) para criptografar todo o tráfego sem fio.
+
+Embora o WPA2 inclua o Wi-Fi Protected Setup (WPS) para integrar dispositivos rapidamente sem configurá-los primeiro, o WPS é vulnerável a uma variedade de ataques e não é recomendado. Além disso, os dispositivos IoT geralmente não possuem controle remoto, o que significa que não possuem GUI integrada para configuração e precisam de uma maneira fácil de se conectar à rede sem fio. O Device Provisioning Protocol (DPP) foi projetado para atender a essa necessidade. Cada dispositivo sem cabeça tem uma chave pública codificada. A chave é normalmente estampada na parte externa do dispositivo ou em sua embalagem como um código QR (Quick Response). O administrador da rede pode escanear o código QR e integrar rapidamente o dispositivo. Embora não seja estritamente parte do padrão WPA3, o DPP substituirá o WPS com o tempo.
+

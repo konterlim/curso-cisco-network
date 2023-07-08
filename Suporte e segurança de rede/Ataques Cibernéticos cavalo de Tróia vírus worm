@@ -1,0 +1,24 @@
+ Ataques Cibernéticos cavalo de Tróia vírus worm 
+
+  Malware
+Imagem com áreas selecionáveis. Selecione cada botão para mostrar mais informações.
+Os cibercriminosos usam muitos tipos diferentes de software malicioso, ou malware, para realizar ataques. Malware é qualquer código que pode ser usado para roubar dados, burlar controles de acesso ou causar danos ou comprometer um sistema.
+
+vírus
+Um vírus é um tipo de programa de computador que, quando executado, se replica e se anexa a outros arquivos, como programas legítimos, inserindo seu próprio código no arquivo. Alguns vírus são inofensivos, mas outros podem ser destrutivos, como os que modificam ou excluem dados. A maioria dos vírus requer interação do usuário final para iniciar a ativação e pode ser escrita para agir em uma data ou hora específica.
+
+Os vírus podem se espalhar por meio de mídia removível, como unidades flash USB, downloads da Internet e anexos de e-mail. O simples ato de abrir um arquivo ou executar um programa infectado pode desencadear um vírus. Depois que um vírus está ativo, ele geralmente infecta outros programas no computador ou outros computadores na rede. Os vírus sofrem mutações para evitar a detecção.
+
+Por exemplo, o vírus Melissa foi lançado em 1999 e se espalhou por e-mail, afetando dezenas de milhares de usuários e causando danos estimados em US$ 1,2 bilhão.
+
+Vermes
+Um worm é um programa de software malicioso que se replica explorando independentemente vulnerabilidades em redes. Ao contrário de um vírus, que requer um programa host para ser executado, os worms podem ser executados por conta própria. Além da infecção inicial do host, eles não exigem a participação do usuário e podem se espalhar muito rapidamente pela rede, geralmente deixando-a lenta.
+
+Os worms compartilham padrões semelhantes: eles exploram vulnerabilidades do sistema, têm uma maneira de se propagar e todos contêm código malicioso (carga útil) que causa danos a sistemas ou redes de computadores.
+
+Os worms são responsáveis ​​por alguns dos ataques mais devastadores da Internet. Em 2001, o worm Code Red infectou mais de 300.000 servidores em apenas 19 horas.
+
+cavalo de Tróia
+Um cavalo de Tróia é um malware que realiza operações maliciosas mascarando sua verdadeira intenção. Pode parecer legítimo, mas é, de fato, muito perigoso. Os cavalos de Tróia exploram os privilégios do usuário que os executa.
+
+Ao contrário dos vírus, os cavalos de Tróia não se autorreplicam, mas geralmente se ligam a arquivos não executáveis, como arquivos de imagem, áudio ou vídeo, que agem como uma isca para danificar os sistemas de usuários desavisados.

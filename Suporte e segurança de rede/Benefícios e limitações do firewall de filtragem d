@@ -1,0 +1,18 @@
+Benefícios e limitações do firewall de filtragem de pacotes
+Os firewalls de filtragem de pacotes geralmente fazem parte de um firewall de roteador, que permite ou nega o tráfego com base nas informações da camada 3 e da camada 4. Eles são firewalls sem estado que usam uma consulta de tabela de política simples que filtra o tráfego com base em critérios específicos, conforme mostrado na figura. Por exemplo, os servidores SMTP escutam a porta 25 por padrão. Um administrador pode configurar o firewall de filtragem de pacotes para bloquear a porta 25 de uma estação de trabalho específica para evitar que ela transmita um vírus de e-mail.
+
+Existem várias vantagens de usar um firewall de filtragem de pacotes:
+
+Os filtros de pacotes implementam conjuntos de regras de permissão ou negação simples.
+Os filtros de pacotes têm um baixo impacto no desempenho da rede.
+Os filtros de pacotes são fáceis de implementar e são suportados pela maioria dos roteadores.
+Os filtros de pacotes fornecem um grau inicial de segurança na camada de rede.
+Os filtros de pacotes executam quase todas as tarefas de um firewall de ponta a um custo muito menor.
+Os filtros de pacotes não representam uma solução de firewall completa, mas são um elemento importante de uma política de segurança de firewall. Existem várias desvantagens de usar um firewall de filtragem de pacotes:
+
+Os filtros de pacotes são suscetíveis à falsificação de IP. Atores de ameaças podem enviar pacotes arbitrários que atendem aos critérios da ACL e passam pelo filtro.
+Filtros de pacotes não filtram pacotes fragmentados de forma confiável. Como os pacotes IP fragmentados carregam o cabeçalho TCP no primeiro fragmento e os filtros de pacotes filtram as informações do cabeçalho TCP, todos os fragmentos após o primeiro fragmento são transmitidos incondicionalmente. As decisões de usar filtros de pacotes pressupõem que o filtro do primeiro fragmento reforça a política com precisão.
+Os filtros de pacotes usam ACLs complexas, que podem ser difíceis de implementar e manter.
+Os filtros de pacotes não podem filtrar dinamicamente determinados serviços. Por exemplo, as sessões que usam negociações dinâmicas de porta são difíceis de filtrar sem abrir o acesso a toda uma gama de portas.
+Os filtros de pacotes são sem estado. Eles examinam cada pacote individualmente e não no contexto do estado de uma conexão.
+

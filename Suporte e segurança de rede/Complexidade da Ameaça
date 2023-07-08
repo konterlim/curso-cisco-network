@@ -1,0 +1,36 @@
+Complexidade da Ameaça
+
+
+Uma  ameaça persistente avançada (APT)  é um ataque contínuo que usa táticas de espionagem elaboradas envolvendo vários atores e/ou malware sofisticado para obter acesso à rede do alvo.
+Os invasores permanecem indetectáveis ​​por um longo período de tempo, com consequências potencialmente devastadoras. As APTs geralmente visam governos e organizações de alto nível e geralmente são bem orquestradas e bem financiadas.
+
+Como o nome sugere,  os ataques de algoritmo  aproveitam os algoritmos em um software legítimo para gerar comportamentos não intencionais. Por exemplo, algoritmos usados ​​para rastrear e relatar quanta energia um computador consome podem ser usados ​​para selecionar alvos ou disparar alertas falsos. Eles também podem desativar um computador, forçando-o a usar toda a sua RAM ou sobrecarregando sua unidade central de processamento (CPU).
+
+Backdoors e Rootkits
+Este componente é um flipcard composto por cartões flippable contendo imagem de exibição. Selecione a imagem da face frontal para virar para a face posterior desses cartões para exibir o texto associado.
+Os cibercriminosos também usam muitos tipos diferentes de software malicioso para realizar seus ataques.
+
+Selecione as imagens para saber mais sobre backdoors e rootkits.
+
+ Inteligência de Ameaças e Fontes de Pesquisa
+Apresentação de slides. Selecione o próximo botão para progredir.
+A Equipe de Preparação para Emergências de Computadores dos Estados Unidos (US-CERT) e o Departamento de Segurança Interna dos EUA patrocinam um banco de dados de vulnerabilidades e exposições comuns (CVE) . Esses CVEs foram amplamente adotados como uma forma de descrever e fazer referência a vulnerabilidades conhecidas.
+
+Cada entrada CVE contém um número identificador padrão, uma breve descrição da vulnerabilidade de segurança e quaisquer referências importantes a relatórios de vulnerabilidade relacionados. A lista CVE é mantida por uma organização sem fins lucrativos, a MITRE Corporation, em seu site público.
+
+Selecione as setas para saber mais sobre algumas outras fontes de inteligência de ameaças.
+
+Indicador de compromisso (IOC)
+IOCs, como assinaturas de malware ou nomes de domínio maliciosos, fornecem evidências de violações de segurança e detalhes sobre elas.
+
+Compartilhamento automatizado de indicadores (AIS)
+Compartilhamento automatizado de indicadores (AIS), um recurso da Agência de segurança cibernética e de infraestrutura (CISA), permite a troca em tempo real de indicadores de ameaças à segurança cibernética usando uma linguagem padronizada e estruturada. Expressão Estruturada de Informações sobre Ameaças (STIX) e Troca Automatizada Confiável de Informações de Inteligência (TAXII) são padrões usados ​​no AIS.
+
+Ataque pela porta dos fundos	Este é um tipo de ataque de malware projetado para modificar o sistema operacional para criar uma vulnerabilidade que os invasores podem usar para acessar o computador remotamente e obter acesso a recursos que normalmente não deveriam estar acessíveis (escalonamento de privilégios) e modificar arquivos do sistema.  
+
+Ataque de rootkit	Este é um tipo de ataque de malware usado por cibercriminosos para obter acesso não autorizado a sistemas, ignorando os procedimentos normais de autenticação, geralmente fazendo com que usuários autorizados executem, sem saber, um programa de ferramenta administrativa remota (RAT) em seus computadores que instala um backdoor.
+
+Ataque de algoritmo	Este é um tipo de ataque de malware que gera informações incorporadas em um software legítimo para gerar comportamentos não intencionais. Esse tipo de ataque de malware pode ser usado para selecionar alvos ou disparar alertas falsos. Eles também podem desativar um computador, forçando-o a usar toda a sua RAM ou sobrecarregando sua unidade central de processamento (CPU).
+
+Ameaça persistente avançada	Este é um tipo de ataque de malware que é contínuo e usa táticas de espionagem elaboradas envolvendo vários atores e/ou malware sofisticado para obter acesso à rede do sistema de destino. Geralmente é direcionado a governos e organizações de alto nível e geralmente é bem orquestrado e bem financiado.
+

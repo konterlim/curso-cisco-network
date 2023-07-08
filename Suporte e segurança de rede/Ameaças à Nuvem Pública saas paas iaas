@@ -1,0 +1,26 @@
+Ameaças à Nuvem Pública saas paas iaas
+Apresentação de slides. Selecione o próximo botão para progredir.
+Onde um domínio de nuvem privada hospeda recursos de computação para uma única organização, o  domínio de nuvem pública  é a totalidade dos serviços de computação hospedados por um serviço de nuvem ou provedor de internet que estão disponíveis ao público ou compartilhados entre organizações.
+
+Existem três modelos de serviços de nuvem pública que as organizações podem optar por usar.
+
+Software como Serviço (SaaS)
+Este é um modelo baseado em assinatura que fornece às organizações software hospedado centralmente e acessado por usuários por meio de um navegador da Web, aplicativo ou outro software. Em outras palavras, trata-se de um software que não é armazenado localmente, mas executado na nuvem.
+
+Plataforma como serviço (PaaS)
+Esse modelo baseado em assinatura fornece uma plataforma que permite que uma organização desenvolva, execute e gerencie seus aplicativos no hardware do serviço, usando as ferramentas fornecidas pelo serviço. Esta plataforma é acessada através da nuvem pública.
+
+Infraestrutura como serviço (IaaS)
+Esse modelo baseado em assinatura fornece recursos de computação virtual, como hardware, software, servidores, armazenamento e outros componentes de infraestrutura pela Internet. Uma organização comprará acesso a essa infraestrutura e a usará por meio da nuvem pública.
+
+Dentro do escritório corporativo, os funcionários trabalham usando um desktop, laptop, tablet ou smartphone.	Domínio do dispositivo
+
+Os clientes da corporação têm acesso a um conjunto de módulos de eLearning fornecidos por uma taxa de assinatura.	Provedor de SaaS
+
+A corporação contrata funcionários.	Domínio do usuário
+
+No escritório corporativo, os funcionários se conectam à rede.	Domínio LAN
+
+O provedor dos módulos de eLearning usa um serviço de nuvem para hospedar os módulos.	Domínio de nuvem pública
+
+Os funcionários obtêm acesso ao escritório corporativo usando um cartão de identificação eletrônico.	Domínio das instalações físicas

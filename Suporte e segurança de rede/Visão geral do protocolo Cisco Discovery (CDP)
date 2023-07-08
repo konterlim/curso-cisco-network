@@ -1,0 +1,76 @@
+Visão geral do protocolo Cisco Discovery (CDP)
+A primeira coisa que você quer saber sobre sua rede é o que há nela? Onde estão esses componentes? Como eles estão conectados? Basicamente, você precisa de um mapa. Este tópico explica como você pode usar o Cisco Discovery Protocol (CDP) para criar um mapa de sua rede.
+
+O CDP é um protocolo de Camada 2 proprietário da Cisco usado para coletar informações sobre dispositivos Cisco que compartilham o mesmo link de dados. O CDP é independente de mídia e protocolo e é executado em todos os dispositivos Cisco, como roteadores, switches e servidores de acesso.
+
+Esses anúncios compartilham informações sobre o tipo de dispositivo descoberto, o nome dos dispositivos e o número e o tipo das interfaces.
+
+Como a maioria dos dispositivos de rede está conectada a outros dispositivos, o CDP pode auxiliar nas decisões de projeto de rede, na solução de problemas e na realização de alterações no equipamento. O CDP também pode ser usado como uma ferramenta de descoberta de rede para determinar as informações sobre os dispositivos vizinhos. Essas informações coletadas do CDP podem ajudar a criar uma topologia lógica de uma rede quando a documentação estiver faltando ou faltando detalhes.
+
+Com o CDP habilitado na rede, o  comando show cdp vizinhos  pode ser usado para determinar o layout da rede, conforme mostrado na saída.
+
+R1# show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone,
+                  D - Remote, C - CVTA, M - Two-port Mac Relay
+  
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+S1               Gig 0/0/1           179         S I      WS-C3560- Fas 0/5
+
+Nenhuma informação está disponível sobre o resto da rede. O  comando show cdp vizinhos  fornece informações úteis sobre cada dispositivo CDP vizinho, incluindo o seguinte:
+
+Identificadores de dispositivo  - Este é o nome do host do dispositivo vizinho (S1).
+Identificador de porta  - Este é o nome da porta local e remota (G0/0/1 e F0/5, respectivamente).
+Lista de recursos  - mostra se o dispositivo é um roteador ou um switch (S para switch; I para IGMP está além do escopo deste curso) 
+Plataforma  - Esta é a plataforma de hardware do dispositivo (WS-C3560 para switch Cisco Catalyst 3560).
+A saída mostra que há outro dispositivo Cisco, S1, conectado à interface G0/0/1 em R1. Além disso, S1 é conectado por meio de sua porta F0/5, conforme mostrado na topologia atualizada.
+
+O administrador de rede usa  o detalhe de vizinhos cdp  para descobrir o endereço IP para S1. Conforme exibido na saída, o endereço para S1 é 192.168.1.2.
+
+R1# show cdp neighbors
+-------------------------
+Device ID: S1
+Entry address(es):
+  IP address: 192.168.1.2
+Platform: cisco WS-C3560-24TS, Capabilities: Switch IGMP
+Interface: GigabitEthernet0/0/1, Port ID (outgoing port): FastEthernet0/5
+Holdtime : 136 sec
+  
+Version :
+Cisco IOS Software, C3560 Software (C3560-LANBASEK9-M), Version 15.0(2)SE7, R
+RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Thu 23-Oct-14 14:49 by prod_rel_team
+  
+advertisement version: 2
+Protocol Hello: OUI=0x00000C, Protocol ID=0x0112; payload len=27,
+value=00000000FFFFFFFF010221FF000000000000002291210380FF0000
+VTP Management Domain: ''
+Native VLAN: 1
+Duplex: full
+Management address(es):
+  IP address: 192.168.1.2
+  
+Total cdp entries displayed : 1
+
+Acessando S1 remotamente por meio de SSH ou fisicamente por meio da porta do console, o administrador de rede pode determinar quais outros dispositivos estão conectados a S1, conforme exibido na saída de show  cdp vizinhos  na figura.
+
+S1# show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone,
+                  D - Remote, C - CVTA, M - Two-port Mac Relay
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+S2               Fas 0/1           150              S I   WS-C2960- Fas 0/1
+R1               Fas 0/5           179             R S I  ISR4331/K Gig 0/0/1
+
+Novamente, o administrador de rede pode usar  show cdp months detail  para descobrir o endereço IP de S2 e, em seguida, acessá-lo remotamente. Após um login bem-sucedido, o administrador de rede usa o  comando show cdp vizinhos  para descobrir se há mais dispositivos.
+
+S2# show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone,
+                  D - Remote, C - CVTA, M - Two-port Mac Relay
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+S1               Fas 0/1           141              S I   WS-C3560- Fas 0/1
+O único dispositivo conectado a S2 é S1. Portanto, não há mais dispositivos a serem descobertos na topologia. O administrador de rede agora pode atualizar a documentação para refletir os dispositivos descobertos.
+

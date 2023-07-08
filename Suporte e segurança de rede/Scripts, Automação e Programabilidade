@@ -1,0 +1,12 @@
+Scripts, Automação e Programabilidade
+
+Redes grandes e complexas são extremamente difíceis e demoradas de gerenciar. É trabalhoso e requer muitos funcionários altamente treinados. Uma única organização pode ter milhares de dispositivos de rede em centenas de locais. Claramente não é praticável monitorar e configurar manualmente este grande número de dispositivos.
+
+A automação envolve a criação de sistemas que operam por conta própria. Automação de rede é o processo de automatizar a configuração, gerenciamento, teste, implantação e operação de dispositivos físicos e virtuais em uma rede. Ao automatizar tarefas diárias de rede, funções e processos repetitivos, a disponibilidade do serviço de rede e a eficiência operacional melhoram.
+
+Qualquer tipo de rede pode usar automação de rede. As soluções baseadas em hardware e software permitem que data centers, provedores de serviços e empresas implementem a automação de rede para melhorar a eficiência, reduzir o erro humano e diminuir as despesas operacionais.
+
+A operação dos dispositivos de rede pode ser monitorada e controlada via software. Os controladores de rede ou outros dispositivos fornecem acesso a processos de software externos que podem alterar automaticamente o funcionamento de um dispositivo de rede. Freqüentemente, isso é feito com scripts de automação que permitem programar a rede para se comportar de maneiras específicas de acordo com a rede e as condições externas. A automação de rede também permite a configuração e o gerenciamento de um grande número de dispositivos simultaneamente.
+
+Uma linguagem de script como o Python pode ser usada para criar programas que automatizam os processos de gerenciamento de rede, criando assim eficiências operacionais e de gerenciamento e economizando nos custos associados ao gerenciamento manual de rede.
+

@@ -1,0 +1,42 @@
+ Defesa contra ataques de e-mail e navegador
+Há muitas ações que você pode tomar para se defender contra ataques de e-mail e navegador. Alguns dos mais importantes são descritos aqui.
+
+É difícil parar o spam, mas existem maneiras de reduzir seus efeitos:
+A maioria dos provedores de serviços de Internet (ISPs) filtra o spam antes que ele chegue à caixa de entrada do usuário.
+Muitos programas antivírus e de software de e-mail detectam e removem automaticamente spam perigoso de uma caixa de entrada de e-mail.
+As organizações devem educar os funcionários sobre os perigos de e-mails não solicitados e alertá-los sobre os perigos de abrir anexos. 
+Nunca assuma que os anexos de e-mail são seguros, mesmo quando vêm de um contato confiável. Sempre verifique os anexos antes de abri-los.
+Torne-se um membro do Anti-Phishing Working Group (APWG). É uma associação internacional de empresas focada em eliminar o roubo de identidade e fraudes resultantes de phishing e falsificação de e-mail.
+Todos os softwares devem ser mantidos atualizados, com os patches de segurança mais recentes aplicados para proteção contra quaisquer vulnerabilidades de segurança conhecidas.
+
+Ataques físicos são ações ofensivas intencionais usadas para destruir, expor, alterar, desabilitar, roubar ou obter acesso não autorizado à infraestrutura ou hardware de uma organização.
+
+Exemplos de ataques físicos incluem:
+
+Carregar malware em uma unidade flash USB que infecta um dispositivo quando conectado.
+Adaptar cabos e plugues, como cabos USB genéricos, cabos de carregamento de dispositivos móveis e adaptadores de parede ou de energia com tecnologias avançadas, como um chip sem fio, para permitir que um invasor controle ou forneça instruções a um dispositivo.
+Copiar ou roubar dados de um cartão de crédito ou débito usando um terminal especializado para criar um cartão clonado, que pode ser usado para obter acesso não autorizado às contas da vítima. 
+
+O aprendizado de máquina é um método de automação que permite que os dispositivos realizem análises e executem tarefas sem serem especificamente programados para isso. Ele capacita muitos dos aplicativos que usamos hoje, como pesquisa na web, marcação de fotos, detecção de spam, vigilância por vídeo, detecção de fraude e automação de segurança.
+
+O aprendizado de máquina usa modelos matemáticos para prever resultados. No entanto, esses modelos são dependentes dos dados que são inseridos. Se os dados estiverem corrompidos, eles podem ter um impacto negativo no resultado previsto. Os invasores podem aproveitar isso para perpetrar ataques contra algoritmos de aprendizado de máquina. Por exemplo, usar dados corrompidos para induzir um veículo autônomo a interpretar mal as placas de trânsito.  
+
+Muitas organizações interagem com terceiros para gerenciamento de sistemas ou para adquirir componentes e software. As organizações podem até contar com peças ou componentes de uma fonte estrangeira.
+
+Os invasores geralmente encontram maneiras de interceptar essas cadeias de suprimentos. Por exemplo, o software pode ser baseado em contratos de suporte específicos e estar sujeito a uma data de fim de vida útil (EOL). Alterar essa data pode significar que uma organização não está mais qualificada para suporte de serviço e manutenção.  
+
+Em vez de desenvolver sistemas em suas próprias instalações, mais e mais organizações estão migrando para a computação baseada em nuvem, conforme discutimos anteriormente neste módulo.
+
+A vantagem é que o provedor de nuvem manterá o equipamento, mas isso também abre uma organização para uma série de ameaças potenciais. Os invasores estão constantemente aproveitando maneiras de explorar dados confidenciais armazenados na nuvem, bem como aplicativos, plataformas e infraestrutura baseada em nuvem, como vimos com SaaS, PaaS e IaaS.
+
+Cross-site scripting ocorre quando a vítima acessa uma página da web e scripts maliciosos são passados ​​inadvertidamente para seu navegador. A execução remota de código permite que um cibercriminoso aproveite as vulnerabilidades do aplicativo para executar qualquer comando, com os privilégios do usuário que executa o aplicativo, no dispositivo de destino. Um ataque de injeção de XML pode corromper os dados no banco de dados XML e ameaçar a segurança do site. A injeção de SQL é um ataque a sites ou qualquer banco de dados SQL inserindo uma instrução SQL maliciosa em um campo de entrada.
+
+Remote code execution allows a cybercriminal to take advantage of application vulnerabilities to execute any command with the privileges of the user running the application on the target device. Cross-site scripting occurs when the victim accesses a web page and malicious scripts are unknowingly passed to their browser. An XML injection attack can corrupt the data on the XML database and threaten the security of the website. SQL injection is an attack on websites or any SQL database accomplished by inserting a malicious SQL statement in an entry field.
+
+
+Uma prática de programação específica que ajudará a mitigar ataques de aplicativos é tratar e validar todas as entradas de fora de uma função como se fossem hostis. Educar os usuários a não compartilhar informações confidenciais on-line, garantir que os provedores de serviços de Internet filtrem todas as mensagens de e-mail e sempre verificar os anexos de e-mail antes de abri-los são defesas contra ataques de e-mail e phishing.
+
+O phishing ocorre quando um usuário é contatado por e-mail ou mensagem instantânea e é induzido a instalar malware em seu dispositivo ou a compartilhar informações confidenciais. O pharming direciona deliberadamente os usuários para uma versão falsa de um site oficial. A execução remota de código permite que um cibercriminoso aproveite as vulnerabilidades do aplicativo para executar qualquer comando com os privilégios do usuário que executa o aplicativo no dispositivo de destino. Cross-site scripting ocorre quando a vítima acessa uma página da web e scripts maliciosos são passados ​​inadvertidamente para seu navegador.
+
+O pharming direciona deliberadamente os usuários para uma versão falsa de um site oficial. Muitas vezes referido como phishing de voz, o vishing vê os criminosos usarem a tecnologia de comunicação de voz para encorajar os usuários a divulgar informações, como detalhes do cartão de crédito. Whaling é um ataque de phishing que visa indivíduos de alto perfil. Spamming é o envio de e-mail não solicitado, muitas vezes enviado em massa por computadores infectados por vírus ou worms e geralmente contendo links maliciosos, malware ou conteúdo enganoso.
+

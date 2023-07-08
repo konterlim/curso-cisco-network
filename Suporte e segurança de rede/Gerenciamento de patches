@@ -1,0 +1,34 @@
+Gerenciamento de patches
+Apresentação de slides. Selecione o próximo botão para progredir.
+Os cibercriminosos trabalham incansavelmente para explorar os pontos fracos dos sistemas de computador. Para ficar um passo à frente, mantenha os sistemas seguros e atualizados instalando patches regularmente.
+
+O que são manchas?
+Patches são atualizações de código que impedem que um novo vírus, worm ou outro malware faça um ataque bem-sucedido. Patches e atualizações geralmente são combinados em um service pack. Muitos ataques de malware poderiam ter sido evitados se os usuários tivessem instalado o service pack mais recente.
+
+Os sistemas operacionais, como o Windows, verificam rotineiramente se há atualizações que possam proteger um computador das ameaças de segurança mais recentes. Isso inclui atualizações de segurança, atualizações críticas e service packs. O Windows pode ser configurado para baixar e instalar automaticamente atualizações de alta prioridade ou para notificar o usuário quando elas estiverem disponíveis.
+
+
+
+Uma abordagem proativa
+Além de proteger o sistema operacional, é importante atualizar aplicativos de terceiros, como Adobe Acrobat, Java e Google Chrome, para solucionar vulnerabilidades que podem ser exploradas. Uma abordagem proativa para gerenciamento de patches fornece segurança de rede enquanto ajuda a prevenir ransomware e outras ameaças.
+
+Segurança de terminais
+Este componente é um flipcard composto por cartões flippable contendo imagem de exibição. Selecione a imagem da face frontal para virar para a face posterior desses cartões para exibir o texto associado.
+Uma solução de segurança baseada em host é um aplicativo de software executado em um dispositivo local (ou endpoint) para protegê-lo. O software funciona com o sistema operacional para ajudar a prevenir ataques.
+
+Um firewall baseado em host é executado em um dispositivo para restringir a atividade de rede de entrada e saída desse dispositivo. Ele pode permitir ou negar o tráfego entre o dispositivo e a rede. O firewall do software inspeciona e filtra os pacotes de dados para proteger o dispositivo contra infecções. O Firewall do Windows, instalado por padrão durante a instalação do Windows, é um exemplo de firewall de software.
+
+Você pode controlar o tipo de dados enviados de e para o dispositivo abrindo ou bloqueando portas. Os firewalls bloqueiam conexões de rede de entrada e saída, a menos que exceções sejam definidas para permitir ou negar o tráfego de ou para essas portas. Você pode selecionar 'regras de entrada' para configurar os tipos de tráfego que podem passar para o sistema — isso protegerá o sistema contra tráfego indesejado.
+
+O software HIDS é instalado em um dispositivo ou servidor para monitorar atividades suspeitas. Ele monitora as chamadas do sistema e o acesso ao sistema de arquivos para detectar solicitações maliciosas. Ele também pode monitorar informações de configuração sobre o dispositivo mantido no registro do sistema.
+
+O HIDS armazena todos os dados de registro localmente. É um uso intensivo de recursos, portanto, pode afetar o desempenho do sistema. Um HIDS não pode monitorar o tráfego de rede que não atinge o sistema host, mas pode monitorar o sistema operacional e os processos críticos do sistema específicos desse host.
+
+O HIPS é um software que monitora um dispositivo em busca de ataques e anomalias conhecidos (desvios na largura de banda, protocolos e portas) ou encontra sinais de alerta avaliando os protocolos reais nos pacotes. Se detectar atividade maliciosa, a ferramenta HIPS pode enviar um alarme, registrar a atividade maliciosa, redefinir a conexão e/ou descartar os pacotes.
+
+O EDR é uma solução de segurança integrada que monitora e coleta continuamente dados de um dispositivo terminal. Em seguida, ele analisa os dados e responde a qualquer ameaça que detecta. Um antivírus só pode bloquear ameaças, enquanto o EDR pode fazer isso e encontrar ameaças no dispositivo.
+
+As ferramentas DLP fornecem uma maneira centralizada de garantir que dados confidenciais não sejam perdidos, mal utilizados ou acessados ​​por usuários não autorizados.
+
+O NGFW é um dispositivo de segurança de rede que combina um firewall tradicional com outras funções de filtragem de dispositivos de rede. Um exemplo é um firewall de aplicativo que usa inspeção profunda de pacote (DPI) em linha em um sistema de proteção contra intrusão (IPS).
+
