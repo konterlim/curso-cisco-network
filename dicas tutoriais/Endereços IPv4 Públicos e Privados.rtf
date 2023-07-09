@@ -1,0 +1,86 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset1 Cambria Math;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}{\*\mmathPr\mmathFont1\mwrapIndent1440 }\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang22  Tipos de endere\'e7os IPv4\par
+Endere\'e7os IPv4 P\'fablicos e Privados\par
+Assim como existem diferentes maneiras de transmitir um pacote IPv4, tamb\'e9m existem diferentes tipos de endere\'e7os IPv4. Alguns endere\'e7os IPv4 n\'e3o podem ser usados \u8203?\u8203?para ir para a Internet e outros s\'e3o alocados especificamente para roteamento para a Internet. Alguns s\'e3o usados \u8203?\u8203?para verificar uma conex\'e3o e outros s\'e3o autoatribu\'eddos. Como administrador de rede, voc\'ea acabar\'e1 se familiarizando com os tipos de endere\'e7os IPv4, mas, por enquanto, voc\'ea deve pelo menos saber o que s\'e3o e quando us\'e1-los.\par
+\par
+Endere\'e7os IPv4 p\'fablicos s\'e3o endere\'e7os roteados globalmente entre roteadores de provedores de servi\'e7os de Internet (ISP). No entanto, nem todos os endere\'e7os IPv4 dispon\'edveis podem ser usados \u8203?\u8203?na Internet. Existem blocos de endere\'e7os chamados de endere\'e7os privados que s\'e3o usados \u8203?\u8203?pela maioria das organiza\'e7\'f5es para atribuir endere\'e7os IPv4 a hosts internos.\par
+\par
+Em meados da d\'e9cada de 1990, com a introdu\'e7\'e3o da World Wide Web (WWW), os endere\'e7os IPv4 privados foram introduzidos devido ao esgotamento do espa\'e7o de endere\'e7os IPv4. Os endere\'e7os IPv4 privados n\'e3o s\'e3o exclusivos e podem ser usados \u8203?\u8203?internamente em qualquer rede.\par
+A solu\'e7\'e3o de longo prazo para o esgotamento do endere\'e7o IPv4 foi o IPv6.\par
+ Os endere\'e7os privados s\'e3o definidos no RFC 1918 e, \'e0s vezes, referidos como espa\'e7o de endere\'e7o RFC 1918.\par
+Encaminhamento para a Internet\par
+A maioria das redes internas, de grandes empresas a redes dom\'e9sticas, usa endere\'e7os IPv4 privados para endere\'e7ar todos os dispositivos internos (intranet), incluindo hosts e roteadores. No entanto, endere\'e7os privados n\'e3o s\'e3o globalmente rote\'e1veis.\par
+\par
+Na figura, as redes de clientes 1, 2 e 3 est\'e3o enviando pacotes para fora de suas redes internas. Esses pacotes t\'eam um endere\'e7o IPv4 de origem que \'e9 um endere\'e7o privado e um endere\'e7o IPv4 de destino que \'e9 p\'fablico (globalmente rote\'e1vel). Pacotes com um endere\'e7o privado devem ser filtrados (descartados) ou convertidos para um endere\'e7o p\'fablico antes de encaminhar o pacote para um ISP.\par
+\par
+Endere\'e7os IPv4 privados e tradu\'e7\'e3o de endere\'e7os de rede (NAT)\par
+Antes que o ISP possa encaminhar este pacote, ele deve converter o endere\'e7o IPv4 de origem, que \'e9 um endere\'e7o privado, em um endere\'e7o IPv4 p\'fablico usando a tradu\'e7\'e3o de endere\'e7o de rede (NAT). O NAT \'e9 usado para traduzir entre endere\'e7os IPv4 privados e endere\'e7os IPv4 p\'fablicos. Isso geralmente \'e9 feito no roteador que conecta a rede interna \'e0 rede do ISP. Os endere\'e7os IPv4 privados na intranet da organiza\'e7\'e3o ser\'e3o convertidos em endere\'e7os IPv4 p\'fablicos antes do roteamento para a Internet.\par
+Endere\'e7os IPv4 de uso especial\par
+Existem certos endere\'e7os, como o endere\'e7o de rede e o endere\'e7o de broadcast, que n\'e3o podem ser atribu\'eddos a hosts. Tamb\'e9m existem endere\'e7os especiais que podem ser atribu\'eddos a hosts, mas com restri\'e7\'f5es sobre como esses hosts podem interagir na rede.\par
+\par
+endere\'e7os de loopback\par
+\par
+Endere\'e7os de loopback (127.0.0.0 /8 ou 127.0.0.1 a 127.255.255.254) s\'e3o mais comumente identificados como apenas 127.0.0.1. Esses s\'e3o endere\'e7os especiais usados \u8203?\u8203?por um host para direcionar o tr\'e1fego para si mesmo. Por exemplo, o comando ping \'e9 comumente usado para testar conex\'f5es com outros hosts. Mas voc\'ea tamb\'e9m pode usar o comando ping para testar a configura\'e7\'e3o do IP em seu pr\'f3prio dispositivo, conforme mostra a figura.\par
+\par
+Observa\'e7\'e3o : voc\'ea aprender\'e1 mais sobre o comando ping posteriormente neste curso.\par
+Fazendo ping na interface de loopback\par
+C:\f1\u8726?\f0 Users\f1\u8726?\f0 NetAcad> ping 127.0.0.1\par
+Pinging 127.0.0.1 with 32 bytes of data:\par
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128\par
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128\par
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128\par
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128\par
+Ping statistics for 127.0.0.1:\par
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\par
+Approximate round trip times in milli-seconds:\par
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms\par
+C:\f1\u8726?\f0 Users\f1\u8726?\f0 NetAcad> ping 127.1.1.1\par
+Pinging 127.1.1.1 with 32 bytes of data:\par
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128\par
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128\par
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128\par
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128\par
+Ping statistics for 127.1.1.1:\par
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\par
+Approximate round trip times in milli-seconds:\par
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms\par
+C:\f1\u8726?\f0 Users\f1\u8726?\f0 NetAcad>\par
+\lang22\par
+Link-endere\'e7os locais\par
+\par
+Endere\'e7os de link local (169.254.0.0 /16 ou 169.254.0.1 a 169.254.255.254) s\'e3o mais comumente conhecidos como endere\'e7os de endere\'e7amento IP privado autom\'e1tico (APIPA) ou endere\'e7os autoatribu\'eddos. Eles s\'e3o usados \u8203?\u8203?por um cliente Windows para se autoconfigurar caso o cliente n\'e3o consiga obter um endere\'e7o IP por meio de outros m\'e9todos. Os endere\'e7os de link local podem ser usados \u8203?\u8203?em uma conex\'e3o ponto a ponto, mas n\'e3o s\'e3o comumente usados \u8203?\u8203?para essa finalidade.\par
+Endere\'e7amento de classe herdado\par
+Em 1981, os endere\'e7os IPv4 foram atribu\'eddos usando endere\'e7amento classful conforme definido no RFC 790 ( {{\field{\*\fldinst{HYPERLINK https://tools.ietf.org/html/rfc790 }}{\fldrslt{https://tools.ietf.org/html/rfc790\ul0\cf0}}}}\f0\fs22  ), N\'fameros Atribu\'eddos. Os clientes receberam um endere\'e7o de rede com base em uma das tr\'eas classes, A, B ou C. O RFC dividiu os intervalos unicast em classes espec\'edficas, como segue:\par
+\par
+Classe A (0.0.0.0/8 a 127.0.0.0/8) - Projetado para suportar redes extremamente grandes com mais de 16 milh\'f5es de endere\'e7os de host. A classe A usava um prefixo /8 fixo com o primeiro octeto para indicar o endere\'e7o de rede e os tr\'eas octetos restantes para endere\'e7os de host (mais de 16 milh\'f5es de endere\'e7os de host por rede).\par
+Classe B (128.0.0.0 /16 - 191.255.0.0 /16) - Projetado para suportar as necessidades de redes de tamanho moderado a grande com at\'e9 aproximadamente 65.000 endere\'e7os de host. A classe B usava um prefixo /16 fixo com os dois octetos de ordem superior para indicar o endere\'e7o de rede e os dois octetos restantes para endere\'e7os de host (mais de 65.000 endere\'e7os de host por rede).\par
+Classe C (192.0.0.0 /24 - 223.255.255.0 /24) - Projetado para suportar pequenas redes com no m\'e1ximo 254 hosts. A classe C usava um prefixo /24 fixo com os tr\'eas primeiros octetos para indicar a rede e o octeto restante para os endere\'e7os de host (somente 254 endere\'e7os de host por rede).\par
+Nota : H\'e1 tamb\'e9m um bloco multicast Classe D que consiste em 224.0.0.0 a 239.0.0.0 e um bloco de endere\'e7o experimental Classe E que consiste em 240.0.0.0 - 255.0.0.0.\par
+\par
+Na \'e9poca, com um n\'famero limitado de computadores usando a Internet, o endere\'e7amento classful era um meio eficaz de alocar endere\'e7os. Conforme mostrado na figura, as redes de Classe A e B t\'eam um n\'famero muito grande de endere\'e7os de host e a Classe C tem muito poucos. As redes classe A representaram 50% das redes IPv4. Isso fez com que a maioria dos endere\'e7os IPv4 dispon\'edveis n\'e3o fossem utilizados.\par
+Em meados da d\'e9cada de 1990, com a introdu\'e7\'e3o da World Wide Web (WWW), o endere\'e7amento classful foi preterido para alocar com mais efici\'eancia o limitado espa\'e7o de endere\'e7o IPv4. A aloca\'e7\'e3o de endere\'e7os classful foi substitu\'edda pelo endere\'e7amento classless, que \'e9 usado hoje. O endere\'e7amento sem classe ignora as regras das classes (A, B, C). Os endere\'e7os de rede IPv4 p\'fablicos (endere\'e7os de rede e m\'e1scaras de sub-rede) s\'e3o alocados com base no n\'famero de endere\'e7os que podem ser justificados.\par
+Atribui\'e7\'e3o de endere\'e7os IP\par
+Os endere\'e7os IPv4 p\'fablicos s\'e3o endere\'e7os roteados globalmente pela Internet. Os endere\'e7os IPv4 p\'fablicos devem ser exclusivos.\par
+\par
+Os endere\'e7os IPv4 e IPv6 s\'e3o gerenciados pela Internet Assigned Numbers Authority (IANA). A IANA gerencia e aloca blocos de endere\'e7os IP para os Registros Regionais de Internet (RIRs). Os cinco RIRs s\'e3o mostrados na figura.\par
+\par
+Os RIRs s\'e3o respons\'e1veis \u8203?\u8203?por alocar endere\'e7os IP para ISPs que fornecem blocos de endere\'e7os IPv4 para organiza\'e7\'f5es e ISPs menores. As organiza\'e7\'f5es tamb\'e9m podem obter seus endere\'e7os diretamente de um RIR (sujeito \'e0s pol\'edticas desse RIR).\par
+AfriNIC (African Network Information Centre) - Regi\'e3o da \'c1frica\par
+APNIC (Asia Pacific Network Information Center) - Regi\'e3o da \'c1sia/Pac\'edfico\par
+ARIN (Registro Americano para N\'fameros da Internet) - Regi\'e3o da Am\'e9rica do Norte\par
+LACNIC (Registro Regional de Endere\'e7os IP da Am\'e9rica Latina e Caribe) - Am\'e9rica Latina e algumas ilhas do Caribe\par
+RIPE NCC (R\'e9seaux IP Europ\'e9ens Network Coordination Centre) - Europa, Oriente M\'e9dio e \'c1sia Central\par
+ Atividade - Endere\'e7o IPv4 P\'fablico ou Privado\par
+172.16.35.2 Private\par
+192.168.3.5 Private\par
+192.0.3.15 Public\par
+64.104.0.22 Public\par
+209.165.201.30 Public\par
+192.168.11.5 Private\par
+172.16.30.30 Private\par
+10.55.3.168 Private\par
+\par
+}
+ 
