@@ -1,0 +1,42 @@
+Vírus Vermes Cavalo de Tróia 
+
+
+Imagem com áreas selecionáveis. Selecione cada botão para mostrar mais informações.
+Os cibercriminosos usam muitos tipos diferentes de software malicioso, ou malware, para realizar ataques. Malware é qualquer código que pode ser usado para roubar dados, contornar o espaço no-break do controle de acesso  ou causar danos ou comprometer um sistema.
+
+Selecione os ícones de alfinete para saber mais sobre três dos tipos mais comuns de malware.
+
+Vírus
+Um vírus é um tipo de programa de computador que, quando executado, se replica e se anexa a outros arquivos, como um programa legítimo, inserindo nele seu próprio código. Alguns vírus são inofensivos, mas outros podem ser destrutivos, como aqueles que modificam ou excluem dados. A maioria dos vírus requer interação do usuário final para iniciar a ativação e pode ser escrito para atuar em uma data ou hora específica.
+
+Os vírus podem se espalhar através de mídia removível, como unidades flash USB, downloads da Internet e anexos de e-mail. O simples ato de abrir um arquivo ou executar um programa específico pode desencadear um vírus. Quando um vírus está ativo, ele geralmente infecta outros programas no computador ou outros computadores na rede. Os vírus sofrem mutações para evitar a detecção.
+
+Por exemplo, o vírus Melissa foi lançado em 1999 e disseminado por e-mail, afetando dezenas de milhares de usuários e causando danos estimados em US $ 1,2 bilhão.
+
+Vermes
+Um minhoca é um programa de software malicioso que se replica explorando independentemente vulnerabilidades nas redes. Ao contrário de um vírus, que requer um programa host para ser executado, os vermes podem ser executados por si próprios. Além da infecção inicial do host, eles não exigem a participação do usuário e podem se espalhar muito rapidamente pela rede, geralmente diminuindo a velocidade.
+
+Os vermes compartilham padrões semelhantes: exploram vulnerabilidades do sistema, têm uma maneira de se propagar no espaço sem interrupção  e todos contêm código malicioso (carga útil) para causar danos a sistemas ou redes de computadores.
+
+Os vermes são responsáveis por alguns dos ataques mais devastadores na Internet. Em 19 horas, o minhoca Code Red infectou mais de 300.000 servidores em 2001.
+
+Cavalo de Tróia
+Um Trojan (Cavalo de Tróia) é um malware que realiza operações maliciosas mascarando sua verdadeira intenção. Pode parecer legítimo, mas é, de fato, muito perigoso. Trojans (Cavalos de Troia) exploram os privilégios do usuário que os executa.
+
+Ao contrário dos vírus, os trojans (cavalos de troia) não se replicam automaticamente, mas geralmente se ligam a arquivos não executáveis, como arquivos de imagem, áudio ou vídeo, que atuam como um chamariz para prejudicar os sistemas de usuários desavisados.
+
+Bombas Lógicas
+Uma bomba lógica é um programa malicioso que espera por um gatilho, como uma data especificada ou entrada de banco de dados, para detonar o código malicioso. Até que este evento de disparo aconteça, a bomba lógica permanecerá inativa.
+
+Uma vez ativada, uma bomba lógica implementa um código malicioso que causa danos a um computador de várias maneiras. Ele pode sabotar registros de banco de dados, apagar arquivos e atacar sistemas operacionais ou aplicativos. 
+
+Especialistas em segurança cibernética descobriram recentemente bombas lógicas que atacam e destroem os componentes de hardware em um dispositivo ou servidor, incluindo ventiladores, unidade central de processamento (CPU), memória, discos rígidos e fontes de alimentação. A bomba lógica sobrecarrega esses componentes até que eles superaqueçam ou falhem.
+
+Ransomware
+
+Malware projetado para manter um sistema de computador, ou os dados incluídos nele, presos até que o pagamento seja feito.
+
+O ransomware geralmente funciona criptografando os dados para que você não possa acessá-los. De acordo com as alegações do ransomware, quando o resgate for feito por um sistema de pagamento não rastreável, o criminoso digital fornecerá um programa que descriptografa os arquivos ou envia um código de desbloqueio, mas, na realidade, muitas vítimas não obtêm acesso aos dados mesmo depois de terem pago . 
+
+Algumas versões de ransomware podem tirar proveito de vulnerabilidades específicas do sistema para bloqueá-lo. O ransomware é frequentemente disseminado por e-mails de phishing que o incentivam a baixar um anexo mal-intencionado ou uma vulnerabilidade de software.
+

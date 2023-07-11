@@ -1,0 +1,14 @@
+Backdoors e Rootkits
+This component is a flipcard comprised of flippable cards containing display image. Select the front face image to flip to the back face of these card to display associated text.
+Os cibercriminosos também usam muitos tipos diferentes de software malicioso (conhecido como malware) para realizar seus ataques.
+
+Programas de backdoor, como Netbus e Back Orifice, são usados por criminosos digitais para obter acesso não autorizado a um sistema ignorando os procedimentos normais de autenticação.
+
+Os criminosos cibernéticos normalmente têm usuários autorizados a executar um programa de ferramenta administrativa (RAT) remoto em sua máquina para instalar uma backdoor que dá ao criminoso controle administrativo sobre um computador de destino. Backdoors concedem aos cibercriminosos acesso contínuo a um sistema, mesmo que a organização tenha corrigido a vulnerabilidade original usada para atacar o sistema.
+
+Esse malware foi projetado para modificar o sistema operacional para criar um backdoor, que os invasores podem usar para acessar o computador remotamente.
+
+A maioria dos rootkits utiliza as vulnerabilidades do software para escalonar privilégios e modificar arquivos de sistema. 
+
+Os Rootkits também podem modificar as ferramentas forenses e de monitoramento do sistema, tornando-os muito difíceis de detectar. Na maioria dos casos, um computador infectado por um rootkit precisa ser apagado e qualquer software necessário reinstalado.
+

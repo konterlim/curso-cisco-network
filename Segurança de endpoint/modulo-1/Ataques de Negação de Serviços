@@ -1,0 +1,40 @@
+Ataques de Negação de Serviços
+This component is a flipcard comprised of flippable cards containing display image. Select the front face image to flip to the back face of these card to display associated text.
+Os ataques de negação de serviço (DoS) são um tipo de ataque de rede que é relativamente simples de realizar, mesmo por um invasor não qualificado. Eles são um grande risco, pois geralmente resultam em algum tipo de interrupção dos serviços de rede, causando uma perda significativa de tempo e dinheiro. Até mesmo as tecnologias operacionais, hardware ou software que controla dispositivos ou processos físicos em edifícios, fábricas ou provedores de serviços públicos, são vulneráveis a ataques de negação de serviço, que podem causar um desligamento em circunstâncias extremas.
+
+Quantidade esmagadora de tráfego
+Quando uma rede, host ou aplicativo recebe uma enorme quantidade de dados a uma taxa que não consegue processar. Isso causa uma desaceleração na transmissão ou resposta ou uma falha em um dispositivo ou serviço.
+
+Pacotes maliciosamente formatados
+Um pacote é uma coleção de dados que flui entre uma fonte e um computador ou aplicativo receptor em uma rede, como a Internet. Quando um pacote formatado de forma mal-intencionada é enviado, o receptor não será capaz de tratá-lo.
+
+Por exemplo, se um invasor encaminhar pacotes contendo erros ou pacotes formatados incorretamente que não podem ser identificados por um aplicativo, isso fará com que o dispositivo receptor funcione muito lentamente ou falhe.
+
+Os ataques de negação de serviço distribuído (DDoS) são semelhantes, mas se originam de várias fontes coordenadas. Veja como isso acontece:
+
+Um invasor cria uma rede (botnet) de hosts infectados chamados zumbis, que são controlados por sistemas de tratamento.
+Os computadores zumbis examinam e infectam constantemente mais hosts, criando mais zumbis.
+Quando está pronto, o hacker instrui os sistemas controlador para fazer com que o botnet de zumbis execute um ataque de negação de serviço distribuído (DDoS).
+
+ Sistema de nomes de domínio
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+Há muitos serviços técnicos essenciais necessários para uma rede operar, como roteamento, endereçamento e nomeação de domínio. Esses são os principais alvos de ataques.
+
+O sistema de nome de domínio (DNS) é usado por servidores DNS para converter um nome de domínio, como www.cisco.com, em um endereço IP numérico para que os computadores possam entendê-lo. Se um servidor DNS não sabe o endereço IP, ele perguntará a outro servidor DNS.
+
+Uma empresa precisa monitorar sua reputação de domínio, incluindo seu endereço IP, para ajudar a proteger contra domínios externos mal-intencionados. 
+
+A falsificação de DNS ou o envenenamento de cache DNS é um ataque no qual dados falsos são introduzidos em um cache de resolvedor de DNS - o banco de dados temporário no sistema operacional de um computador que registra visitas recentes a sites e outros domínios da Internet.
+
+Esses ataques de veneno exploram uma fraqueza no software DNS que faz com que os servidores DNS redirecionem o tráfego de um domínio específico para o computador do invasor.
+
+Quando um invasor obtém, por engano, o controle das informações de DNS de um alvo, ele pode fazer alterações não autorizadas. Isso é conhecido como sequestro de domínio.
+
+A maneira mais comum de sequestrar um nome de domínio é alterar o endereço de e-mail de contato do administrador por meio de engenharia social ou invadir a conta de e-mail do administrador. O endereço de e-mail do administrador pode ser facilmente encontrado pelo registro WHOIS do domínio, que é de registro público.
+
+Um localizador uniforme de recursos (URL) é um identificador exclusivo para encontrar um recurso específico na Internet. O redirecionamento de uma URL geralmente acontece para fins legítimos.
+
+Por exemplo, você se conectou a um portal de eLearning para iniciar este curso do Cybersecurity Essentials. Se você sair do portal e retornar a ele outra vez, o portal o redirecionará de volta para a página de login. 
+
+É esse tipo de funcionalidade que os invasores podem explorar. Em vez de direcioná-lo para a página de login do eLearning, ele pode redirecioná-lo para um site mal-intencionado. 
+

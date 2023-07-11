@@ -1,0 +1,111 @@
+Engenharia Social
+Apresentação de slides Selecione o próximo botão para avançar.
+A engenharia social é uma estratégia não técnica que tenta manipular indivíduos para realizar determinadas ações ou divulgar informações confidenciais.
+
+Em vez de vulnerabilidades de software ou hardware, a engenharia social explora a natureza humana, aproveitando a disposição das pessoas em ajudar ou se aproveitando de suas fraquezas, como ganância ou vaidade.
+
+Pretexting (pré-dialogo)
+Esse tipo de ataque ocorre quando um indivíduo mente para obter acesso a dados privilegiados. Por exemplo, um invasor finge precisar de dados pessoais ou financeiros para confirmar a identidade de uma pessoa.
+
+Algo por algo (Quid pro quo)
+Os ataques de contrapartida envolvem uma solicitação de informações pessoais em troca de algo, como um presente. Por exemplo, um e-mail mal-intencionado pode solicitar que você forneça seus dados pessoais confidenciais em troca de férias gratuitas.
+
+Fraude de identidade
+É o uso da identidade roubada de uma pessoa para obter bens ou serviços por meio de engano. Por exemplo, alguém adquiriu seus dados e está tentando emitir um cartão de crédito em seu nome.
+
+Táticas de Engenharia Social
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+Os criminosos digitais dependem de várias táticas de engenharia social para obter acesso a informações confidenciais.
+
+ 
+
+Os invasores atacam o fato de que as pessoas são mais propensas a obedecer quando instruídas por alguém que consideram uma figura de autoridade.
+
+Por exemplo, um executivo abre o que parece ser um anexo de intimação oficial, mas na verdade é um PDF infectado.
+
+Os criminosos cibernéticos muitas vezes obrigam uma vítima a agir que compromete a segurança.
+
+A secretária de um executivo recebe um telefonema informando que seu chefe está prestes a fazer uma apresentação importante, mas seus arquivos estão corrompidos. O criminoso ao telefone alega que é culpa da secretária e pressiona a secretária a enviar os arquivos imediatamente ou corre o risco de ser demitida.
+
+Frequentemente chamados de "prova social", os ataques de consenso funcionam porque as pessoas tendem a agir da mesma forma que as outras pessoas à sua volta, pensando que algo deve estar certo se os outros estiverem fazendo isso.
+
+Por exemplo, os criminosos digitais podem publicar uma publicação de mídia social sobre uma "oportunidade de negócios" e fazer com que dezenas de contas legítimas ou ilegítimas comentem sua validade, o que incentiva vítimas desavisadas a fazer uma compra.
+
+Uma tática de marketing bem conhecida, os ataques de escassez funcionam porque os invasores sabem que as pessoas tendem a agir quando acham que há uma quantidade limitada de algo disponível.
+
+Por exemplo, alguém recebe um e-mail sobre um item de luxo que está sendo vendido por muito pouco dinheiro, mas ele afirma que há apenas um punhado disponível a esse preço, em um esforço para estimular a vítima desavisada a agir.
+
+Da mesma forma, as pessoas também tendem a agir quando pensam que há um tempo limitado para isso.
+
+Por exemplo, os criminosos digitais promovem uma oferta falsa de envio por tempo limitado para tentar levar as vítimas a agir rapidamente.
+
+As pessoas são mais propensas a fazer o que outra pessoa pede se gostarem dela.
+
+Portanto, os invasores geralmente tentam estabelecer um relacionamento com a vítima para estabelecer um relacionamento. Em outros casos, eles podem clonar o perfil de mídia de um amigo seu para que você pense que está falando com ele.
+
+Lembre-se de que o repertório dos criminosos digitais é vasto e está em constante evolução. Às vezes, eles podem combinar duas ou mais das táticas acima para aumentar suas chances.
+
+Cabe aos profissionais de segurança digital conscientizar e educar outras pessoas em uma empresa sobre essas táticas, para evitar que elas se tornem vítimas desses ataques.
+
+Surf de Ombro e Mergulho no Lixo
+O Shoulder Surfing é um ataque simples que envolve observar ou literalmente olhar por cima do ombro de um alvo para obter informações valiosas, como PINs, códigos de acesso ou detalhes de cartão de crédito. Os criminosos nem sempre precisam estar perto de suas vítimas para escapar da onda - eles podem usar binóculos ou câmeras de segurança para obter essas informações.
+
+Esta é uma razão pela qual uma tela de caixa eletrônico só pode ser vista em determinados ângulos. Esses tipos de proteções dificultam muito o Shoulder
+
+Você já deve ter ouvido falar da frase: "O lixo de um homem é o tesouro de outro homem". Em nenhum lugar isso é mais verdadeiro do que no mundo do mergulho em lixeiras - o processo de examinar o lixo de um alvo para ver quais informações foram descartadas.
+
+É por isso que os documentos que contêm informações confidenciais devem ser fragmentados ou armazenados em queimados até serem destruídos pelo fogo após um certo período.
+
+Falsificação de Identidade e Fraudes
+This component is a flipcard comprised of flippable cards containing display image. Select the front face image to flip to the back face of these card to display associated text.
+Os criminosos digitais têm muitas outras técnicas de dissimulação para ajudá-los a obter sucesso.
+
+Representação
+Falsificação de identidade é o ato de induzir alguém a fazer algo que normalmente não faria, fingindo ser outra pessoa. Por exemplo, um criminoso digital que se apresentou como um funcionário do IRS teve como alvo recentemente os contribuintes, dizendo às vítimas que eles deviam dinheiro que tinha que ser pago imediatamente por transferência bancária - ou pelo risco de prisão.
+
+Farsas
+Uma farsa é um ato destinado a enganar ou enganar alguém, e pode causar a mesma interrupção que uma violação de segurança real.
+
+Por exemplo, uma mensagem que avisa sobre uma ameaça de vírus (inexistente) em um dispositivo e pede que o destinatário compartilhe essas informações com todos que eles conhecem. Essa farsa provoca uma reação do usuário, criando medo desnecessário e comportamento irracional que é perpetuado por e-mail e mídias sociais. 
+
+
+
+ Piggybacking e Tailgating
+Piggybacking ou Tailgating ocorre quando um criminoso segue uma pessoa autorizada para obter entrada física em um local seguro ou em uma área restrita. Os criminosos podem conseguir isso:
+
+Dar a impressão de ser escoltado para a instalação por uma pessoa autorizada.
+Juntar-se e fingir ser parte de uma grande multidão que entra na instalação.
+Visar uma pessoa autorizada que não tem cuidado com as regras da instalação.
+Uma maneira de evitar isso é usar dois conjuntos de portas. Isso às vezes é chamado de mantrap e significa que os indivíduos entram por uma porta externa, que deve fechar antes que eles possam ter acesso através de uma porta interna.
+
+Outros Métodos de Engano
+Lista de seções expansíveis. Selecione cada botão para expandir o conteúdo.
+Esteja ciente de que os invasores têm muito mais truques na manga para enganar suas vítimas.
+
+As faturas falsas são enviadas com o objetivo de receber dinheiro de uma vítima solicitando que ela coloque suas credenciais em uma tela de login falsa. A fatura falsa também pode incluir linguagem urgente ou ameaçadora.
+
+Um ataque de rega descreve uma exploração na qual um invasor observa ou adivinha quais sites uma empresa usa com mais frequência e infecta um ou mais deles com malware.
+
+ 
+
+Esse tipo de ataque depende de erros comuns, como erros de digitação cometidos por indivíduos ao inserir um endereço de site em seu navegador. A URL incorreta levará os indivíduos a um site legítimo de propriedade do invasor, cujo objetivo é coletar informações pessoais ou financeiras.
+
+Os invasores podem remover a tag de e-mail “externa” usada pelas empresas para avisar o destinatário de que uma origem externa é originada de um e-mail. Isso leva as pessoas a acreditarem que um e-mail mal-intencionado foi enviado de dentro da empresa.
+
+Frequentemente usadas em guerra cibernética, as campanhas de influência são geralmente muito bem coordenadas e combinam vários métodos, como notícias falsas, campanhas de desinformação e publicações em mídias sociais.
+
+A representação é o ato de induzir alguém a fazer algo que normalmente não faria, fingindo ser outra pessoa, e pode ser usado para atacar outras pessoas.
+O taillgating ocorre quando um criminoso segue uma pessoa autorizada para entrar em um local seguro ou em uma área restrita. 
+Typosquatting depende de erros como erros de digitação cometidos por indivíduos ao inserir um endereço de site em seu navegador.
+
+Defesa Contra Engano
+
+As organizações precisam promover a conscientização sobre as táticas de engenharia social e educar adequadamente os funcionários sobre as medidas de prevenção. Aqui estão algumas dicas importantes.
+
+Nunca divulgue informações confidenciais ou credenciais por e-mail, bate-papo, mensagens de texto, pessoalmente ou por telefone para pessoas desconhecidas.
+Resista ao desejo de clicar em e-mails atraentes e links da web.
+Desconfie de downloads não iniciados ou automáticos.
+Estabelecer e educar os funcionários sobre as principais políticas de segurança.
+Incentive os funcionários a assumirem responsabilidade pelos problemas de segurança.
+Não se submeter à pressão de pessoas desconhecidas.
+
