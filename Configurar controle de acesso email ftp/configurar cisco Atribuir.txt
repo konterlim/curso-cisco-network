@@ -1,0 +1,35 @@
+configurar cisco
+Atribuir um nome de dispositivo.
+Acesso seguro ao modo EXEC do usuário.
+Acesso seguro ao modo EXEC privilegiado.
+Acesso VTY seguro.
+Criptografe todas as senhas em texto simples.
+Exibir um banner de login.
+Entre no modo de configuração global.
+
+Switch#configure terminal
+Nomeie o switch “Sw-Floor-1”.
+
+Switch(config)#hostname Sw-Floor-1
+Proteja o acesso ao modo EXEC do usuário inserindo line console 0, atribuindo a senha cisco, habilitando o login e retornando ao modo de configuração global usando exit.
+
+Sw-Floor-1(config)#line console 0
+Sw-Floor-1(config-line)#password cisco
+Sw-Floor-1(config-line)#login
+Sw-Floor-1(config-line)#exit
+Acesso privilegiado ao modo EXEC seguro usando a senha class.
+
+Sw-Floor-1(config)#enable secret class
+Proteja as linhas VTY de 0 a 15, atribua a senha cisco, habilite o login e volte ao modo de configuração global usando exit.
+
+Sw-Floor-1(config)#line vty 0 15
+Sw-Floor-1(config-line)#password cisco
+Sw-Floor-1(config-line)#login
+Sw-Floor-1(config-line)#exit
+Criptografe todas as senhas em texto simples.
+
+Sw-Floor-1(config)#service password-encryption
+Crie uma mensagem de banner usando o símbolo “#” como delimitador. O banner deve exibir exatamente: Apenas acesso autorizado
+
+Sw-Floor-1(config)#banner motd # Apenas acesso autorizado #
+Você concluiu com êxito os requisitos básicos para acessar e proteger um dispositivo.
