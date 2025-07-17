@@ -1,0 +1,74 @@
+Configurar Senhas cisco
+Quando você se conecta inicialmente a um dispositivo, você está no modo EXEC do usuário. Este modo é protegido usando o console.
+
+Para proteger o acesso ao modo EXEC do usuário, insira o modo de configuração do console de linha usando o comando de configuração global line console 0 , conforme mostrado no exemplo. O zero é usado para representar a primeira interface de console (é única, na maioria dos casos). Em seguida, especifique a senha do modo EXEC do usuário usando o comando password password . Por fim, ativo o acesso EXEC do usuário usando o comando login
+
+Sw-Floor-1# configure terminal
+Sw-Floor-1(config)# line console 0
+Sw-Floor-1(config-line)# password cisco
+Sw-Floor-1(config-line)# login
+Sw-Floor-1(config-line)# end
+Sw-Floor-1#
+O acesso ao console agora exigirá uma senha antes de permitir o acesso ao modo EXEC do usuário.
+
+Para ter acesso de administrador a todos os comandos do IOS, incluindo a configuração de um dispositivo, você deve obter acesso privilegiado no modo EXEC. É o método de acesso mais importante porque fornece acesso completo ao dispositivo.
+
+Para proteger o acesso EXEC privilegiado, use o comando de configuração enable secret password global config, conforme mostrado no exemplo.
+
+Sw-Floor-1# configure terminal
+Sw-Floor-1(config)# enable secret class
+Sw-Floor-1(config)# exit
+Sw-Floor-1#
+As linhas de terminal virtual (VTY) permitem acesso remoto usando Telnet ou SSH ao dispositivo. Muitos switches Cisco são compatíveis com até 16 linhas VTY numeradas de 0 a 15.
+
+Para proteger linhas VTY, entre no modo VTY de linha usando o comando de configuração global line vty 0 15 . Em seguida, especifique a senha do VTY usando o comando password password . Por fim, ative o acesso VTY usando o comando login
+
+Um exemplo de segurança das linhas VTY em um switch é mostrado.
+
+Sw-Floor-1# configure terminal
+Sw-Floor-1(config)# 1(config)# line vty 0 15
+Sw-Floor-1(config-line)# password cisco
+Sw-Floor-1(config-line)# login
+Sw-Floor-1(config-line)# end
+Sw-Floor-1#
+2.4.4 Criptografar as Senhas
+Os arquivos startup-config e running-config exibem a maioria das senhas em texto simples. Esta é uma ameaça à segurança, porque qualquer pessoa pode descobrir as senhas se tiver acesso a esses arquivos.
+
+Para criptografar todas as senhas de texto simples, use o comando de configuração global service password-encryption conforme mostrado no exemplo.
+
+Sw-Floor-1# configure terminal
+Sw-Floor-1(config)# service password-encryption
+Sw-Floor-1(config)#
+O aplicativo comando criptografia falha em todas as senhas não criptografadas. Essa criptografia se aplica apenas às senhas no arquivo de configuração, não às senhas como são enviadas pela rede. O objetivo deste comando é impedir que indivíduos não autorizados vejam as senhas no arquivo de configuração.
+
+Use o comando show running-config para verificar se as senhas agora estão criptografadas.
+
+1(config)# endSw-Floor-
+Sw-Floor-1# show running-config
+!
+(Output omitted)
+!
+line con 0
+password 7 094F471A1A0A
+login
+!
+line vty 0 4
+password 7 094F471A1A0A
+login
+line vty 5 15
+password 7 094F471A1A0A
+login
+!
+!
+end
+2.4.5 Mensagens de Banner
+Embora a exigência de senhas seja uma maneira de manter pessoal não autorizado fora da rede, é vital fornecer um método para declarar que apenas pessoal autorizado deve tentar acessar o dispositivo. Para isso, adicione um banner à saída do dispositivo. Banners são uma parte importante do processo legal caso alguém seja processado por poder invadir um dispositivo. Alguns sistemas legais não permitem o processo, ou mesmo o monitoramento de usuários, a menos que haja uma notificação visível.
+
+Para criar uma mensagem de faixa do dia em um dispositivo de rede, use o comando de configuração global banner motd # a mensagem do dia # . O “#” na sintaxe do comando é denominado caractere de delimitação. Ele foi inserido antes e depois da mensagem. O caractere de delimitação pode ser qualquer caractere contanto que não ocorra na mensagem. Por esse motivo, símbolos como “#” são usados com frequência. Após a execução do comando, o banner será exibido em todas as tentativas seguintes de acesso ao dispositivo até que o banner seja removido.
+
+O exemplo a seguir mostra as etapas para configurar o banner no Sw-Floor-1.
+
+Sw-Floor-1# configure terminal
+Sw-Floor-1(config)# banner motd #a mensagem do dia#
+
+

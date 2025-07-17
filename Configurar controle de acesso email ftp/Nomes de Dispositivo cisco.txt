@@ -1,0 +1,29 @@
+Nomes de Dispositivo cisco
+
+Você aprendeu muito sobre o Cisco IOS, navegando pelo IOS e a estrutura de comandos. Agora você está pronto para configurar dispositivos! O primeiro comando de configuração em qualquer dispositivo deve ser dar a ele um nome de dispositivo exclusivo ou nome de host. Por padrão, todos os dispositivos recebem um nome padrão de fábrica. Por exemplo, um switch Cisco IOS é “Switch“.
+
+O problema é que, se todos os comutadores em uma rede forem deixados com seus nomes padrão, seria difícil identificar um dispositivo específico. Por exemplo, como você saberia que está conectado ao dispositivo certo para acessá-lo remotamente usando SSH? O nome do host fornece uma confirmação de que você está conectado ao dispositivo correto.
+
+O nome padrão deve ser alterado para algo mais descritivo. Com uma escolha conhecida de nomes, é mais fácil lembrar, documentar e identificar dispositivos de rede. Aqui estão algumas diretrizes de nomenclatura importantes para hosts:
+
+Começar com uma letra;
+Não contenha espaços;
+Terminar com uma letra ou dígito;
+Usar somente letras, números e traços;
+Ter menos de 64 caracteres.
+Uma organização deve escolher uma convenção de nomenclatura que torne fácil e intuitiva identificar um dispositivo específico. Os nomes de host usados no IOS do dispositivo preservam os caracteres em hierarquias e minúsculas. Por exemplo, a figura mostra que três comutadores, abrangendo três andares diferentes, estão interligados em uma rede. A convenção de nomenclatura usada incorporada ou local e específica de cada dispositivo. A documentação da rede deve explicar como esses nomes foram escolhidos, de modo que outros dispositivos possam receber nomes apropriados.
+
+O diagrama mostra três interruptores interligados que abrangem três andares. O switch superior é chamado Sw-Floor-3, o switch do meio é chamado Sw-Floor-2 e o switch inferior é o nome Sw-Floor-1. Um usuário sentado em um PC host está conectado ao switch SW-Floor-1. O texto na parte inferior diz: quando os dispositivos de rede são nomeados, eles são simples de identificar para fins de configuração.
+Sw-Andar-3Sw-Andar-2Sw-Andar-1
+Quando os dispositivos de rede são nomeados, eles são fáceis de identificar para fins de configuração.
+
+Quando a convenção de nomenclatura for identificada, a próxima etapa é usar a CLI para aplicar os nomes aos dispositivos. Como mostrado no exemplo, no modo EXEC privilegiado, acesse o modo de configuração global escrever o comando configure terminal Observe a alteração no prompt de comando.
+
+Switch# configure terminal
+Switch(config)# hostname Sw-Floor-1
+Sw-Floor-1(config)#
+No modo de configuração global, digite o comando hostname seguido pelo nome do comutador e pressione Enter . Observe uma alteração no nome do prompt de comando.
+
+Observação: Para retornar o switch ao prompt padrão, use o comando no hostname global config.
+
+Sempre verifique se a documentação está atualizada quando um dispositivo for adicionado ou modificado. Identifique os dispositivos nas documentações por seu local, propósito e endereço.
