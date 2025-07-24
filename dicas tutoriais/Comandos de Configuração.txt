@@ -1,0 +1,164 @@
+Comandos de Configuração Básica para Roteadores e Switches Cisco (Modo CLI)
+Esta sequência de comandos é para ser aplicada no modo de interface de linha de comando (CLI) de um dispositivo Cisco (roteador ou switch).
+
+Observação Importante: Após a conexão física dos cabos no Packet Tracer (conforme o laboratório anterior), você pode acessar o CLI de um roteador ou switch de duas maneiras principais:
+
+
+Via Console: Usando o "Configuration Terminal" (Terminal de Configuração) conectado à porta "Console" do dispositivo. 
+
+Clicando no Dispositivo: No Packet Tracer, você pode simplesmente clicar no roteador ou switch e ir para a guia "CLI".
+
+Passo a Passo da Configuração:
+Acessar o Modo de Usuário EXEC Privilegiado (enable mode)
+
+Ao entrar no CLI pela primeira vez, você estará no modo de usuário EXEC:
+
+Router>
+Digite enable para entrar no modo privilegiado:
+
+Router> enable
+Router#
+Acessar o Modo de Configuração Global (configure terminal)
+
+A maioria das configurações é feita neste modo.
+
+Digite configure terminal (ou conf t para abreviar):
+
+Router# configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#
+Configurar o Hostname (Nome do Dispositivo)
+
+É a primeira configuração importante para identificar seu dispositivo na rede.
+
+Digite hostname seguido do nome desejado:
+
+Router(config)# hostname MeuRoteador
+MeuRoteador(config)#
+(Se for um switch, seria Switch(config)# hostname MeuSwitch)
+
+Configurar Senha para o Modo Privilegiado (Enable Secret)
+
+Esta é a senha mais segura, pois é criptografada e exigida para entrar no modo enable.
+
+Digite enable secret seguido da senha:
+
+MeuRoteador(config)# enable secret minhaSenhaSecreta
+Configurar Senha para Acesso via Console
+
+Esta senha é solicitada quando alguém se conecta fisicamente ao dispositivo usando o cabo de console.
+
+Digite line console 0 para acessar o modo de configuração da linha de console:
+
+MeuRoteador(config)# line console 0
+MeuRoteador(config-line)# password minhaSenhaConsole
+MeuRoteador(config-line)# login
+MeuRoteador(config-line)# exit
+O comando login ativa a solicitação da senha.
+
+Configurar Senha para Acesso Remoto (VTY - Telnet/SSH)
+
+As linhas VTY (Virtual TeleType) são usadas para acesso remoto via Telnet ou SSH.
+
+Digite line vty 0 4 (isso configura as primeiras 5 linhas VTY, de 0 a 4):
+
+MeuRoteador(config)# line vty 0 4
+MeuRoteador(config-line)# password minhaSenhaRemota
+MeuRoteador(config-line)# login
+MeuRoteador(config-line)# exit
+Para usar SSH, você também precisará de configurações adicionais como geração de chaves RSA, nome de domínio e um usuário local.
+
+Configurar Data e Hora (Sincronização de Relógio - NTP)
+
+A data e hora corretas são cruciais para logs, timestamps e segurança (ex: certificados SSL, SSH). Você mencionou que muitos problemas podem estar relacionados a isso.
+
+Configuração Manual (menos comum em produção, mais para labs rápidos):
+
+Saia do modo de configuração global (exit) para o modo privilegiado (#).
+
+MeuRoteador(config)# exit
+MeuRoteador# clock set HH:MM:SS Day Month Year
+MeuRoteador# clock set 15:00:00 22 July 2025
+Configuração com NTP (Network Time Protocol - recomendado em produção):
+
+Primeiro, volte ao modo de configuração global.
+
+MeuRoteador# configure terminal
+MeuRoteador(config)# ntp server <endereço_ip_do_servidor_ntp>
+MeuRoteador(config)# ntp server 192.168.1.254  (Exemplo: se você tivesse um servidor NTP na rede)
+Você pode verificar o status do NTP com show ntp status ou show clock detail no modo privilegiado.
+
+Configurar Mensagem do Dia (MOTD - Message Of The Day)
+
+Uma mensagem que aparece quando os usuários se conectam ao dispositivo.
+
+Digite banner motd # (o # é um delimitador, você pode usar qualquer caractere que não esteja na mensagem)
+
+MeuRoteador(config)# banner motd #
+Enter TEXT message. End with the character '#'.
+Acesso restrito. Somente pessoal autorizado!#
+Configurar Endereços IP nas Interfaces (Exemplo para Roteador)
+
+Para que o dispositivo se comunique na rede, suas interfaces precisam de endereços IP.
+
+Identifique a interface (ex: FastEthernet0/0, GigabitEthernet0/1, Serial0/0/0).
+
+Digite interface seguido do nome e número da interface:
+
+MeuRoteador(config)# interface FastEthernet0/0
+MeuRoteador(config-if)# ip address 192.168.10.1 255.255.255.0
+MeuRoteador(config-if)# no shutdown  (Liga a interface - essencial!)
+MeuRoteador(config-if)# description Conexao com a LAN Principal
+MeuRoteador(config-if)# exit
+Repita para todas as interfaces que precisam de um IP.
+
+Para switches, o IP é configurado na interface VLAN (ex: interface vlan 1) para gerenciamento.
+
+Desabilitar Pesquisa de DNS no Modo de Configuração
+
+Isso evita atrasos quando você digita um comando errado, pois o roteador/switch tenta resolver o comando como um nome de host.
+
+Digite no ip domain-lookup:
+
+MeuRoteador(config)# no ip domain-lookup
+Salvar a Configuração
+
+É CRÍTICO salvar a configuração para que ela não seja perdida ao reiniciar o dispositivo.
+
+Saia do modo de configuração global para o modo privilegiado:
+
+MeuRoteador(config)# exit
+MeuRoteador# copy running-config startup-config
+Destination filename [startup-config]? (Pressione Enter para aceitar o padrão)
+Building configuration...
+[OK]
+MeuRoteador#
+Alternativamente, você pode usar write memory (comando mais antigo, mas ainda funciona).
+
+Comandos Úteis para Verificação (Modo Privilegiado #):
+show running-config: Mostra a configuração atual na RAM.
+
+show startup-config: Mostra a configuração salva na NVRAM.
+
+
+show ip interface brief: Exibe um resumo das interfaces IP, status e protocolo. 
+
+show interfaces: Exibe informações detalhadas sobre as interfaces.
+
+show version: Mostra a versão do IOS, tempo de atividade e outras informações do hardware.
+
+show clock: Mostra a data e hora atuais do dispositivo.
+
+show history: Mostra os últimos comandos digitados.
+
+Este tutorial cobre os comandos básicos essenciais que você precisará para iniciar a configuração de dispositivos Cisco e abordar os pontos que você levantou sobre hostname, senhas e data/hora. Lembre-se de praticar bastante no Packet Tracer, pois a repetição ajuda a memorizar os comandos e a entender seu funcionamento.
+
+
+Fontes
+
+
+
+
+
+
+
